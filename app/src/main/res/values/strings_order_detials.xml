@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="ordee_detials">订单详情</string>
+    <string name="write_peopleinfomation">请填写联系人信息</string>
+    <string name="write_address">填写地址</string>
+    <string name="shop_name">商品名称</string>
+    <string name="remark">备注</string>
+    <string name="shopmoney">金额</string>
+    <string name="shoptrue">确认下单</string>
+</resources>

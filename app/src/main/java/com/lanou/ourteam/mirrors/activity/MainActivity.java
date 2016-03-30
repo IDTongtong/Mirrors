@@ -1,10 +1,11 @@
-package com.lanou.ourteam.mirrors;
+package com.lanou.ourteam.mirrors.activity;
 
 
 import android.graphics.drawable.BitmapDrawable;
 
 import android.content.Intent;
 
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,15 +18,20 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
+import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.WelcomeActivity;
+import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
+import com.lanou.ourteam.mirrors.fragment.MainActivityRecycleViewFragemt;
+
+import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-
-
-
-
+    VerticalViewPager verticalViewPager;
+    MainActicityViewpagerAdapter adapter;
+    ArrayList<Fragment> datas;
 
     @Override
     protected int setContent() {
@@ -39,6 +45,15 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+        jumpToActivity(this, WelcomeActivity.class, null);
+
+        datas = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            datas.add(new MainActivityRecycleViewFragemt());
+        }
+verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager);
+        adapter = new MainActicityViewpagerAdapter(getSupportFragmentManager(),datas);
+        verticalViewPager.setAdapter(adapter);
 
 
     }
@@ -106,7 +121,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         popupWindow.showAsDropDown(view);
 
     }
-
+//菜单的点击事件
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -134,7 +149,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
         }
 
-      jumpToActivity(this, WelcomeActivity.class, null);
 
 
     }
