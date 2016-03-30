@@ -33,7 +33,8 @@ public class VerticalViewPager extends ViewPager {
 
         setOverScrollMode(OVER_SCROLL_NEVER);
     }
-
+//PageTransformer接口，用来自定义ViewPager页面切换动画，
+// 用setPageTransformer(boolean, PageTransformer)方法来进行设置；
     private class VerticalPageTransformer implements ViewPager.PageTransformer{
 
         @Override
@@ -80,6 +81,7 @@ public class VerticalViewPager extends ViewPager {
                 float moveX = event.getX();
                 float moveY = event.getY();
                 if (Math.abs(moveY - startY) - Math.abs(moveX - startX) > 0) {
+                    //return flase不拦截，true就是拦截
                     return true;
                 }
                 break;

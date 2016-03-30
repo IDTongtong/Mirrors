@@ -61,7 +61,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        BaseApplication.removeActivity(this);
+        //佟野 给改成了finish，因为不改 用fragment他就蹦
+        finish();
+        //BaseApplication.removeActivity(this);
         super.onDestroy();
     }
 }
