@@ -1,4 +1,4 @@
-package com.zh.b.section.double_mirror.util;
+package com.lanou.ourteam.mirrors.utils;
 
 /**
  * Created by ZHDelete on 16/3/29.

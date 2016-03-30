@@ -1,4 +1,4 @@
-package com.zh.b.section.double_mirror.util;
+package com.lanou.ourteam.mirrors.utils;
 
 import android.util.Log;
 
@@ -7,6 +7,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.FormEncodingBuilder;
 import com.squareup.okhttp.OkHttpClient;
@@ -14,8 +15,6 @@ import com.squareup.okhttp.Request;
 
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
-import com.zh.b.section.double_mirror.base.BaseApplication;
-import com.zh.b.section.double_mirror.listenerinterface.NetListener;
 
 
 import java.io.IOException;
@@ -32,7 +31,7 @@ public class NetHelper {
 
     private NetHelper() {
         Log.d("NetHelper", "5");
-        requestQueue = Volley.newRequestQueue(BaseApplication.getMyAppContext());
+        requestQueue = Volley.newRequestQueue(BaseApplication.getContext());
         Log.d("NetHelper", "6");
         //netHelperInstance = new NetHelper();
     }
