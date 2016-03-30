@@ -59,4 +59,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
     }
 
+    @Override
+    protected void onDestroy() {
+        BaseApplication.removeActivity(this);
+        super.onDestroy();
+    }
 }
