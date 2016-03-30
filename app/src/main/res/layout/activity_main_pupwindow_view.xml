@@ -55,7 +55,7 @@
 
     <ImageView
         android:id="@+id/popwindow_sun_line_tv"
-        android:layout_width="169pxdp"
+        android:layout_width="169px"
         android:layout_height="24px"
         android:layout_marginLeft="79px"
         android:layout_marginTop="22px"

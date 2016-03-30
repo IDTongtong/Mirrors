@@ -1,6 +1,10 @@
 package com.lanou.ourteam.mirrors;
 
+
 import android.graphics.drawable.BitmapDrawable;
+
+import android.content.Intent;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,9 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+
+import com.lanou.ourteam.mirrors.activity.WelcomeActivity;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+
+
 
 
 
@@ -30,6 +39,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initView() {
+
 
     }
 
@@ -123,5 +133,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                 break;
 
         }
+
+      jumpToActivity(this, WelcomeActivity.class, null);
+
+
     }
 }
