@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-
+    <color name="colorTV">#333333</color>
+    <color name="colorBttonWord">#ffffff</color>
 
 </resources>
