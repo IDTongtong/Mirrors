@@ -1,4 +1,4 @@
-package com.lanou.ourteam.mirrors;
+package com.lanou.ourteam.mirrors.activity;
 
 
 import android.graphics.drawable.BitmapDrawable;
@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 
+import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.WelcomeActivity;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 
