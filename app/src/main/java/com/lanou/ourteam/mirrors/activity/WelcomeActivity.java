@@ -1,14 +1,8 @@
 package com.lanou.ourteam.mirrors.activity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.lanou.ourteam.mirrors.MainActivity;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 
