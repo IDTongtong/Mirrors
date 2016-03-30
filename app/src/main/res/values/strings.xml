@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Mirrors</string>
+    <string name="popwindow_seeall">遊覽所有分類</string>
+    <string name="pupwindow_shine">遊覽平光眼鏡</string>
+    <string name="popwindow_sun">遊覽太陽眼鏡</string>
+    <string name="popwindow_share">專題分享</string>
+    <string name="popwindow_shopcar">我的購物車</string>
+    <string name="pupwimdow_returnhome">返回首頁</string>
+    <string name="exit">退出</string>
 </resources>
