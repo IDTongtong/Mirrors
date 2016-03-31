@@ -203,6 +203,7 @@ verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager
 
         // 实现心跳的View
         imageViewMirror.startAnimation(animationSet);
+        
     }
 }
 
