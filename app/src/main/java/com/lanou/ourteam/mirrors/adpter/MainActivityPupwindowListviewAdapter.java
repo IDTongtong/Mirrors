@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.bean.MenuBean;
 
 import java.util.ArrayList;
 
@@ -16,23 +17,23 @@ import java.util.ArrayList;
  * Created by dllo on 16/3/31.
  */
 public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
-    ArrayList<String> datas;
+    MenuBean menuBean;
     Context context;
 
-    public MainActivityPupwindowListviewAdapter(ArrayList<String> datas, Context context) {
-        Log.d("aasMainActivityPupwindowLi", datas.get(1));
+    public MainActivityPupwindowListviewAdapter(MenuBean menuBean, Context context) {
+      // Log.d("aasMainActivityPupwindowLi", datas.get(1));
 this.context = context;
-        this.datas = datas;
+        this.menuBean = menuBean;
     }
 
     @Override
     public int getCount() {
-        return datas.size();
+        return menuBean.getData().getList().size();
     }
 
     @Override
     public Object getItem(int position) {
-        return datas.get(position);
+        return menuBean.getData().getList().get(position);
     }
 
     @Override
@@ -53,7 +54,7 @@ this.context = context;
         } else {
             myViewHolder = (MyViewHolder) convertView.getTag();
         }
-        myViewHolder.textView.setText(datas.get(position));
+        myViewHolder.textView.setText(menuBean.getData().getList().get(position).getTitle());
 
         return convertView;
     }

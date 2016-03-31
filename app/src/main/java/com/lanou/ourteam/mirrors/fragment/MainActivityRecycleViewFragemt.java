@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,14 +21,24 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.MainActivity;
 import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
 import com.lanou.ourteam.mirrors.adpter.MainActivityRecycleViewAdapter;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
+import com.lanou.ourteam.mirrors.bean.MenuBean;
+import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.NetHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.Inflater;
 
 /**
@@ -88,17 +99,8 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
         View contentView = LayoutInflater.from(getContext()).inflate(
                 R.layout.activity_main_pupwindow_listview, null);
 //初始化listview
-        ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
-        ArrayList<String> listviwDatas;
-        listviwDatas = new ArrayList<>();
-        listviwDatas.add("浏览所有分类");
-        listviwDatas.add("浏览平光镜");
-        listviwDatas.add("浏览太阳镜");
-        listviwDatas.add("浏览专题分享");
-        listviwDatas.add("我的购物车");
-        listviwDatas.add("返回首页");
-        MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(listviwDatas, getContext());
-        menulistView.setAdapter(activityPupwindowListviewAdapter);
+        final ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
+
         final PopupWindow popupWindow = new PopupWindow(contentView,
                 LinearLayout.LayoutParams.MATCH_PARENT, 1500, true);
 
@@ -140,8 +142,41 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 popupWindow.dismiss();
                 mainActivity.getDatafromFragment(position);
+
             }
         });
+
+        Map<String, String> params = new HashMap();
+
+
+        params.put("token", "");
+
+        NetHelper.getInstance().volleyPostTogetNetData(Content.MENU_LIST, params, new VolleyNetListener() {
+            @Override
+            public void onSuccess(String string) {
+                Gson gson = new Gson();
+                Log.d("ssssMainActivityRecycleView", string);
+                try {
+
+                    JSONObject jsonObject = new JSONObject(string);
+                    MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
+                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, getContext());
+                    menulistView.setAdapter(activityPupwindowListviewAdapter);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("qqq", "===" + string);
+            }
+
+            @Override
+            public void onFail(String failStr) {
+                Log.d("MainActivityRecycleView", "===" + "Fail");
+            }
+        });
+
 
     }
 
