@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00000000">
+    <TextView
+        android:id="@+id/acticty_main_popwondow_listview_tv"
+        android:textColor="#fff"
+        android:textSize="28px"
+        android:text="@string/popwindow_seeall"
+        android:layout_marginLeft="69px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:layout_below="@id/acticty_main_popwondow_listview_tv"
+        android:id="@+id/popwindow_all_line_iv"
+        android:layout_width="84.5dp"
+        android:layout_height="24px"
+        android:layout_marginLeft="69px"
+        android:layout_marginTop="22px"
+        android:src="@mipmap/pullwindow_line"
+        android:visibility="invisible"/>
+    <ImageView
+        android:layout_below="@+id/popwindow_all_line_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="44px" />
+</com.zhy.autolayout.AutoRelativeLayout>

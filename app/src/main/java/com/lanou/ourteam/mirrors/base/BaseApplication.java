@@ -17,7 +17,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-    context = this;
+        context = this;
 
     }
     public static Context getContext(){
@@ -36,7 +36,7 @@ public class BaseApplication extends Application {
     }
     public static void finishAllActivity() {
         for (Activity activity : activities) {
-            if (!activity.isFinishing()) {
+                if (!activity.isFinishing()) {
                 activity.finish();
             }
         }
