@@ -22,6 +22,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(setContent());
+        BaseApplication.addActivity(this);
         initView();
         initData();
     }
@@ -61,9 +62,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        //佟野 给改成了finish，因为不改 用fragment他就蹦
-        finish();
-        //BaseApplication.removeActivity(this);
+
+     BaseApplication.removeActivity(this);
         super.onDestroy();
     }
 }
