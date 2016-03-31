@@ -137,6 +137,8 @@ verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager
 
 
     /**
+     *
+     * 
      *这个类是给ViewPager滚动速度的设置
      *这个类封装了滚动操作。滚动的持续时间可以通过构造函数传递，并且可以指定滚动动作的持续的最长时间。
      * 经过这段时间，滚动会自动定位到最终位置，
