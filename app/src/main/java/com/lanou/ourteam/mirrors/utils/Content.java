@@ -8,4 +8,12 @@ public class Content {
 
 
     public static final String CATEGORY_LIST = "index.php/products/category_list";
+    //浏览平光镜
+    public static final String GOODS_LIST = "index.php/products/goods_list";
+    //
+    public static final String SEND_CODE = "index.php/user/send_code";
+    //每日推荐---浏览所有分类: 数据结构,多了一层,
+    public static final String MRTJ = "index.php/index/mrtj";
+    //菜单:此接口 接口文档没给,从官方软件抓包得到,测试服能否请求到数据不确定,自己试试,出事,不背锅!!!
+    public static final String MENU_LIST = "index.php/index/menu_list";
 }
