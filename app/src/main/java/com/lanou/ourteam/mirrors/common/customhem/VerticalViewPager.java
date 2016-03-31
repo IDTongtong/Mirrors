@@ -58,7 +58,7 @@ public class VerticalViewPager extends ViewPager {
     private MotionEvent swapXY(MotionEvent event) {
         float width = getWidth();
         float height = getHeight();
-
+//x y 变换位置
         float newX = (event.getY() / height) * width;
         float newY = (event.getX() / width) * height;
 
