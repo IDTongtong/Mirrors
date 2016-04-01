@@ -1,32 +1,34 @@
 package com.lanou.ourteam.mirrors.activity;
 
 
-import android.graphics.drawable.BitmapDrawable;
-
-import android.content.Intent;
-
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.content.Context;
+import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
-import android.widget.TextView;
-
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
+import android.widget.Scroller;
 
 import com.lanou.ourteam.mirrors.R;
-import com.lanou.ourteam.mirrors.activity.WelcomeActivity;
+import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
+import com.lanou.ourteam.mirrors.fragment.MainActivityRecycleViewFragemt;
 
-public class MainActivity extends BaseActivity implements View.OnClickListener {
+import java.lang.reflect.Field;
+import java.util.ArrayList;
 
+public class MainActivity extends BaseActivity {
 
-
-
-
+    VerticalViewPager verticalViewPager;
+    MainActicityViewpagerAdapter adapter;
+    ArrayList<Fragment> datas;
+    ImageView imageViewMirror;
 
     @Override
     protected int setContent() {
@@ -35,108 +37,135 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @Override
     protected void initData() {
-
+imageViewMirror.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        playHeartbeatAnimation();
+    }
+});
     }
 
     @Override
     protected void initView() {
+        jumpToActivity(this, WelcomeActivity.class, null);
+        imageViewMirror = (ImageView) findViewById(R.id.mainactivity_mirror);
+        datas = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            datas.add(new MainActivityRecycleViewFragemt());
+        }
+verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager);
+        adapter = new MainActicityViewpagerAdapter(getSupportFragmentManager(),datas);
+        verticalViewPager.setAdapter(adapter);
+
+
 
 
     }
 
-    //左边的pupwindow
-    private void showPopupWindow(View view) {
-        //5个textview 分别是 所有分类，游览平光眼镜，游览太阳眼镜，专题分享，我的购物车，返回首页，退出。
-        TextView textViewAll,textViewShine,textViewSun,textViewShare,textViewShopMyCar,textViewReturnHome,textViewExit;
-
-        // 一个自定义的布局，作为显示的内容 加载popwindow的布局
-        View contentView = LayoutInflater.from(this).inflate(
-                R.layout.activity_main_pupwindow_view, null);
-        // 设置按钮的点击事件
-
-        textViewAll = (TextView) contentView.findViewById(R.id.popwindow_all_tv);
-        textViewShine = (TextView) contentView.findViewById(R.id.popwindow_shine_tv);
-
-        textViewSun = (TextView) contentView.findViewById(R.id.popwindow_sun_tv);
-
-        textViewShare = (TextView) contentView.findViewById(R.id.popwindow_share_tv);
-
-        textViewShopMyCar = (TextView) contentView.findViewById(R.id.popwindow_shop_tv);
-        textViewReturnHome = (TextView) contentView.findViewById(R.id.popwindow_returnhome_tv);
-        textViewExit = (TextView) contentView.findViewById(R.id.popupwindow_exit_tv);
-        textViewAll.setOnClickListener(this);
-        textViewShine.setOnClickListener(this);
-        textViewSun.setOnClickListener(this);
-        textViewShare.setOnClickListener(this);
-        textViewShopMyCar.setOnClickListener(this);
-        textViewReturnHome.setOnClickListener(this);
-        textViewExit.setOnClickListener(this);
 
 
-        final PopupWindow popupWindow = new PopupWindow(contentView,
-                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
+    // 按钮模拟心脏跳动
+    private void playHeartbeatAnimation() {
+        AnimationSet animationSet = new AnimationSet(true);
+        // Animation.RELATIVE_TO_SELF 变化中心角
+        animationSet.addAnimation(new ScaleAnimation(1.0f, 1.2f, 1.0f, 1.2f,
+                Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF,
+                0.5f));
 
-        popupWindow.setTouchable(true);
 
-        popupWindow.setTouchInterceptor(new View.OnTouchListener() {
+        animationSet.setDuration(200);
+        animationSet.setInterpolator(new AccelerateInterpolator());
+        //结尾停在最后一针
+        animationSet.setFillAfter(true);
+        //对动画进行监听
+        animationSet.setAnimationListener(new Animation.AnimationListener() {
+            //开始时候怎么样
+            @Override
+            public void onAnimationStart(Animation animation) {
+            }
 
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-
-                Log.i("mengdd", "onTouch : ");
-                popupWindow.dismiss();
-                return true;
-                // 这里如果返回true的话，touch事件将被拦截
-                // 拦截后 PopupWindow的onTouchEvent不被调用，这样点击外部区域无法dismiss
+            public void onAnimationRepeat(Animation animation) {
+            }
+            //结束时候怎么样
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                AnimationSet animationSet = new AnimationSet(true);
+                animationSet.addAnimation(new ScaleAnimation(1.2f, 1.0f, 1.2f,
+                        1.0f, Animation.RELATIVE_TO_SELF, 0.5f,
+                        Animation.RELATIVE_TO_SELF, 0.5f));
+                animationSet.setDuration(200);
+                animationSet.setInterpolator(new DecelerateInterpolator());
+                animationSet.setFillAfter(false);
+                // 实现心跳的View
+                imageViewMirror.startAnimation(animationSet);
             }
         });
-        popupWindow.setBackgroundDrawable(new BitmapDrawable());
 
+        // 实现心跳的View
+        imageViewMirror.startAnimation(animationSet);
+        
+    }
+    //暴露方法 得到position
+    public void getDatafromFragment(int position) {
+        Log.d("MainActivity", "从fragment历来" + position);
 
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setFocusable(true);
-        //给pupwindow设置动画
-        popupWindow.setAnimationStyle(R.style.AnimationPreview);
-
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
-        // 如果不设置PopupWindow的背景，无论是点击外部区域还是Back键都无法dismiss弹框
-        // 我觉得这里是API的一个bug
-
-        // 设置好参数之后再show
-
-        popupWindow.showAsDropDown(view);
+        //这个是设置viewPager切换过度时间的类
+        ViewPagerScroller scroller = new ViewPagerScroller(this);
+        scroller.setScrollDuration(50);
+        scroller.initViewPagerScroll(verticalViewPager);
+         //这个是设置切换过渡时间为0毫秒
+         verticalViewPager.setCurrentItem(position);
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.popwindow_all_tv:
 
-                break;
-            case R.id.popwindow_shine_tv:
+    /**
+     *
+     * 
+     *这个类是给ViewPager滚动速度的设置
+     *这个类封装了滚动操作。滚动的持续时间可以通过构造函数传递，并且可以指定滚动动作的持续的最长时间。
+     * 经过这段时间，滚动会自动定位到最终位置，
+     * 并且通过computeScrollOffset()会得到的返回值为false，表明滚动动作已经结束。
+     */
+    public class ViewPagerScroller extends Scroller {
+        private int mScrollDuration = 2000;             // 滑动速度
 
-                break;
-            case R.id.popwindow_sun_tv:
-
-                break;
-            case R.id.popwindow_share_tv:
-
-                break;
-            case R.id.popwindow_shop_tv:
-
-                break;
-            case R.id.popwindow_returnhome_tv:
-
-                break;
-            case R.id.popupwindow_exit_tv:
-
-                break;
-
+        /**http://mengsina.iteye.com/blog/1123339 这个对这个类解释很详细
+         * 设置速度速度
+         * @param duration
+         */
+        public void setScrollDuration(int duration){
+            this.mScrollDuration = duration;
         }
 
-      jumpToActivity(this, WelcomeActivity.class, null);
+        public ViewPagerScroller(Context context) {
+            super(context);
+        }
 
 
+        @Override
+        public void startScroll(int startX, int startY, int dx, int dy, int duration) {
+            super.startScroll(startX, startY, dx, dy, mScrollDuration);
+        }
+
+
+
+
+
+        public void initViewPagerScroll(ViewPager viewPager) {
+            try {
+                //就是存储一个类的属性值
+                //通过这个方法找到private的方法
+                Field mScroller = ViewPager.class.getDeclaredField("mScroller");
+                //试图设置accessible标志。其设置为true防止IllegalAccessExceptions。
+               mScroller.setAccessible(true);
+                mScroller.set(viewPager, this);
+            } catch(Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
+
 }
+

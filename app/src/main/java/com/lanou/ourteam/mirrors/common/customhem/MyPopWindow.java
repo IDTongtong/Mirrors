@@ -1,17 +1,11 @@
-package com.lanou.ourteam.mirrors.fragment;
+package com.lanou.ourteam.mirrors.common.customhem;
 
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -23,9 +17,6 @@ import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.MainActivity;
 import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
-import com.lanou.ourteam.mirrors.adpter.MainActivityRecycleViewAdapter;
-import com.lanou.ourteam.mirrors.base.BaseApplication;
-import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
@@ -34,65 +25,27 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by dllo on 16/3/30.
+ * Created by dllo on 16/4/1.
+ * 封装的popwindow方法
  */
-public class MainActivityRecycleViewFragemt extends BaseFragment {
-    RecyclerView recyclerView;
-    MainActivityRecycleViewAdapter activityRecycleViewAdapter;
-    ArrayList<String> data;
-    TextView textViewTab;
-    private MainActivity mainActivity;
 
-    //当fragment和activity被关联时调用。
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        //获得他绑定的activity
-        mainActivity = (MainActivity) context;
-    }
+public class MyPopWindow {
+    Context context;
+    MainActivity mainActivity;
 
-    @Override
-    protected int setContent() {
-        return R.layout.activity_main_recycleview_fragment;
-    }
-
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        initiView();
-    }
-
-    private void initiView() {
-        recyclerView = (RecyclerView) getView().findViewById(R.id.mainactivity_recyclerview);
-        data = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            data.add("666");
-        }
-        activityRecycleViewAdapter = new MainActivityRecycleViewAdapter(data);
-        GridLayoutManager gm = new GridLayoutManager(BaseApplication.getContext(), 1);
-        gm.setOrientation(LinearLayoutManager.HORIZONTAL);
-        recyclerView.setLayoutManager(gm);
-        recyclerView.setAdapter(activityRecycleViewAdapter);
-        //显示popwindow的
-        textViewTab = (TextView) getView().findViewById(R.id.mainactivity_recyclerview_tabtext);
-        textViewTab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupWindow(v);
-            }
-        });
+    public MyPopWindow(Context context) {
+        this.context = context;
     }
 
     //左边的pupwindow
-    private void showPopupWindow(View view) {
+    public void showPopupWindow(View view) {
+        mainActivity = (MainActivity) context;
         // 一个自定义的布局，作为显示的内容 加载popwindow的布局
-        View contentView = LayoutInflater.from(getContext()).inflate(
+        View contentView = LayoutInflater.from(context).inflate(
                 R.layout.activity_main_pupwindow_listview, null);
 //初始化listview
         final ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
@@ -133,17 +86,17 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
         // 设置好参数之后再show
 
         popupWindow.showAsDropDown(view);
-        View listItemView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main_pupwindow_listview_item,null);
+        //获取adapter横布局 这个不一定好使
+        View listItemView = LayoutInflater.from(context).inflate(R.layout.activity_main_pupwindow_listview_item, null);
         TextView textViewItemiv = (TextView) listItemView.findViewById(R.id.acticty_main_popwondow_listview_tv);
         final ImageView imageViewItemiv = (ImageView) listItemView.findViewById(R.id.popwindow_all_line_iv);
-         //listview的点击事件
+        //listview的点击事件
         menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               popupWindow.dismiss();
-                mainActivity.getDatafromFragment(position);
-               // imageViewItemiv.setVisibility(View.VISIBLE);
-
+                popupWindow.dismiss();
+               mainActivity.getDatafromFragment(position);
+                // imageViewItemiv.setVisibility(View.VISIBLE);
 
 
             }
@@ -163,9 +116,8 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
 
                     JSONObject jsonObject = new JSONObject(string);
                     MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
-                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, getContext());
+                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, context);
                     menulistView.setAdapter(activityPupwindowListviewAdapter);
-
 
                 } catch (JSONException e) {
                     e.printStackTrace();

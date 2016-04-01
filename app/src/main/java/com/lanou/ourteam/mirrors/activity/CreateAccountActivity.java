@@ -6,7 +6,7 @@ import com.lanou.ourteam.mirrors.base.BaseActivity;
 /**
  * Created by zt on 16/3/30.
  */
-public class CreateAccountActivity extends BaseActivity{
+public class CreateAccountActivity extends BaseActivity {
 
 
 

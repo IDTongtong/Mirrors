@@ -6,7 +6,7 @@ import com.lanou.ourteam.mirrors.base.BaseActivity;
 /**
  * Created by zt on 16/3/29.
  */
-public class LoginActivity extends BaseActivity{
+public class LoginActivity extends BaseActivity {
 
 
     @Override
