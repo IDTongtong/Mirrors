@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@mipmap/background">
     <TextView
-        android:text="66666666666"
+        android:text="@string/main_recycle_text"
         android:id="@+id/mainactivity_recyclerview_tabtext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
