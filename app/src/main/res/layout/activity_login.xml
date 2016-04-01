@@ -1,7 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical">
 
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/create_margin"
+        android:layout_marginRight="@dimen/create_margin"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_margin"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/create_marginleft"
+                android:text="賬號登錄"
+                android:textColor="@color/colorTV"
+                android:textSize="@dimen/create_createaccount_wordsize" />
+
+            <ImageView
+                android:id="@+id/login_close_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/create_marginleft"
+                android:src="@mipmap/close" />
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/login_bar_iv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_marginleft"
+            android:src="@mipmap/create_account_unline" />
+
+        <TextView
+            android:id="@+id/login_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_phone_wordsize"
+            android:text="@string/phonenum_input"
+            android:textColor="@color/colorTV"
+            android:textSize="24px" />
+
+        <EditText
+            android:id="@+id/login_phone_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20px"
+            android:background="@mipmap/phonenum_input" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="密碼"
+            android:textColor="@color/colorTV"
+            android:textSize="@dimen/create_verification_wordsize" />
+
+
+        <EditText
+            android:id="@+id/login_verification_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/phonenum_input" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20px"
+                android:text="忘記密碼"
+                android:textColor="@color/colorTV"
+                android:textSize="26px" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/login_land"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70px"
+            android:background="@mipmap/button_use_false"
+            android:gravity="center"
+            android:text="登陸"
+            android:textColor="#ffffff"
+            android:textSize="30px" />
+
+
+        <TextView
+            android:id="@+id/login_btn_success"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/create_margin"
+            android:background="@mipmap/login_btn_false"
+            android:gravity="center"
+            android:text="@string/login_creataccount"
+            android:textColor="#ffffff"
+            android:textSize="@dimen/create_creataccount_wordsize"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

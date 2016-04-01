@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Mirrors</string>
 
+<<<<<<< HEAD
     <string name="login_verification">验证码</string>
     <string name="login_setpassword">设置密码</string>
     <string name="login_creataccount">创建账号</string>
@@ -18,6 +19,14 @@
     <string name="pupwindowlistvewreturnhome">返回首页</string>
 
 
+=======
+    <string name="login_verification">驗證碼</string>
+    <string name="login_setpassword">設置密碼</string>
+    <string name="login_creataccount">創建賬號</string>
+    <string name="login_verificationcode">發送驗證碼</string>
+    <string name="login_createaccount">創建賬號</string>
+    <string name="phonenum_input">手機號</string>
+>>>>>>> feature/ZT_login布局文件后续
 
 
 </resources>

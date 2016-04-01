@@ -50,7 +50,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_phone_wordsize"
+<<<<<<< HEAD
             android:text="@string/phonenumber"
+=======
+            android:text="@string/phonenum_input"
+>>>>>>> feature/ZT_login布局文件后续
             android:textColor="#333333"
             android:textSize="24px" />
 
