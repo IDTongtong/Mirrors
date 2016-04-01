@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <!-- from herer zh dimens-->
+    <color name="text_white">#ffffff</color>
+    <color name="text_black">#333333</color>
+
 
 
 </resources>

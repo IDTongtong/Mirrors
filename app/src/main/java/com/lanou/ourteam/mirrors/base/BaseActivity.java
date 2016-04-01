@@ -21,10 +21,11 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(setContent());
         BaseApplication.addActivity(this);
+        setContentView(setContent());
         initView();
         initData();
+
     }
 
     // 绑定布局

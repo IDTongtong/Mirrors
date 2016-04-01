@@ -10,6 +10,7 @@
     <dimen name="create_verification_wordsize">24px</dimen>
     <dimen name="create_phone_wordsize">40px</dimen>
     <dimen name="create_createaccount_wordsize">34px</dimen>
+
     <dimen name="mainactivitymirrorleft">40px</dimen>
     <dimen name="mainactivitymirrorbottom">40px</dimen>
     <dimen name="mainactivitylogintextsize">40px</dimen>
@@ -31,4 +32,35 @@
     <dimen name="shopcarilineivtop">24px</dimen>
     <dimen name="shopcarnonethingtop">350px</dimen>
     <dimen name="shopcarnonethingstexttop">30px</dimen>
+
+    <!-- from herer zh dimens-->
+    <dimen name="title_margin_top">20px</dimen>
+    <dimen name="activity_margin_left">22px</dimen>
+    <dimen name="margin_9px">9px</dimen>
+    <dimen name="margin_30px">30px</dimen>
+    <dimen name="margin_14px">14px</dimen>
+    <dimen name="margin_26px">26px</dimen>
+    <dimen name="margin_38px">38px</dimen>
+    <dimen name="margin_48px">48px</dimen>
+    <dimen name="margin_40px">40px</dimen>
+    <dimen name="margin_94px">94px</dimen>
+    <dimen name="margin_128px">128px</dimen>
+
+
+    <dimen name="text_size_30px">30px</dimen>
+    <dimen name="text_size_24px">24px</dimen>
+
+
+    <dimen name="goods_list_item_margin_right">22px</dimen>
+    <dimen name="goids_list_item_pic_height">595px</dimen>
+    <dimen name="goods_list_item_goodsname_text_sizw">30px</dimen>
+    <dimen name="goods_list_item_productarea_text_size">24px</dimen>
+    <dimen name="goods_list_item_goodsname_margintop">50px</dimen>
+    <dimen name="goods_list_item_productarea_margintop">16px</dimen>
+    <dimen name="goods_list_item_doubleb_lackline_margintop">30px</dimen>
+    <dimen name="goods_list_item_brand_margintop">16px</dimen>
+    <dimen name="goods_list_item_description_marginleft">32px</dimen>
+    <!-- up herer zh dimens-->
+
+
 </resources>

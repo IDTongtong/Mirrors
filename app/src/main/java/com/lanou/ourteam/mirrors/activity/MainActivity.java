@@ -39,8 +39,21 @@ import com.lanou.ourteam.mirrors.fragment.MainActivityRecycleViewFragemt;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 
-public class MainActivity extends BaseActivity  {
+import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
+import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.fragment.MrtjFragment;
+import com.lanou.ourteam.mirrors.selfview.VerticalPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends BaseActivity implements View.OnClickListener {
+
+    private VerticalPager mVerticalPager;
+    private VerticalPagerAdapter mAdapter;
+    private List<Fragment> fragmentList;
     VerticalViewPager verticalViewPager;
     MainActicityViewpagerAdapter adapter;
     ArrayList<Fragment> datas;
@@ -51,15 +64,8 @@ public class MainActivity extends BaseActivity  {
         return R.layout.activity_main;
     }
 
-    @Override
-    protected void initData() {
-imageViewMirror.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        playHeartbeatAnimation();
-    }
-});
-    }
+
+
 
     @Override
     protected void initView() {
@@ -69,12 +75,45 @@ imageViewMirror.setOnClickListener(new View.OnClickListener() {
         for (int i = 0; i < 10; i++) {
             datas.add(new MainActivityRecycleViewFragemt());
         }
-verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager);
-        adapter = new MainActicityViewpagerAdapter(getSupportFragmentManager(),datas);
+        verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager);
+        adapter = new MainActicityViewpagerAdapter(getSupportFragmentManager(), datas);
         verticalViewPager.setAdapter(adapter);
 
+        imageViewMirror.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playHeartbeatAnimation();
+            }
+        });
+    }
+        protected void initData () {
+            fragmentList = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                fragmentList.add(new MrtjFragment());
+                Log.d("MainActivity", "new 了几个");
+            }
+            //fragmentList.add(new GoodsListFragment());
 
 
+            mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, fragmentList);
+            mVerticalPager.setAdapter(mAdapter);
+        }
+
+
+    //左边的pupwindow
+    private void showPopupWindow(View view) {
+        //5个textview 分别是 所有分类，游览平光眼镜，游览太阳眼镜，专题分享，我的购物车，返回首页，退出。
+        TextView textViewAll,textViewShine,textViewSun,textViewShare,textViewShopMyCar,textViewReturnHome,textViewExit;
+
+        // 一个自定义的布局，作为显示的内容 加载popwindow的布局
+        View contentView = LayoutInflater.from(this).inflate(
+                R.layout.activity_main_pupwindow_view, null);
+        // 设置按钮的点击事件
+
+        textViewAll = (TextView) contentView.findViewById(R.id.popwindow_all_tv);
+        textViewShine = (TextView) contentView.findViewById(R.id.popwindow_shine_tv);
+
+        textViewSun = (TextView) contentView.findViewById(R.id.popwindow_sun_tv);
 
     }
 
@@ -103,6 +142,7 @@ verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager
             @Override
             public void onAnimationRepeat(Animation animation) {
             }
+
             //结束时候怎么样
             @Override
             public void onAnimationEnd(Animation animation) {
@@ -120,7 +160,7 @@ verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager
 
         // 实现心跳的View
         imageViewMirror.startAnimation(animationSet);
-        
+
     }
     //暴露方法 得到position
     public void getDatafromFragment(int position) {
@@ -135,10 +175,15 @@ verticalViewPager = (VerticalViewPager) findViewById(R.id.mainactivity_viewpager
 
     }
 
+    @Override
+    public void onClick(View v) {
+
+    }
+
 
     /**
      *
-     * 
+     *
      *这个类是给ViewPager滚动速度的设置
      *这个类封装了滚动操作。滚动的持续时间可以通过构造函数传递，并且可以指定滚动动作的持续的最长时间。
      * 经过这段时间，滚动会自动定位到最终位置，
