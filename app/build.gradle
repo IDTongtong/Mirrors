@@ -30,7 +30,5 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.7.5'
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.picasso:picasso:2.3.2'
-
-
-
+    compile 'com.jakewharton:butterknife:5.1.1'
 }

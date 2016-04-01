@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
+import com.lanou.ourteam.mirrors.base.BaseApplication;
+
 /**Toast工具类
  * Created by zt on 16/4/1.
  */
@@ -12,9 +14,13 @@ public class ToastUtils {
     private static Handler handler = new Handler(Looper.getMainLooper());
     private static Toast toast = null;
     private static Object mObj = new Object();
+   private Context content;
 
 
+    public  ToastUtils(Content content) {
+        this.content = BaseApplication.getContext();
 
+    }
 
     /**
      * Toast发送消息，默认Toast.LENGTH_SHORT
@@ -107,6 +113,7 @@ public class ToastUtils {
                             }
                             toast.show();
                         }
+
                     }
                 });
             }
