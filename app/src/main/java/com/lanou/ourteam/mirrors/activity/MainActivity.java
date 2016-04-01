@@ -18,12 +18,21 @@ import android.widget.TextView;
 
 
 import com.lanou.ourteam.mirrors.R;
-import com.lanou.ourteam.mirrors.activity.WelcomeActivity;
+import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.fragment.MrtjFragment;
+import com.lanou.ourteam.mirrors.selfview.VerticalPager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener {
 
-
+    private VerticalPager mVerticalPager;
+    private VerticalPagerAdapter mAdapter;
+    private List<Fragment> fragmentList;
 
 
 
@@ -34,15 +43,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     }
 
     @Override
-    protected void initData() {
-
-    }
-
-    @Override
     protected void initView() {
-
+        mVerticalPager = (VerticalPager) findViewById(R.id.main_vertical_viewpger);
 
     }
+    @Override
+    protected void initData() {
+        fragmentList = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+
+            fragmentList.add(new MrtjFragment());
+            Log.d("MainActivity", "new 了几个");
+        }
+        //fragmentList.add(new GoodsListFragment());
+
+        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, fragmentList);
+        mVerticalPager.setAdapter(mAdapter);
+    }
+
 
     //左边的pupwindow
     private void showPopupWindow(View view) {

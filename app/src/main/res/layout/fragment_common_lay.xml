@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_margin_left"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/title_margin_top"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_size_30px"
+            android:text="浏览平光眼镜"
+            android:textColor="@color/text_white"/>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_9px"
+            android:src="@drawable/pull_down_arrow" />
+    </LinearLayout>
+    <ImageView
+        android:layout_marginTop="@dimen/margin_14px"
+        android:src="@drawable/double_line_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示排序为最新推荐"
+        android:layout_marginTop="@dimen/margin_26px"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_24px"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/common_frag_rc_view"
+        android:layout_marginTop="@dimen/margin_94px"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        />
+
+
+</LinearLayout>

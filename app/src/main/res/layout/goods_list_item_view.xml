@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="@dimen/goods_list_item_margin_right"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/goods_list_item_pic"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/goids_list_item_pic_height"
+        android:src="@mipmap/loading" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/goods_list_item_description_marginleft"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/goods_list_item_goods_name_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/goods_list_item_goodsname_margintop"
+            android:text="SEE CONCEPT"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/goods_list_item_goodsname_text_sizw" />
+
+        <TextView
+            android:id="@+id/goods_list_item_produce_area_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/goods_list_item_productarea_margintop"
+            android:text="法国巴黎"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/goods_list_item_productarea_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/goods_list_item_doubleb_lackline_margintop"
+            android:src="@drawable/double_line_black" />
+
+        <TextView
+            android:id="@+id/goods_list_item_brand_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/goods_list_item_brand_margintop"
+            android:text="草莓红色圆框阅读镜"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_size_30px" />
+    </LinearLayout>
+</LinearLayout>
