@@ -56,7 +56,7 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        //获得他绑定的activity
+        // 获得他绑定的activity
         mainActivity = (MainActivity) context;
     }
 
