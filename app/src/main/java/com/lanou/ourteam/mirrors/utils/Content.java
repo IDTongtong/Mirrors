@@ -16,4 +16,8 @@ public class Content {
     public static final String MRTJ = "index.php/index/mrtj";
     //菜单:此接口 接口文档没给,从官方软件抓包得到,测试服能否请求到数据不确定,自己试试,出事,不背锅!!!
     public static final String MENU_LIST = "index.php/index/menu_list";
+
+    //专题分析
+    public static final String STORY_LIST = "index.php/story/story_list";
+
 }

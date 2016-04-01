@@ -11,27 +11,6 @@
     <dimen name="create_phone_wordsize">40px</dimen>
     <dimen name="create_createaccount_wordsize">34px</dimen>
 
-    <dimen name="mainactivitymirrorleft">40px</dimen>
-    <dimen name="mainactivitymirrorbottom">40px</dimen>
-    <dimen name="mainactivitylogintextsize">40px</dimen>
-    <dimen name="mainactivityloginbottom">40px</dimen>
-    <dimen name="mainactivityloginright">48px</dimen>
-    <dimen name="popwindow_listvewtop">148px</dimen>
-    <dimen name="returnhomesize">28px</dimen>
-    <dimen name="returnhomeleft">69px</dimen>
-    <dimen name="exitsize">28px</dimen>
-    <dimen name="exitleft">69px</dimen>
-    <dimen name="popwindowlistviewtvleft">69px</dimen>
-    <dimen name="popwindowlistviewsize">28px</dimen>
-    <dimen name="popwindowlistviewivlinehight">24px</dimen>
-    <dimen name="myshopcartvleft">36px</dimen>
-    <dimen name="myshopcartvtop">20px</dimen>
-    <dimen name="shopcaridownivleft">36px</dimen>
-    <dimen name="shopcaridownivtop">14px</dimen>
-    <dimen name="shopcarilineivleft">36px</dimen>
-    <dimen name="shopcarilineivtop">24px</dimen>
-    <dimen name="shopcarnonethingtop">350px</dimen>
-    <dimen name="shopcarnonethingstexttop">30px</dimen>
 
     <!-- from herer zh dimens-->
     <dimen name="title_margin_top">20px</dimen>
@@ -60,7 +39,41 @@
     <dimen name="goods_list_item_doubleb_lackline_margintop">30px</dimen>
     <dimen name="goods_list_item_brand_margintop">16px</dimen>
     <dimen name="goods_list_item_description_marginleft">32px</dimen>
+
+
+
+
+
+    <dimen name="story_item_pic_height">704px</dimen>
+    <dimen name="story_item_doubleb_lackline_margintop">34px</dimen>
+    <dimen name="story_item_brand_margintop">16px</dimen>
     <!-- up herer zh dimens-->
 
+
+
+
+<!--from here ty dimens-->
+    <dimen name="mainactivitymirrorleft">40px</dimen>
+    <dimen name="mainactivitymirrorbottom">40px</dimen>
+    <dimen name="mainactivitylogintextsize">40px</dimen>
+    <dimen name="mainactivityloginbottom">40px</dimen>
+    <dimen name="mainactivityloginright">48px</dimen>
+    <dimen name="popwindow_listvewtop">148px</dimen>
+    <dimen name="returnhomesize">28px</dimen>
+    <dimen name="returnhomeleft">69px</dimen>
+    <dimen name="exitsize">28px</dimen>
+    <dimen name="exitleft">69px</dimen>
+    <dimen name="popwindowlistviewtvleft">69px</dimen>
+    <dimen name="popwindowlistviewsize">28px</dimen>
+    <dimen name="popwindowlistviewivlinehight">24px</dimen>
+    <dimen name="myshopcartvleft">36px</dimen>
+    <dimen name="myshopcartvtop">20px</dimen>
+    <dimen name="shopcaridownivleft">36px</dimen>
+    <dimen name="shopcaridownivtop">14px</dimen>
+    <dimen name="shopcarilineivleft">36px</dimen>
+    <dimen name="shopcarilineivtop">24px</dimen>
+    <dimen name="shopcarnonethingtop">350px</dimen>
+    <dimen name="shopcarnonethingstexttop">30px</dimen>
+<!--up here ty dimens-->
 
 </resources>

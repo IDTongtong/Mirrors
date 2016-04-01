@@ -23,9 +23,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         BaseApplication.addActivity(this);
         setContentView(setContent());
+
         initView();
         initData();
-
     }
 
     // 绑定布局
@@ -63,8 +63,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-
-     BaseApplication.removeActivity(this);
+        BaseApplication.removeActivity(this);
         super.onDestroy();
     }
 }

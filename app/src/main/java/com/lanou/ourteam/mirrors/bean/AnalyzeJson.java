@@ -17,6 +17,8 @@ public class AnalyzeJson {
 
     GoodsListAllBean goodsListAllBean;
     MrtjBean mrtjBean;
+    StoryBean storyBean;
+
 
 
 
@@ -50,4 +52,17 @@ public class AnalyzeJson {
         return mrtjBean;
 
     }
+
+
+    public StoryBean AnalyzeStory(String string) {
+        try {
+            JSONObject jsonObject = new JSONObject(string);
+            storyBean = gson.fromJson(jsonObject.toString(), StoryBean.class);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return storyBean;
+    }
+
 }

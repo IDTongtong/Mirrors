@@ -4,15 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
-<<<<<<< HEAD
+
     <!-- from herer zh dimens-->
     <color name="text_white">#ffffff</color>
     <color name="text_black">#333333</color>
+    <!-- up herer zh dimens-->
 
 
-=======
-    <color name="colorTV">#333333</color>
-    <color name="colorBttonWord">#ffffff</color>
->>>>>>> feature/ZT_login布局文件后续
 
 </resources>
