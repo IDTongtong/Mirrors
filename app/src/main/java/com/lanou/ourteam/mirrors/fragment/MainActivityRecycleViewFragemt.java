@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
@@ -94,7 +95,6 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
 
     //左边的pupwindow
     private void showPopupWindow(View view) {
-
         // 一个自定义的布局，作为显示的内容 加载popwindow的布局
         View contentView = LayoutInflater.from(getContext()).inflate(
                 R.layout.activity_main_pupwindow_listview, null);
@@ -137,11 +137,18 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
         // 设置好参数之后再show
 
         popupWindow.showAsDropDown(view);
+        View listItemView = LayoutInflater.from(getContext()).inflate(R.layout.activity_main_pupwindow_listview_item,null);
+        TextView textViewItemiv = (TextView) listItemView.findViewById(R.id.acticty_main_popwondow_listview_tv);
+        final ImageView imageViewItemiv = (ImageView) listItemView.findViewById(R.id.popwindow_all_line_iv);
+         //listview的点击事件
         menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                popupWindow.dismiss();
+               popupWindow.dismiss();
                 mainActivity.getDatafromFragment(position);
+               // imageViewItemiv.setVisibility(View.VISIBLE);
+
+
 
             }
         });

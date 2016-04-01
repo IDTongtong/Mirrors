@@ -1,17 +1,15 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
-
-import java.util.ArrayList;
 
 /**
  * Created by dllo on 16/3/31.
@@ -49,17 +47,19 @@ this.context = context;
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.activity_main_pupwindow_listview_item, parent, false);
             myViewHolder = new MyViewHolder();
-            myViewHolder.textView = (TextView) convertView.findViewById(R.id.acticty_main_popwondow_listview_tv);
+            myViewHolder.textViewTab = (TextView) convertView.findViewById(R.id.acticty_main_popwondow_listview_tv);
+            myViewHolder.imageViewline = (ImageView) convertView.findViewById(R.id.popwindow_all_line_iv);
             convertView.setTag(myViewHolder);
         } else {
             myViewHolder = (MyViewHolder) convertView.getTag();
         }
-        myViewHolder.textView.setText(menuBean.getData().getList().get(position).getTitle());
+        myViewHolder.textViewTab.setText(menuBean.getData().getList().get(position).getTitle());
 
         return convertView;
     }
 
     public class MyViewHolder {
-        TextView textView;
+        TextView textViewTab;
+        ImageView imageViewline;
     }
 }

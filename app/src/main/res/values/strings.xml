@@ -11,7 +11,13 @@
     <string name="myshopcar_myshopcar">我的购物车</string>
     <string name="myshopcar_show_order">显示排序为 最新推荐</string>
     <string name="myshopcar_noneshop">您的购物车没有商品</string>
+
     <string name="activity_order_detail">订单详情</string>
+
+    <string name="main_recycle_text">测试</string>
+    <string name="pupwindowlistvewreturnhome">返回首页</string>
+
+
 
 
 </resources>
