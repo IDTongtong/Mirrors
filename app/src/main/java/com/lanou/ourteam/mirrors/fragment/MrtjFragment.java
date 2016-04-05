@@ -40,6 +40,8 @@ public class MrtjFragment extends BaseFragment {
         return instance;
     }
 
+
+    
     @Override
     protected int setContent() {
         return R.layout.fragment_common_lay;
