@@ -137,17 +137,6 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
         TextView textViewItemiv = (TextView) listItemView.findViewById(R.id.acticty_main_popwondow_listview_tv);
         final ImageView imageViewItemiv = (ImageView) listItemView.findViewById(R.id.popwindow_all_line_iv);
          //listview的点击事件
-        menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               popupWindow.dismiss();
-                mainActivity.getDatafromFragment(position);
-               // imageViewItemiv.setVisibility(View.VISIBLE);
-
-
-
-            }
-        });
 
         Map<String, String> params = new HashMap();
 
@@ -162,9 +151,19 @@ public class MainActivityRecycleViewFragemt extends BaseFragment {
                 try {
 
                     JSONObject jsonObject = new JSONObject(string);
-                    MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
-                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, getContext());
+                    final MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
+                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, getContext(),null);
                     menulistView.setAdapter(activityPupwindowListviewAdapter);
+                    menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            popupWindow.dismiss();
+                            mainActivity.getDatafromFragment(position);
+                            // imageViewItemiv.setVisibility(View.VISIBLE);
+
+
+                        }
+                    });
 
 
                 } catch (JSONException e) {

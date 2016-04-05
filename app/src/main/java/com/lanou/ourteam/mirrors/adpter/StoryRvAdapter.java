@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.StoryBean;
 
 /**
  * Created by ZHDelete on 16/4/1.
  */
-public class StoryRvAdapter extends  BaseRecyclerAdapter<StoryBean.DataEntity.ListEntity> {
+public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.ListEntity> {
 
     public StoryRvAdapter(Context context) {
         super(context);

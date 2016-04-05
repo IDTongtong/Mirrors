@@ -22,7 +22,7 @@
     <dimen name="margin_38px">38px</dimen>
     <dimen name="margin_48px">48px</dimen>
     <dimen name="margin_40px">40px</dimen>
-    <dimen name="margin_94px">94px</dimen>
+    <dimen name="margin_90px">90px</dimen>
     <dimen name="margin_128px">128px</dimen>
 
 
@@ -31,8 +31,8 @@
 
 
     <dimen name="goods_list_item_margin_right">22px</dimen>
-    <dimen name="goids_list_item_pic_height">595px</dimen>
-    <dimen name="goods_list_item_goodsname_text_sizw">30px</dimen>
+    <dimen name="goids_list_item_pic_height">700px</dimen>
+    <dimen name="goods_list_item_goodsname_text_sizw">45px</dimen>
     <dimen name="goods_list_item_productarea_text_size">24px</dimen>
     <dimen name="goods_list_item_goodsname_margintop">50px</dimen>
     <dimen name="goods_list_item_productarea_margintop">16px</dimen>
@@ -44,7 +44,7 @@
 
 
 
-    <dimen name="story_item_pic_height">704px</dimen>
+    <dimen name="story_item_pic_height">900px</dimen>
     <dimen name="story_item_doubleb_lackline_margintop">34px</dimen>
     <dimen name="story_item_brand_margintop">16px</dimen>
     <!-- up herer zh dimens-->
@@ -74,6 +74,7 @@
     <dimen name="shopcarilineivtop">24px</dimen>
     <dimen name="shopcarnonethingtop">350px</dimen>
     <dimen name="shopcarnonethingstexttop">30px</dimen>
-<!--up here ty dimens-->
+    <dimen name="menutextsizepx">30px</dimen>
+    <!--up here ty dimens-->
 
 </resources>

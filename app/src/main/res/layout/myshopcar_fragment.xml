@@ -5,11 +5,13 @@
     android:orientation="vertical"
     android:background="@mipmap/background">
     <TextView
-        android:layout_marginLeft="@dimen/myshopcartvleft"
         android:id="@+id/mycar_tv"
+        android:layout_marginLeft="@dimen/myshopcartvleft"
+
         android:layout_marginTop="@dimen/myshopcartvtop"
         android:textColor="#ffffff"
         android:text="@string/myshopcar_myshopcar"
+        android:textSize="@dimen/text_size_30px"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <ImageView
@@ -32,6 +34,8 @@
         android:layout_marginLeft="@dimen/shopcarilineivleft"
         android:layout_marginTop="@dimen/shopcarilineivtop"
         android:layout_below="@+id/shopcar_line"
+        android:textSize="@dimen/text_size_30px"
+
         android:textColor="#ffffff"
         android:text="@string/myshopcar_show_order"
         android:layout_width="wrap_content"

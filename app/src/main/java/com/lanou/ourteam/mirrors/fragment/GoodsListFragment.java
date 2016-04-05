@@ -7,6 +7,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 
 import com.lanou.ourteam.mirrors.R;
@@ -15,6 +17,7 @@ import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
+import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -32,22 +35,23 @@ public class GoodsListFragment extends BaseFragment {
     private NetHelper netHelper;
     private GoodsListRvAdapter mAdapter;
     //Only the original thread that created a view hierarchy can touch its views.
-
-
+String title;
+    LinearLayout linearLayoutTop;
+    TextView textViewToptv;
     GoodsListAllBean goodsListAllBean;
     MrtjBean mrtjBean;
-
-
     private String url_body;
     private String category_id;
 
-    public static GoodsListFragment setUrlBodyGetInstance(String url_body, String category_id) {
+    public static GoodsListFragment setUrlBodyGetInstance(String url_body, String category_id,String title) {
         GoodsListFragment instance = new GoodsListFragment();
         Bundle bundle = new Bundle();
         Log.d("GoodsListFragment", "1///" + url_body);
         bundle.putString("url_body", url_body);
         bundle.putString("category_id", category_id);
+        bundle.putString("goodtitle",title);
         instance.setArguments(bundle);
+
         return instance;
     }
 
@@ -61,6 +65,23 @@ public class GoodsListFragment extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.common_frag_rc_view);
+        final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+        //最上边字的点击事件
+        linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
+        linearLayoutTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myPopWindow.showPopupWindow(v,title);
+
+
+            }
+        });
+        textViewToptv = (TextView) view.findViewById(R.id.common_lay_toptv);
+        intiview();
+
+    }
+
+    public void intiview() {
 
         netHelper = NetHelper.getInstance();
 
@@ -75,7 +96,7 @@ public class GoodsListFragment extends BaseFragment {
         url_body = bundle.getString("url_body");
         Log.d("GoodsListFragment", "***" + url_body);
         category_id = bundle.getString("category_id");
-
+title = bundle.getString("goodtitle");
 
         Map<String, String> params = new HashMap();
 
@@ -94,7 +115,7 @@ public class GoodsListFragment extends BaseFragment {
                 goodsListAllBean = ananlyzeJson.analyzeGoodsList(string);
                 Log.d("GoodsListFragment", "***" + goodsListAllBean.getData().getList().get(0).getGoods_img());
                 mAdapter.initData(goodsListAllBean);
-
+                textViewToptv.setText(title);
             }
 
             @Override
@@ -102,7 +123,6 @@ public class GoodsListFragment extends BaseFragment {
 
             }
         });
-
 
     }
 }

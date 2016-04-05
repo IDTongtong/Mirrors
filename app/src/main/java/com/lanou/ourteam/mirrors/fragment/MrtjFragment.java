@@ -1,18 +1,20 @@
 package com.lanou.ourteam.mirrors.fragment;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.MrtjRvAdapter;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
+import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -30,27 +32,45 @@ public class MrtjFragment extends BaseFragment {
     private String url_body;
     private MrtjRvAdapter mAdapter;
     MrtjBean mrtjBean;
-
-    public static MrtjFragment setUrlBodyGetInstance(String url_body) {
+    LinearLayout linearLayoutTop;
+TextView textViewtoptv;
+    String title;
+    public static MrtjFragment setUrlBodyGetInstance(String url_body,String title) {
         MrtjFragment instance = new MrtjFragment();
         Bundle bundle = new Bundle();
         Log.d("GoodsListFragment", "1///" + url_body);
         bundle.putString("url_body", url_body);
+        bundle.putString("title", title);
+
         instance.setArguments(bundle);
+
         return instance;
     }
 
 
-    
     @Override
     protected int setContent() {
         return R.layout.fragment_common_lay;
     }
 
+    @Nullable
+
+
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         mRecyclerView = bindViewById(view, R.id.common_frag_rc_view);
+        final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+        //最上边字的点击事件
+        linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
+        linearLayoutTop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                myPopWindow.showPopupWindow(v,title);
+                Log.d("dddMrtjFragment", "***4444");
+            }
+        });
         netHelper = NetHelper.getInstance();
 
         LinearLayoutManager lm = new LinearLayoutManager(context);
@@ -58,9 +78,9 @@ public class MrtjFragment extends BaseFragment {
 
         Bundle bundle = getArguments();
         url_body = bundle.getString("url_body");
-        Log.d("MrtjFragment", "***   " + url_body);
-
-
+title = bundle.getString("title");
+        //设置上边的title
+textViewtoptv.setText(title);
         mRecyclerView.setLayoutManager(lm);
         mAdapter = new MrtjRvAdapter(context);
         mRecyclerView.setAdapter(mAdapter);

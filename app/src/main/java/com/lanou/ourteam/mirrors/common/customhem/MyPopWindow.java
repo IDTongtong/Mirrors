@@ -36,17 +36,21 @@ import java.util.Map;
 public class MyPopWindow {
     Context context;
     MainActivity mainActivity;
-
+TextView returnHomeTv;//返回首页
+    TextView exitTv;
     public MyPopWindow(Context context) {
         this.context = context;
     }
 
     //左边的pupwindow
-    public void showPopupWindow(View view) {
+    public void showPopupWindow(View view, final String title) {
         mainActivity = (MainActivity) context;
+
         // 一个自定义的布局，作为显示的内容 加载popwindow的布局
         View contentView = LayoutInflater.from(context).inflate(
                 R.layout.activity_main_pupwindow_listview, null);
+        returnHomeTv = (TextView) contentView.findViewById(R.id.acticty_main_popwondow_listview_returnhome);
+       exitTv = (TextView) contentView.findViewById(R.id.acticty_main_popwondow_listview_exit);
 //初始化listview
         final ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
 
@@ -86,21 +90,8 @@ public class MyPopWindow {
         // 设置好参数之后再show
 
         popupWindow.showAsDropDown(view);
-        //获取adapter横布局 这个不一定好使
-        View listItemView = LayoutInflater.from(context).inflate(R.layout.activity_main_pupwindow_listview_item, null);
-        TextView textViewItemiv = (TextView) listItemView.findViewById(R.id.acticty_main_popwondow_listview_tv);
-        final ImageView imageViewItemiv = (ImageView) listItemView.findViewById(R.id.popwindow_all_line_iv);
-        //listview的点击事件
-        menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                popupWindow.dismiss();
-               mainActivity.getDatafromFragment(position);
-                // imageViewItemiv.setVisibility(View.VISIBLE);
+        //返回首页是跳转到购物车
 
-
-            }
-        });
 
         Map<String, String> params = new HashMap();
 
@@ -111,13 +102,38 @@ public class MyPopWindow {
             @Override
             public void onSuccess(String string) {
                 Gson gson = new Gson();
-                Log.d("ssssMainActivityRecycleView", string);
                 try {
 
                     JSONObject jsonObject = new JSONObject(string);
-                    MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
-                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, context);
+                    final MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
+                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, context,title);
                     menulistView.setAdapter(activityPupwindowListviewAdapter);
+                    //listview的点击事件
+                    menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            popupWindow.dismiss();
+
+                            mainActivity.getDatafromFragment(position);
+                            // imageViewItemiv.setVisibility(View.VISIBLE);
+
+
+                        }
+                    });
+                    returnHomeTv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            popupWindow.dismiss();
+                            mainActivity.getDatafromFragment(menuBean.getData().getList().size() - 1);
+                        }
+                    });
+                    exitTv.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            popupWindow.dismiss();
+                            mainActivity.getDatafromFragment(0);
+                        }
+                    });
 
                 } catch (JSONException e) {
                     e.printStackTrace();
