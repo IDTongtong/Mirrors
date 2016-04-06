@@ -88,8 +88,7 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                 } else if (createPasswordEt != null) {
 
                 }
-
-
+                
                 break;
         }
     }
