@@ -26,6 +26,7 @@
         </meta-data>
 
         <activity android:name=".activity.WelcomeActivity"/>
+        <activity android:name=".activity.StoryDetailActivity"/>
 
     </application>
 

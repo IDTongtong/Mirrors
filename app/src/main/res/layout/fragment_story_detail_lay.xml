@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+<RelativeLayout
+
+    android:layout_centerInParent="true"
+    android:layout_width="640px"
+    android:layout_height="wrap_content"
+    android:background="@drawable/show_06_border"
+    >
+    <LinearLayout
+        android:id="@+id/textview_ll"
+        android:layout_marginLeft="@dimen/margin_30px"
+        android:layout_marginTop="@dimen/margin_30px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fragment_story_detail_smallTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/story_detail_smalltitle_matgintop"
+            android:text="忘了《穿Prada的女魔頭》"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/story_detail_text_size_22px"
+
+            />
+
+        <TextView
+            android:id="@+id/fragment_story_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/story_detail_title_matgintop"
+            android:text="這些才是真正的時尚電影"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/story_detail_text_size_34px" />
+
+        <TextView
+            android:id="@+id/fragment_story_detail_subTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/story_detail_subtitle_matgintop"
+            android:text="似乎每个想踏进时尚圈的人，都热衷于把《穿Prada的女魔头》挂在口中，还有很多电影纪录片，或者与时尚有关的电影，值得我们去细细品味。"
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/story_detail_text_size_20px" />
+
+    </LinearLayout>
+</RelativeLayout>
+
+    <ImageView
+        android:id="@+id/fragment_story_detail_shared_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/story_detail_share_margin_bottom"
+        android:layout_marginRight="@dimen/story_detail_share_margin_right"
+        android:layout_marginTop="@dimen/story_detail_share_margin_text_ll"
+        android:src="@drawable/share_btn"
+
+        />
+
+
+</com.zhy.autolayout.AutoRelativeLayout>

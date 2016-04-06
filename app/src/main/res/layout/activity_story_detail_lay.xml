@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <ImageView
+        android:id="@+id/activity_story_detail_back_iv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/loading"
+        />
+    <com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager
+        android:id="@+id/activity_story_detail_vertical_viewpger"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+</com.zhy.autolayout.AutoRelativeLayout>
