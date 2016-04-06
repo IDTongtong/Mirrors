@@ -61,8 +61,6 @@ public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
         }
 
 
-
-
         myViewHolder.textViewTab.setText(menuBean.getData().getList().get(position).getTitle());
         return convertView;
     }
@@ -74,7 +72,7 @@ public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
 
         public MyViewHolder(View v) {
             textViewTab = (TextView) v.findViewById(R.id.acticty_main_popwondow_listview_tv);
-imageViewline = (ImageView) v.findViewById(R.id.popwindow_all_line_iv);
+            imageViewline = (ImageView) v.findViewById(R.id.popwindow_all_line_iv);
 
             if (menuBean.getData().getList().get(position).getTitle().equals(title)) {
                 Log.d("MainActivityPupwindowLi", "position:" + position);
