@@ -11,31 +11,43 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
+import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
+import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
-import com.lanou.ourteam.mirrors.fragment.MainActivityRecycleViewFragemt;
+
+import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class MainActivity extends BaseActivity {
-
+String title;//上边的title
     VerticalViewPager verticalViewPager;
     private VerticalPagerAdapter mAdapter;
     NetHelper netHelper;
     List<String> info_dataList = new ArrayList<>();
     private ImageView mirrorIv;
     private TextView loginTv;
-
+    MenuBean menuBean;
 
     public static final String MRTJ = "METJ";
     public static final String STORY_LIST = "专题分析";
@@ -69,11 +81,37 @@ public class MainActivity extends BaseActivity {
         info_dataList.add(STORY_LIST);
         info_dataList.add(SHOPPING_CAR);
 
+        Map<String, String> params = new HashMap();
 
 
+        params.put("token", "");
 
-        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(),this, info_dataList);
-        verticalViewPager.setAdapter(mAdapter);
+        NetHelper.getInstance().volleyPostTogetNetData(Content.MENU_LIST, params, new VolleyNetListener() {
+            @Override
+            public void onSuccess(String string) {
+                Gson gson = new Gson();
+                Log.d("ssssMainActivityRecycleView", string);
+                try {
+
+                    JSONObject jsonObject = new JSONObject(string);
+                    menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
+                    mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), BaseApplication.getContext(), info_dataList, menuBean);
+                    verticalViewPager.setAdapter(mAdapter);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                Log.d("qqq", "===" + string);
+            }
+
+            @Override
+            public void onFail(String failStr) {
+                Log.d("MainActivityRecycleView", "===" + "Fail");
+            }
+        });
+
+
 
 
         mirrorIv.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +168,8 @@ public class MainActivity extends BaseActivity {
     }
 
     //暴露方法 得到position
-    public void getDatafromFragment(int position) {
+    public void getDatafromFragment(int position
+    ) {
         Log.d("MainActivity", "从fragment历来" + position);
 
         //这个是设置viewPager切换过度时间的类

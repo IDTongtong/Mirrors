@@ -6,12 +6,14 @@
    >
 
     <TextView
+
         android:id="@+id/acticty_main_popwondow_listview_tv"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/popwindowlistviewtvleft"
         android:text="@string/popwindow_seeall"
-        android:textColor="#fff"
+        android:textColor="#496383"
         android:textSize="@dimen/popwindowlistviewsize" />
 
     <ImageView

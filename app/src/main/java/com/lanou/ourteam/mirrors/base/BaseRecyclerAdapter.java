@@ -1,4 +1,4 @@
-package com.lanou.ourteam.mirrors.adpter;
+package com.lanou.ourteam.mirrors.base;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

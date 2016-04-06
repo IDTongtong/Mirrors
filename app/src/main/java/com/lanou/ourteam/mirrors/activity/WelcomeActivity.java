@@ -1,11 +1,21 @@
 package com.lanou.ourteam.mirrors.activity;
 
 import android.os.Handler;
+import android.util.Log;
 import android.widget.ImageView;
 
+import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.NetHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -14,8 +24,12 @@ import java.util.TimerTask;
  */
 public class WelcomeActivity extends BaseActivity {
     private ImageView spashIv;
-//安卓os的handler
+    private String welcomIvUrl;
+    NetHelper netHelper = NetHelper.getInstance();
+    //安卓os的handler
     Handler handler;
+    ImageView imageView;
+
     @Override
     protected int setContent() {
         return R.layout.activity_welcome;
@@ -23,6 +37,49 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initData() {
+        String url = "index.php/index/started_img";
+        Map<String, String> params = new HashMap();
+
+        params.put("last_time", "");
+        params.put("page", "");
+        params.put("token", "");
+        params.put("device_type", "3");
+        params.put("version", "1.0.0");
+
+        netHelper.volleyPostTogetNetData(url, params, new VolleyNetListener() {
+            @Override
+            public void onSuccess(String string) {
+                Log.d("WelcomeActivity", "****" + string);
+                try {
+
+                    JSONObject jsonObject = new JSONObject(string);
+                    if (jsonObject.has("img")) {
+                        welcomIvUrl = jsonObject.getString("img");
+                        Log.d("WelcomeActivity", "欢迎页图片：" + welcomIvUrl);
+
+
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                imageView = (ImageView) findViewById(R.id.welcome_iv);
+                ImageLoader imageLoader = netHelper.getImageLoader();
+                ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+                        imageView,
+                        R.mipmap.ic_launcher,
+                        R.mipmap.loading
+
+                );
+                imageLoader.get(welcomIvUrl, imageListener);
+            }
+
+            @Override
+            public void onFail(String failStr) {
+
+            }
+        });
+
 
         //new 一个计时器
         Timer timer = new Timer();
@@ -39,9 +96,17 @@ public class WelcomeActivity extends BaseActivity {
     }
 
 
-
     @Override
     protected void initView() {
-
+//        imageView = (ImageView) findViewById(R.id.welcome_iv);
+//        ImageLoader imageLoader = netHelper.getImageLoader();
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                imageView,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading
+//
+//        );
+//        imageLoader.get(welcomIvUrl, imageListener);
+//
     }
 }

@@ -10,15 +10,17 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
 
 /**
  * Created by ZHDelete on 16/4/1.
  */
-public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListEntity>{
+public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListEntity> {
     public MrtjRvAdapter(Context context) {
         super(context);
     }
+
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

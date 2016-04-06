@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,33 +11,35 @@
     <com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager
         android:id="@+id/main_vertical_viewpger"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
 
         />
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/main_vertical_viewpger">
-
-        <ImageView
-            android:id="@+id/main_mirror_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="@dimen/margin_40px"
-            android:layout_marginLeft="@dimen/margin_48px"
-            android:src="@drawable/mirror_icon" />
-
-        <TextView
-            android:id="@+id/mian_login_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginEnd="@dimen/margin_48px"
-            android:text="登陆"
-            android:textColor="@color/text_white" />
-    </LinearLayout>
 
 
-</LinearLayout>
+
+    <ImageView
+        android:id="@+id/main_mirror_iv"
+        android:layout_marginLeft="@dimen/mainactivitymirrorleft"
+        android:layout_marginBottom="@dimen/mainactivitymirrorbottom"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/mirror"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/mian_login_iv"
+        android:textSize="@dimen/mainactivitylogintextsize"
+        android:textColor="#ffffff"
+        android:layout_marginBottom="@dimen/mainactivityloginbottom"
+        android:layout_marginRight="@dimen/mainactivityloginright"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="@string/mainactivity_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+
+
+
+</RelativeLayout>

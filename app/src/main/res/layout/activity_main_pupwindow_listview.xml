@@ -13,7 +13,8 @@
        android:layout_height="wrap_content"></ListView>
     <TextView
         android:id="@+id/acticty_main_popwondow_listview_returnhome"
-        android:textColor="#fff"
+        android:textColor="#496383"
+
         android:textSize="@dimen/returnhomesize"
         android:text="@string/pupwindowlistvewreturnhome"
         android:layout_marginLeft="@dimen/returnhomeleft"
@@ -22,7 +23,7 @@
     <TextView
         android:layout_marginTop="88px"
         android:id="@+id/acticty_main_popwondow_listview_exit"
-        android:textColor="#fff"
+        android:textColor="#496383"
         android:textSize="@dimen/exitsize"
         android:text="@string/exit"
         android:layout_marginLeft="@dimen/exitleft"
