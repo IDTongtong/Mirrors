@@ -34,14 +34,19 @@ import java.util.Map;
  */
 
 public class MyPopWindow {
+    private static MyPopWindow Instance;
+
     Context context;
     MainActivity mainActivity;
 TextView returnHomeTv;//返回首页
     TextView exitTv;
-    public MyPopWindow(Context context) {
+    private MyPopWindow(Context context) {
         this.context = context;
     }
-
+public static MyPopWindow getPopWindow(Context context){
+    Instance = new MyPopWindow(context);
+    return Instance;
+}
     //左边的pupwindow
     public void showPopupWindow(View view, final String title) {
         mainActivity = (MainActivity) context;
@@ -55,7 +60,7 @@ TextView returnHomeTv;//返回首页
         final ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
 
         final PopupWindow popupWindow = new PopupWindow(contentView,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1500, true);
+                LinearLayout.LayoutParams.MATCH_PARENT, 1585, true);
 
         popupWindow.setTouchable(true);
 

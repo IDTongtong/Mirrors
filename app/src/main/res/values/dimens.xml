@@ -55,7 +55,7 @@
 <!--from here ty dimens-->
     <dimen name="mainactivitymirrorleft">40px</dimen>
     <dimen name="mainactivitymirrorbottom">40px</dimen>
-    <dimen name="mainactivitylogintextsize">40px</dimen>
+    <dimen name="mainactivitylogintextsize">35px</dimen>
     <dimen name="mainactivityloginbottom">40px</dimen>
     <dimen name="mainactivityloginright">48px</dimen>
     <dimen name="popwindow_listvewtop">148px</dimen>

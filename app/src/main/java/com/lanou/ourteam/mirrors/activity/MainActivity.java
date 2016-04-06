@@ -65,10 +65,7 @@ String title;//上边的title
         mirrorIv = (ImageView) findViewById(R.id.main_mirror_iv);
 
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_vertical_viewpger);
-//        datas = new ArrayList<>();
-//        for (int i = 0; i < 10; i++) {
-//            datas.add(new MainActivityRecycleViewFragemt());
-//        }
+
 
     }
     @Override

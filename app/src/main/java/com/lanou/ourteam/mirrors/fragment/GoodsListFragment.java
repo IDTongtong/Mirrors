@@ -65,13 +65,16 @@ String title;
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.common_frag_rc_view);
-        final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+      //  final MyPopWindow myPopWindow = new MyPopWindow(getContext());
         //最上边字的点击事件
         linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myPopWindow.showPopupWindow(v,title);
+
+                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v,title);
+
+            //    myPopWindow.showPopupWindow(v,title);
 
 
             }

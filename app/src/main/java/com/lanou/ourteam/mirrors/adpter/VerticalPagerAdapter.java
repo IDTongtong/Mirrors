@@ -34,26 +34,26 @@ private MenuBean menuBean;
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
+        switch (menuBean.getData().getList().get(position).getStore()) {
+            case "10":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,menuBean.getData().getList().get(position).getTitle());
+                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuBean.getData().getList().get(position).getTitle());
 
-            case 1:
+            case "9":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "269",menuBean.getData().getList().get(position).getTitle());
 
-            case 2:
+            case "8":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "268",menuBean.getData().getList().get(position).getTitle());
 
-            case 3:
+            case "7":
                     //!!!!等待进一步解析：
                 return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,menuBean.getData().getList().get(position).getTitle());
-            case 4:
+            case "6":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST,menuBean.getData().getList().get(position).getTitle());
-           case 5:
+           case "5":
 
                return ShopCarFragment.setUrlBodyGetInstance(menuBean.getData().getList().get(position).getTitle());
             default:

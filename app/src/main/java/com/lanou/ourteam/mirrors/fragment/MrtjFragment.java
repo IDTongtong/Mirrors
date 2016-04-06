@@ -33,9 +33,10 @@ public class MrtjFragment extends BaseFragment {
     private MrtjRvAdapter mAdapter;
     MrtjBean mrtjBean;
     LinearLayout linearLayoutTop;
-TextView textViewtoptv;
+    TextView textViewtoptv;
     String title;
-    public static MrtjFragment setUrlBodyGetInstance(String url_body,String title) {
+
+    public static MrtjFragment setUrlBodyGetInstance(String url_body, String title) {
         MrtjFragment instance = new MrtjFragment();
         Bundle bundle = new Bundle();
         Log.d("GoodsListFragment", "1///" + url_body);
@@ -59,16 +60,18 @@ TextView textViewtoptv;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
+        textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         mRecyclerView = bindViewById(view, R.id.common_frag_rc_view);
-        final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+
         //最上边字的点击事件
         linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myPopWindow.showPopupWindow(v,title);
+                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
                 Log.d("dddMrtjFragment", "***4444");
+                //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new TempFragment()).commit();
+
             }
         });
         netHelper = NetHelper.getInstance();
@@ -78,9 +81,9 @@ textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
 
         Bundle bundle = getArguments();
         url_body = bundle.getString("url_body");
-title = bundle.getString("title");
+        title = bundle.getString("title");
         //设置上边的title
-textViewtoptv.setText(title);
+        textViewtoptv.setText(title);
         mRecyclerView.setLayoutManager(lm);
         mAdapter = new MrtjRvAdapter(context);
         mRecyclerView.setAdapter(mAdapter);
