@@ -14,8 +14,10 @@ import java.util.TimerTask;
  */
 public class WelcomeActivity extends BaseActivity {
     private ImageView spashIv;
-//安卓os的handler
+
+    //安卓os的handler
     Handler handler;
+
     @Override
     protected int setContent() {
         return R.layout.activity_welcome;
@@ -24,20 +26,20 @@ public class WelcomeActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-        //new 一个计时器
-        Timer timer = new Timer();
-        //tast是计时器的任务
-        TimerTask tast = new TimerTask() {
-            @Override
-            public void run() {
+            //new 一个计时器
+            Timer timer = new Timer();
+            //tast是计时器的任务
+            TimerTask tast = new TimerTask() {
+                @Override
+                public void run() {
 
-                finish();
-            }
-        };
-        // 设定计时器的任务以及时间
-        timer.schedule(tast, 2000);
+                    finish();
+                }
+            };
+            // 设定计时器的任务以及时间
+            timer.schedule(tast, 2000);
+
     }
-
 
 
     @Override

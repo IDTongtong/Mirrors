@@ -2,7 +2,7 @@ package com.lanou.ourteam.mirrors.activity;
 
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -16,25 +16,28 @@ import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
-import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
-import com.lanou.ourteam.mirrors.fragment.MainActivityRecycleViewFragemt;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
+public class MainActivity extends BaseActivity {
+    boolean flag = true;
     VerticalViewPager verticalViewPager;
+    @InjectView(R.id.mian_login_iv)
+    TextView mianLoginIv;
     private VerticalPagerAdapter mAdapter;
     NetHelper netHelper;
     List<String> info_dataList = new ArrayList<>();
     private ImageView mirrorIv;
-    private TextView loginTv;
 
 
     public static final String MRTJ = "METJ";
@@ -49,7 +52,11 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        jumpToActivity(this, WelcomeActivity.class, null);
+        if (flag) {
+            flag = false;
+            jumpToActivity(this, WelcomeActivity.class, null);
+
+        }
         mirrorIv = (ImageView) findViewById(R.id.main_mirror_iv);
 
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_vertical_viewpger);
@@ -59,6 +66,7 @@ public class MainActivity extends BaseActivity {
 //        }
 
     }
+
     @Override
     protected void initData() {
 
@@ -70,9 +78,7 @@ public class MainActivity extends BaseActivity {
         info_dataList.add(SHOPPING_CAR);
 
 
-
-
-        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(),this, info_dataList);
+        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, info_dataList);
         verticalViewPager.setAdapter(mAdapter);
 
 
@@ -139,6 +145,15 @@ public class MainActivity extends BaseActivity {
         scroller.initViewPagerScroll(verticalViewPager);
         //这个是设置切换过渡时间为0毫秒
         verticalViewPager.setCurrentItem(position);
+
+    }
+
+
+
+    @OnClick(R.id.mian_login_iv)
+    public void onClick() {
+
+        jumpToActivity(this, LoginActivity.class, null);
 
     }
 

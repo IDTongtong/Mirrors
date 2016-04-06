@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/create_margin"
         android:layout_marginRight="@dimen/create_margin"
-        android:background="#f1f1f1"
+        android:background="@color/login_background"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -25,11 +25,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/create_marginleft"
                 android:text="@string/login_createaccount"
-                android:textColor="#333333"
+                android:textColor="@color/text_black"
                 android:textSize="@dimen/create_createaccount_wordsize" />
 
             <ImageView
-                android:id="@+id/login_close_iv"
+                android:id="@+id/create_close_iv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
@@ -39,14 +39,14 @@
         </RelativeLayout>
 
         <ImageView
-            android:id="@+id/login_bar_iv"
+            android:id="@+id/create_bar_iv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_marginleft"
             android:src="@mipmap/create_account_unline" />
 
         <TextView
-            android:id="@+id/login_phone"
+            android:id="@+id/create_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_phone_wordsize"
@@ -54,10 +54,12 @@
             android:textColor="@color/text_black"
             android:textSize="24px" />
 
-            <!--android:text="@string/phonenumber"-->
-            <!--android:text="@string/phonenum_input"-->
+        <!--android:text="@string/phonenumber"-->
+        <!--android:text="@string/phonenum_input"-->
         <EditText
-            android:id="@+id/login_phone_tv"
+            android:id="@+id/create_phone_et"
+            android:numeric="integer"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20px"
@@ -78,22 +80,23 @@
             android:orientation="horizontal">
 
             <EditText
-                android:id="@+id/login_verification_et"
+                android:id="@+id/create_verification_et"
                 android:layout_width="0dp"
-
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:numeric="integer"
+                android:maxLines="1"
                 android:background="@mipmap/verification_input" />
 
             <TextView
-                android:id="@+id/login_sendVerification_tv"
+                android:id="@+id/create_sendVerification_tv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@mipmap/verification_btn_false"
                 android:gravity="center"
                 android:text="@string/login_verificationcode"
-                android:textColor="#ffffff"
+                android:textColor="@color/text_white"
                 android:textSize="@dimen/create_verificationcode_wordsize" />
 
         </LinearLayout>
@@ -102,26 +105,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_margin"
-            android:textColor="#333333"
-            android:textSize="@dimen/create_setpassword_wordsize"
-            android:text="@string/login_setpassword" />
+            android:text="@string/login_setpassword"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/create_setpassword_wordsize" />
 
         <EditText
-            android:id="@+id/login_password_et"
+            android:id="@+id/create_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:maxLines="1"
+            android:password="true"
             android:background="@mipmap/phonenum_input" />
 
         <TextView
-            android:id="@+id/login_btn_success"
+            android:id="@+id/create_btn_success"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_margin"
             android:background="@mipmap/login_btn_false"
             android:gravity="center"
             android:text="@string/login_creataccount"
-            android:textColor="#ffffff"
+            android:textColor="@color/text_white"
             android:textSize="@dimen/create_creataccount_wordsize"
             android:textStyle="bold" />
     </LinearLayout>

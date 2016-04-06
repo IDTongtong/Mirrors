@@ -21,7 +21,7 @@
     <string name="login_verificationcode">發送驗證碼</string>
     <string name="login_createaccount">創建賬號</string>
     <string name="phonenum_input">手機號</string>
-
+    <string name="login">賬號登錄</string>
 
 
 </resources>
