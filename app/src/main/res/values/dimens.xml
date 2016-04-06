@@ -4,7 +4,7 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="create_margin">30px</dimen>
     <dimen name="create_marginleft">16px</dimen>
-    <dimen name="create_creataccount_wordsize">34px</dimen>
+    <dimen name="create_creataccount_wordsize">30px</dimen>
     <dimen name="create_setpassword_wordsize">24px</dimen>
     <dimen name="create_verificationcode_wordsize">26px</dimen>
     <dimen name="create_verification_wordsize">24px</dimen>

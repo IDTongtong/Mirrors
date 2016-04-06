@@ -1,6 +1,5 @@
 package com.lanou.ourteam.mirrors.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,15 +10,18 @@ import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
+import com.lanou.ourteam.mirrors.bean.UserBean;
 import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
-import com.lanou.ourteam.mirrors.utils.ToastUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -45,11 +47,8 @@ public class CreateAccountActivity extends BaseActivity implements Url {
     EditText createPasswordEt;
     @InjectView(R.id.create_btn_success)
     TextView createBtnSuccess;
+    private UserBean data;
 
-    private String phoneNum, verificationCode, password;
-    private enum UserOperation{
-        LOGIN, REGISTER, RESET_PASSWORD;
-    }
 
     @Override
     protected int setContent() {
@@ -58,12 +57,10 @@ public class CreateAccountActivity extends BaseActivity implements Url {
 
     @Override
     protected void initData() {
-
     }
 
     @Override
     protected void initView() {
-
     }
 
 
@@ -77,23 +74,61 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                 sendVerification();
                 break;
             case R.id.create_btn_success:
-                Bundle bundle = new Bundle();
-                bundle.putString("phoneNum", createPhoneEt.getText().toString());
-                //          Log.d("CreateAccountActivity", createPhoneEt.getText().toString());
-                jumpToActivity(this, LoginActivity.class, bundle);
-                if (!createPhoneEt.getText().toString().equals(createVerificationEt)) {
-                    ToastUtils.showToast(this, "请输入验证码");
-                } else if (createPhoneEt == null) {
-                    ToastUtils.showToast(this, "请输入手机号");
-                } else if (createPasswordEt != null) {
+                createAccountSuccess();
 
-                }
-                
                 break;
         }
     }
 
 
+    //     创建账号是否成功
+    private void createAccountSuccess() {
+        NetHelper netHelper = NetHelper.getInstance();
+        Map<String, String> params = new HashMap<>();
+        params.put("phone_number", createPhoneEt.getText().toString());
+        params.put("number", createVerificationEt.getText().toString());
+        params.put("password", createPasswordEt.getText().toString());
+        netHelper.volleyPostTogetNetData(USER_REG, params, new VolleyNetListener() {
+            @Override
+            public void onSuccess(String string) {
+                Toast.makeText(CreateAccountActivity.this, "成功"+ string, Toast.LENGTH_SHORT).show();
+                Log.d("CreateAccountActivity", string);
+
+                try {
+                    JSONObject jsonObject = new JSONObject(string);
+                    if (jsonObject.has("result")) {
+                        String result = jsonObject.getString("result");
+                        switch (result) {
+                            case "":
+                                String msg = jsonObject.getString("msg");
+                                Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                break;
+                            case "1":
+                                AnalyzeJson gson = new AnalyzeJson();
+                                data = gson.AnalyzeUser(string);
+                                //TODO 对data 做后续操作
+                                Bundle bundle = new Bundle();
+                                bundle.putString("phoneNum", createPhoneEt.getText().toString());
+                                jumpToActivity(CreateAccountActivity.this, LoginActivity.class, bundle);
+                                break;
+                        }
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+
+            @Override
+            public void onFail(String failStr) {
+
+            }
+        });
+
+
+    }
+
+    //         发送手机验证码
     private void sendVerification() {
         NetHelper netHelper = NetHelper.getInstance();
         Map<String, String> params = new HashMap();
@@ -111,5 +146,6 @@ public class CreateAccountActivity extends BaseActivity implements Url {
             }
         });
     }
+
 
 }

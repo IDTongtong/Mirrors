@@ -88,12 +88,12 @@
                 android:maxLines="1"
                 android:background="@mipmap/verification_input" />
 
-            <TextView
+            <Button
                 android:id="@+id/create_sendVerification_tv"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@mipmap/verification_btn_false"
+                android:background="@drawable/selector_create_account"
                 android:gravity="center"
                 android:text="@string/login_verificationcode"
                 android:textColor="@color/text_white"
@@ -118,16 +118,15 @@
             android:password="true"
             android:background="@mipmap/phonenum_input" />
 
-        <TextView
+        <Button
             android:id="@+id/create_btn_success"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_margin"
-            android:background="@mipmap/login_btn_false"
+            android:background="@drawable/selector_create_account"
             android:gravity="center"
             android:text="@string/login_creataccount"
             android:textColor="@color/text_white"
-            android:textSize="@dimen/create_creataccount_wordsize"
-            android:textStyle="bold" />
+            android:textSize="@dimen/create_creataccount_wordsize" />
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

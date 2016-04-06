@@ -47,6 +47,8 @@ public class StoryRvAdapter extends  BaseRecyclerAdapter<StoryBean.DataEntity.Li
 
     }
 
+
+
     @Override
     public int getItemCount() {
         return isLength() ? list.size() : 0;

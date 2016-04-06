@@ -10,8 +10,8 @@ public interface Url {
     String MENU_LIST = URL + "index.php/index/menu_list";
     String STORY_LIST = URL + "index.php/story/story_list";
     String STORY_INFO = URL + "index.php/story/info";
-    String USER_REG = URL + "index.php/user/reg";
-    String USER_LOGIN = URL + "index.php/user/login";
+    String USER_REG =  "index.php/user/reg";
+    String USER_LOGIN = "index.php/user/login";
     String USER_BUNDLING = URL + "index.php/user/bundling";
     String GOODS_LIST = URL + "index.php/products/goods_list";
     String USER_SEND_CODE = "index.php/user/send_code";

@@ -74,29 +74,30 @@
 
 
         <EditText
-            android:id="@+id/login_verification_et"
+            android:id="@+id/login_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="1"
+            android:password="true"
             android:background="@mipmap/phonenum_input" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <TextView
-                android:id="@+id/login_forget_tv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20px"
-                android:text="忘記密碼"
-                android:textColor="@color/text_black"
-                android:textSize="26px" />
+            <!--<TextView-->
+                <!--android:id="@+id/login_forget_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginTop="20px"-->
+                <!--android:text="忘記密碼"-->
+                <!--android:textColor="@color/text_black"-->
+                <!--android:textSize="26px" />-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
-        <TextView
+        <Button
             android:id="@+id/login_land"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -105,10 +106,10 @@
             android:gravity="center"
             android:text="登陸"
             android:textColor="#ffffff"
-            android:textSize="30px" />
+            android:textSize="@dimen/create_creataccount_wordsize" />
 
 
-        <TextView
+        <Button
             android:id="@+id/login_btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -117,8 +118,7 @@
             android:gravity="center"
             android:text="@string/login_creataccount"
             android:textColor="@color/text_white"
-            android:textSize="@dimen/create_creataccount_wordsize"
-            android:textStyle="bold" />
+            android:textSize="@dimen/create_creataccount_wordsize" />
 
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>
