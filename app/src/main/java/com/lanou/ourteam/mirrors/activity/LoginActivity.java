@@ -1,6 +1,7 @@
 package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -47,7 +48,11 @@ public class LoginActivity extends BaseActivity implements Url {
     TextView loginLand;
     @InjectView(R.id.login_btn_create)
     TextView loginBtnCreate;
-private UserBean data;
+
+    private UserBean data;
+//    轻量级数据库
+    private SharedPreferences sharedPreferences;
+    private boolean isFirst = true;
 
     @Override
     protected int setContent() {
@@ -94,8 +99,8 @@ private UserBean data;
     private void toLogin() {
         NetHelper netHelper = NetHelper.getInstance();
         Map<String, String> params = new HashMap<>();
-        params.put("phone_number",loginPhoneEt.getText().toString());
-        params.put("password",loginPasswordEt.getText().toString());
+        params.put("phone_number", loginPhoneEt.getText().toString());
+        params.put("password", loginPasswordEt.getText().toString());
         netHelper.volleyPostTogetNetData(USER_LOGIN, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
@@ -113,7 +118,8 @@ private UserBean data;
                                 AnalyzeJson gson = new AnalyzeJson();
                                 data = gson.AnalyzeUser(string);
                                 //TODO 对data 做后续操作
-                               finish();
+                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                finish();
                                 break;
                         }
                     }
@@ -129,5 +135,23 @@ private UserBean data;
             }
         });
 
+    }
+
+    private void isFirst() {
+        // 实例化SharedPreferences对象
+        sharedPreferences = getSharedPreferences("isFirst", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("isFirst", true)) {
+            // 第一次启动
+            // 实例化SharedPreferences.Editor对象
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            // 用putString的方法保存数据
+            editor.putBoolean("isFirst", false);
+            // 提交当前数据
+            editor.commit();
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
     }
 }
