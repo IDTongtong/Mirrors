@@ -2,7 +2,7 @@ package com.lanou.ourteam.mirrors.activity;
 
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
+import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
+
 import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
 import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
@@ -25,7 +26,6 @@ import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
-
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
@@ -39,15 +39,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 public class MainActivity extends BaseActivity {
-String title;//上边的title
+    String title;//上边的title
+    boolean flag = true;
     VerticalViewPager verticalViewPager;
+    @InjectView(R.id.mian_login_iv)
+    TextView mianLoginIv;
     private VerticalPagerAdapter mAdapter;
     NetHelper netHelper;
     List<String> info_dataList = new ArrayList<>();
     private ImageView mirrorIv;
+
     private TextView loginTv;
     MenuBean menuBean;
+
 
     public static final String MRTJ = "METJ";
     public static final String STORY_LIST = "专题分析";
@@ -61,7 +70,11 @@ String title;//上边的title
 
     @Override
     protected void initView() {
-        jumpToActivity(this, WelcomeActivity.class, null);
+        if (flag) {
+            flag = false;
+            jumpToActivity(this, WelcomeActivity.class, null);
+
+        }
         mirrorIv = (ImageView) findViewById(R.id.main_mirror_iv);
 
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_vertical_viewpger);
@@ -71,6 +84,7 @@ String title;//上边的title
 //        }
 
     }
+
     @Override
     protected void initData() {
 
@@ -112,6 +126,8 @@ String title;//上边的title
         });
 
 
+        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, info_dataList, menuBean);
+        verticalViewPager.setAdapter(mAdapter);
 
 
         mirrorIv.setOnClickListener(new View.OnClickListener() {
@@ -178,6 +194,14 @@ String title;//上边的title
         scroller.initViewPagerScroll(verticalViewPager);
         //这个是设置切换过渡时间为0毫秒
         verticalViewPager.setCurrentItem(position);
+
+    }
+
+
+    @OnClick(R.id.mian_login_iv)
+    public void onClick() {
+
+        jumpToActivity(this, LoginActivity.class, null);
 
     }
 

@@ -18,6 +18,7 @@ public class AnalyzeJson {
     GoodsListAllBean goodsListAllBean;
     MrtjBean mrtjBean;
     StoryBean storyBean;
+    UserBean userBean;
 
 
 
@@ -64,5 +65,20 @@ public class AnalyzeJson {
         }
         return storyBean;
     }
+    public UserBean AnalyzeUser(String string) {
+        Log.d("AnalyzeJson", "上");
+
+        try {
+            JSONObject jsonObject = new JSONObject(string);
+            userBean = gson.fromJson(jsonObject.toString(), UserBean.class);
+        Log.d("AnalyzeJson", "下");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return userBean;
+    }
+
+
 
 }

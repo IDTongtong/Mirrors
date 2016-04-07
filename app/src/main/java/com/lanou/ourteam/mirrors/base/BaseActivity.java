@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import butterknife.ButterKnife;
+
 /**
  * Created by zt on 16/3/29.
  */
@@ -23,7 +25,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         BaseApplication.addActivity(this);
         setContentView(setContent());
-
+        ButterKnife.inject(this);
         initView();
         initData();
     }

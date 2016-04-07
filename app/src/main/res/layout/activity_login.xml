@@ -2,7 +2,7 @@
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f1f1f1"
+    android:background="@color/login_background"
     android:orientation="vertical">
 
 
@@ -25,8 +25,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/create_marginleft"
-                android:text="賬號登錄"
-                android:textColor="@color/text_white"
+                android:text="@string/login"
+                android:textColor="@color/text_black"
                 android:textSize="@dimen/create_createaccount_wordsize" />
 
             <ImageView
@@ -52,13 +52,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_phone_wordsize"
             android:text="@string/phonenum_input"
-            android:textColor="@color/text_white"
+            android:textColor="@color/text_black"
             android:textSize="24px" />
 
         <EditText
-            android:id="@+id/login_phone_tv"
+            android:id="@+id/login_phone_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:numeric="integer"
+            android:maxLines="1"
             android:layout_marginTop="20px"
             android:background="@mipmap/phonenum_input" />
 
@@ -67,54 +69,56 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:text="密碼"
-            android:textColor="@color/text_white"
+            android:textColor="@color/text_black"
             android:textSize="@dimen/create_verification_wordsize" />
 
 
         <EditText
-            android:id="@+id/login_verification_et"
+            android:id="@+id/login_password_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:password="true"
             android:background="@mipmap/phonenum_input" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="20px"
-                android:text="忘記密碼"
-                android:textColor="@color/text_white"
-                android:textSize="26px" />
+            <!--<TextView-->
+                <!--android:id="@+id/login_forget_tv"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_marginTop="20px"-->
+                <!--android:text="忘記密碼"-->
+                <!--android:textColor="@color/text_black"-->
+                <!--android:textSize="26px" />-->
 
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
 
-        <TextView
+        <Button
             android:id="@+id/login_land"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="70px"
-            android:background="@mipmap/button_use_false"
+            android:background="@drawable/selector_create_account"
             android:gravity="center"
             android:text="登陸"
             android:textColor="#ffffff"
-            android:textSize="30px" />
+            android:textSize="@dimen/create_creataccount_wordsize" />
 
 
-        <TextView
-            android:id="@+id/login_btn_success"
+        <Button
+            android:id="@+id/login_btn_create"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_margin"
-            android:background="@mipmap/login_btn_false"
+            android:background="@drawable/selector_create_account"
             android:gravity="center"
             android:text="@string/login_creataccount"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/create_creataccount_wordsize"
-            android:textStyle="bold" />
+            android:textColor="@color/text_white"
+            android:textSize="@dimen/create_creataccount_wordsize" />
 
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

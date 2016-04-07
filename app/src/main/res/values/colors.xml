@@ -10,6 +10,6 @@
     <color name="text_black">#333333</color>
     <!-- up herer zh dimens-->
 
-
+    <color name="login_background">#f1f1f1</color>
 
 </resources>
