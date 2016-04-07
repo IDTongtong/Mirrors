@@ -31,14 +31,15 @@ public class ShopCarFragment extends BaseFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        final MyPopWindow popWindow = new MyPopWindow(getContext());
+      //  final MyPopWindow popWindow = new MyPopWindow(getContext());
         shopCarTv = (TextView) getActivity().findViewById(R.id.mycar_tv);
         Bundle bundle = getArguments();
         final String tilte = bundle.getString("stopcartitle");
         shopCarTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-popWindow.showPopupWindow(v,tilte);
+                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, tilte);
+
             }
         });
 

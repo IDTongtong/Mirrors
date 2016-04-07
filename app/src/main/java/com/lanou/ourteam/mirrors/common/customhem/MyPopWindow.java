@@ -34,12 +34,20 @@ import java.util.Map;
  */
 
 public class MyPopWindow {
+    private static MyPopWindow Instance;
+
     Context context;
     MainActivity mainActivity;
-TextView returnHomeTv;//返回首页
+    TextView returnHomeTv;//返回首页
     TextView exitTv;
-    public MyPopWindow(Context context) {
+
+    private MyPopWindow(Context context) {
         this.context = context;
+    }
+
+    public static MyPopWindow getPopWindow(Context context) {
+        Instance = new MyPopWindow(context);
+        return Instance;
     }
 
     //左边的pupwindow
@@ -50,12 +58,12 @@ TextView returnHomeTv;//返回首页
         View contentView = LayoutInflater.from(context).inflate(
                 R.layout.activity_main_pupwindow_listview, null);
         returnHomeTv = (TextView) contentView.findViewById(R.id.acticty_main_popwondow_listview_returnhome);
-       exitTv = (TextView) contentView.findViewById(R.id.acticty_main_popwondow_listview_exit);
+        exitTv = (TextView) contentView.findViewById(R.id.acticty_main_popwondow_listview_exit);
 //初始化listview
         final ListView menulistView = (ListView) contentView.findViewById(R.id.acticty_main_popwondow_listview);
 
         final PopupWindow popupWindow = new PopupWindow(contentView,
-                LinearLayout.LayoutParams.MATCH_PARENT, 1500, true);
+                LinearLayout.LayoutParams.MATCH_PARENT, 1585, true);
 
         popupWindow.setTouchable(true);
 
@@ -106,7 +114,7 @@ TextView returnHomeTv;//返回首页
 
                     JSONObject jsonObject = new JSONObject(string);
                     final MenuBean menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
-                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, context,title);
+                    MainActivityPupwindowListviewAdapter activityPupwindowListviewAdapter = new MainActivityPupwindowListviewAdapter(menuBean, context, title);
                     menulistView.setAdapter(activityPupwindowListviewAdapter);
                     //listview的点击事件
                     menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

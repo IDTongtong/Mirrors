@@ -62,14 +62,18 @@ public class MrtjFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         mRecyclerView = bindViewById(view, R.id.common_frag_rc_view);
-        final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+
         //最上边字的点击事件
         linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myPopWindow.showPopupWindow(v, title);
+
+                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
+
                 Log.d("dddMrtjFragment", "***4444");
+                //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new TempFragment()).commit();
+
             }
         });
         netHelper = NetHelper.getInstance();
