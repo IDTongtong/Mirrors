@@ -1,18 +1,15 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
-import com.lanou.ourteam.mirrors.activity.GoodShopSecondActivity;
 import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
@@ -45,11 +42,20 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
+<<<<<<< HEAD
+=======
+        MrtjBean.DataEntity.ListEntity listEntity = list.get(position);
+        MrtjViewHolder mrtjViewHolder = (MrtjViewHolder) holder;
+        mrtjViewHolder.goodsNameTv.setText(listEntity.getData_info().getGoods_name());
+        mrtjViewHolder.productAreaTv.setText(listEntity.getData_info().getProduct_area());
+        mrtjViewHolder.brandTv.setText(listEntity.getData_info().getBrand());
+>>>>>>> parent of 94e79c9... 二级页面基本完成
 
         MrtjViewHolder mrtjViewHolder = (MrtjViewHolder) holder;
         ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
                 mrtjViewHolder.picIv,
                 R.mipmap.ic_launcher,
+<<<<<<< HEAD
                 R.mipmap.loading);
 
         if (CommonUtils.isNetworkAvailable()) {
@@ -128,6 +134,14 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
 
             }
         }
+=======
+                R.mipmap.loading
+
+        );
+        String goods_img = listEntity.getData_info().getGoods_img();
+        Log.d("MrtjRvAdapter", "图片网址:" + goods_img);
+        imageLoader.get(goods_img, imageListener);
+>>>>>>> parent of 94e79c9... 二级页面基本完成
     }
 
 
@@ -166,8 +180,12 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
 
     class MrtjViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
+<<<<<<< HEAD
         private TextView goodsNameTv, goodsPriceTv, productAreaTv, brandTv;
         private RelativeLayout relativeLayout;
+=======
+        private TextView goodsNameTv, productAreaTv, brandTv;
+>>>>>>> parent of 94e79c9... 二级页面基本完成
 
         public MrtjViewHolder(View itemView) {
             super(itemView);
@@ -176,8 +194,6 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
             goodsNameTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_name_tv);
             productAreaTv = (TextView) itemView.findViewById(R.id.goods_list_item_produce_area_tv);
             brandTv = (TextView) itemView.findViewById(R.id.goods_list_item_brand_tv);
-            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.goods_list_item_relativilayouty);
-
         }
     }
 }
