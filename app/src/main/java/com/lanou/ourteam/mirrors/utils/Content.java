@@ -19,5 +19,5 @@ public class Content {
 
     //专题分析
     public static final String STORY_LIST = "index.php/story/story_list";
-
+ public  static final String GOODS_DETIALS_LIST = "index.php/products/goods_info";
 }

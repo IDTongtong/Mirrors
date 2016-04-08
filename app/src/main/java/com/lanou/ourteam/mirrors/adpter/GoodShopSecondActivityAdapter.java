@@ -12,12 +12,23 @@ import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+
+
+
 import com.lanou.ourteam.mirrors.bean.GoodsDetailsBean;
-import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
 import com.lanou.ourteam.mirrors.listenerinterface.PoisitionListener;
+import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+
+
 
 /**
  * Created by dllo on 16/4/7.

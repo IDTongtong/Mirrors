@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:layout_width="750px"
     android:background="#ffffff"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/goods_list_item_relativilayouty">
 
     <ImageView
         android:id="@+id/goods_list_item_pic"
