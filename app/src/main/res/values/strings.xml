@@ -17,6 +17,7 @@
     <string name="login_createaccount">創建賬號</string>
     <string name="phonenum_input">手機號</string>
     <string name="login">賬號登錄</string>
+    <string name="alladress_title">我的所有地址</string>
 
 
 </resources>
