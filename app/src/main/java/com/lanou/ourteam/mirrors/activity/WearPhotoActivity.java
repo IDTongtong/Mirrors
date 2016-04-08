@@ -3,9 +3,9 @@ package com.lanou.ourteam.mirrors.activity;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 
 /**
- * Created by zt on 16/4/8.
+ * Created by ZHDelete on 16/4/8.
  */
-public class AddressActivity extends BaseActivity{
+public class WearPhotoActivity extends BaseActivity {
     @Override
     protected int setContent() {
         return 0;

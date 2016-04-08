@@ -3,8 +3,6 @@ package com.lanou.ourteam.mirrors.activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -51,7 +49,10 @@ public class LoginActivity extends BaseActivity implements Url {
     @InjectView(R.id.login_btn_create)
     TextView loginBtnCreate;
 
-
+    private UserBean data;
+//    轻量级数据库
+    private SharedPreferences sharedPreferences;
+    private boolean isFirst = true;
 
     @Override
     protected int setContent() {
@@ -67,57 +68,6 @@ public class LoginActivity extends BaseActivity implements Url {
 
     @Override
     protected void initView() {
-        //    监听电话号码的EditText
-
-        loginPhoneEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (loginPhoneEt.length() != 0 && loginPasswordEt.length() != 0) {
-//    当手机号和密码输入时 loginLand可点击状态
-                    loginLand.setBackgroundResource(R.drawable.selector_create_account);
-
-                } else {
-//                    否则  不可点击
-                    loginLand.setBackgroundResource(R.mipmap.button_use_false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
-
-        // 密码EditText的监听
-        loginPasswordEt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (loginPhoneEt.length() != 0 && loginPasswordEt.length() != 0) {
-                    // 电话号码和密码都输入时 可点击状态
-                    loginLand.setBackgroundResource(R.drawable.selector_create_account);
-                } else if (loginPhoneEt.length() == 0 || loginPasswordEt.length() == 0) {
-                    // 电话号码和密码只要有一个为空 就是不可点击的状态
-                    loginLand.setBackgroundResource(R.mipmap.button_use_false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-
 //        注册成功后 , 得到注册的号码
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
@@ -127,7 +77,6 @@ public class LoginActivity extends BaseActivity implements Url {
             loginPhoneEt.setText(num);
         }
     }
-
 
     @OnClick({R.id.login_close_iv, R.id.login_land, R.id.login_btn_create})
     public void onClick(View view) {
@@ -166,11 +115,10 @@ public class LoginActivity extends BaseActivity implements Url {
                                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 break;
                             case "1":
+                                AnalyzeJson gson = new AnalyzeJson();
+                                data = gson.AnalyzeUser(string);
+                                //TODO 对data 做后续操作
                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean("isLogin", true);
-                                editor.commit();
                                 finish();
                                 break;
                         }
@@ -189,5 +137,21 @@ public class LoginActivity extends BaseActivity implements Url {
 
     }
 
-
+    private void isFirst() {
+        // 实例化SharedPreferences对象
+        sharedPreferences = getSharedPreferences("isFirst", MODE_PRIVATE);
+        if (sharedPreferences.getBoolean("isFirst", true)) {
+            // 第一次启动
+            // 实例化SharedPreferences.Editor对象
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            // 用putString的方法保存数据
+            editor.putBoolean("isFirst", false);
+            // 提交当前数据
+            editor.commit();
+        } else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
+    }
 }

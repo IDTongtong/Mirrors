@@ -63,32 +63,26 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-<<<<<<< HEAD
-//        final GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
+//        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
 //
 //        holder.goodsNameTv.setText(listEntity.getGoods_name());
 //        holder.productAreaTv.setText(listEntity.getProduct_area());
 //        holder.brandTv.setText(listEntity.getBrand());
-//        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent  = new Intent(context, GoodShopSecondActivity.class);
-//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                intent.putExtra("background",listEntity.getGoods_img() );
-//                intent.putExtra("goodid",listEntity.getGoods_id());
+//        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
 //
-//                context.startActivity(intent);
-//            }
-//        });
-=======
-        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
-
-        holder.goodsNameTv.setText(listEntity.getGoods_name());
-        holder.productAreaTv.setText(listEntity.getProduct_area());
-        holder.brandTv.setText(listEntity.getBrand());
-        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
-
->>>>>>> parent of 94e79c9... 二级页面基本完成
+//
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                holder.picIv,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading
+//
+//        );
+//        String goods_img = listEntity.getGoods_img();
+//        Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
+//        imageLoader.get(goods_img, imageListener);
+//
+//
+////        Picasso.with(context).load(goods_img).into(holder.picIv);
 
         ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
                 holder.picIv,
@@ -167,16 +161,7 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
-<<<<<<< HEAD
-
         private TextView goodsNameTv,goodsPriceTv, productAreaTv, brandTv;
-
-
-        private RelativeLayout relativeLayout;
-=======
-        private TextView goodsNameTv, productAreaTv, brandTv;
->>>>>>> parent of 94e79c9... 二级页面基本完成
-
 
         public MyViewHolder(View itemView) {
             super(itemView);

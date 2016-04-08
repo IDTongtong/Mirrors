@@ -1,14 +1,10 @@
 package com.lanou.ourteam.mirrors.bean;
 
-import android.os.Parcel;
-
-import com.lanou.ourteam.mirrors.listenerinterface.Parcelable;
-
 import java.util.List;
 /**
  * Created by ZHDelete on 16/4/8.
  */
-public class MrtjBean implements Parcelable{
+public class MrtjBean {
 
 
     /**
@@ -49,30 +45,6 @@ public class MrtjBean implements Parcelable{
     public DataEntity getData() {
         return data;
     }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-    // 该方法将类的数据写入外部提供的Parcel中。
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-    }
-
-    public static final Parcelable.Creator<MrtjBean> CREATOR = new Creator<MrtjBean>() {
-        // 返回一个 MrtjBean [i]供外部类反序列化本类数组使用
-        @Override
-        public MrtjBean createFromParcel(Parcel parcel) {
-            return null;
-        }
-
-        @Override
-        public MrtjBean[] newArray(int i) {
-            return new MrtjBean[i];
-        }
-    };
-
 
     public static class DataEntity {
         /**
