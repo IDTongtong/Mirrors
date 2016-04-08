@@ -12,6 +12,9 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
+import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
+import com.lanou.ourteam.mirrors.imagedao.GoodsItemEntity;
+import com.lanou.ourteam.mirrors.utils.CommonUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.List;
@@ -27,12 +30,20 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     private ImageLoader imageLoader;
     private GoodsListAllBean goodsListAllBean;
 
-    public GoodsListRvAdapter(Context context) {
+
+    private DaoEntityHelper daoEntityHelper;
+    private String type;
+    private List<GoodsItemEntity> goodsItemEntityList;
+
+    public GoodsListRvAdapter(Context context,String category_id) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
 
         netHelper = NetHelper.getInstance();
         imageLoader = netHelper.getImageLoader();
+
+        daoEntityHelper = DaoEntityHelper.getInstance();
+        type = category_id;
     }
 
     public void initData(GoodsListAllBean goodsListAllBean) {
@@ -52,41 +63,110 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
-
-        holder.goodsNameTv.setText(listEntity.getGoods_name());
-        holder.productAreaTv.setText(listEntity.getProduct_area());
-        holder.brandTv.setText(listEntity.getBrand());
-        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
-
+//        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
+//
+//        holder.goodsNameTv.setText(listEntity.getGoods_name());
+//        holder.productAreaTv.setText(listEntity.getProduct_area());
+//        holder.brandTv.setText(listEntity.getBrand());
+//        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
+//
+//
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                holder.picIv,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading
+//
+//        );
+//        String goods_img = listEntity.getGoods_img();
+//        Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
+//        imageLoader.get(goods_img, imageListener);
+//
+//
+////        Picasso.with(context).load(goods_img).into(holder.picIv);
 
         ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
                 holder.picIv,
                 R.mipmap.ic_launcher,
-                R.mipmap.loading
+                R.mipmap.loading);
+        if (CommonUtils.isNetworkAvailable()) {
 
-        );
-        String goods_img = listEntity.getGoods_img();
-        Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
-        imageLoader.get(goods_img, imageListener);
+            GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
+
+            holder.goodsNameTv.setText(listEntity.getGoods_name());
+            holder.goodsPriceTv.setText(listEntity.getGoods_price());
+            holder.productAreaTv.setText(listEntity.getProduct_area());
+            holder.brandTv.setText(listEntity.getBrand());
+            Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
+
+
+            String goods_img = listEntity.getGoods_img();
+            Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
+            imageLoader.get(goods_img, imageListener,400,200);
 
 
 //        Picasso.with(context).load(goods_img).into(holder.picIv);
+
+
+
+
+            //给GoodsItem数据库添加数据:
+            String goods_name = listEntity.getGoods_name();
+            String product_area = listEntity.getProduct_area();
+            String brand = listEntity.getBrand();
+            String goods_price = listEntity.getGoods_price();
+
+            GoodsItemEntity goodsItemEntity = new GoodsItemEntity();
+
+            goodsItemEntity.setType(type);
+            goodsItemEntity.setGoods_img(goods_img);
+            goodsItemEntity.setGoods_name(goods_name);
+            goodsItemEntity.setProduce_area(product_area);
+            goodsItemEntity.setGoods_price(goods_price);
+            goodsItemEntity.setBrand(brand);
+
+            if (daoEntityHelper.queryGoodsItemByUrl(goodsItemEntity)) {
+                Log.d("GoodsListRvAdapter", "该 goods_url 已在数据库中存在");
+            } else {
+                daoEntityHelper.insert(goodsItemEntity);
+                Log.d("GoodsListRvAdapter", "goods_list fragment 插入数据库执行");
+            }
+
+        } else {
+            GoodsItemEntity goodsItemEntity = goodsItemEntityList.get(position);
+            holder.goodsNameTv.setText(goodsItemEntity.getGoods_name());
+            holder.goodsPriceTv.setText(goodsItemEntity.getGoods_price());
+            holder.productAreaTv.setText(goodsItemEntity.getProduce_area());
+            holder.brandTv.setText(goodsItemEntity.getBrand());
+            imageLoader.get(goodsItemEntity.getGoods_img(), imageListener);
+        }
+
+
+
+
+
 
     }
 
     @Override
     public int getItemCount() {
-        return listEntityList!= null && listEntityList.size() > 0 ? listEntityList.size() : 0;
+        if (CommonUtils.isNetworkAvailable()) {
+            return listEntityList != null && listEntityList.size() > 0 ? listEntityList.size() : 0;
+
+        } else {
+            goodsItemEntityList = daoEntityHelper.queryGoodsByTpye(type);
+            return goodsItemEntityList.size();
+        }
+
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
-        private TextView goodsNameTv, productAreaTv, brandTv;
+        private TextView goodsNameTv,goodsPriceTv, productAreaTv, brandTv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             picIv = (ImageView) itemView.findViewById(R.id.goods_list_item_pic);
+            goodsPriceTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_price_tv);
             goodsNameTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_name_tv);
             productAreaTv = (TextView) itemView.findViewById(R.id.goods_list_item_produce_area_tv);
             brandTv = (TextView) itemView.findViewById(R.id.goods_list_item_brand_tv);

@@ -11,8 +11,10 @@ import com.lanou.ourteam.mirrors.fragment.GoodsListFragment;
 import com.lanou.ourteam.mirrors.fragment.MrtjFragment;
 import com.lanou.ourteam.mirrors.fragment.ShopCarFragment;
 import com.lanou.ourteam.mirrors.fragment.StoryFragment;
+import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
 import com.lanou.ourteam.mirrors.utils.Content;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,41 +23,45 @@ import java.util.List;
 public class VerticalPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
-    private List<String> info_dataList;
-private MenuBean menuBean;
-    public VerticalPagerAdapter(FragmentManager fm,Context context,List<String> info_dataList,MenuBean menuBean) {
-        super(fm);
-        this.context = context;
-        this.info_dataList = info_dataList;
-      this.menuBean = menuBean;
-//        Log.d("sssVerticalPagerAdapter", title);
+    //private List<String> info_dataList;
+    private MenuBean menuBean;
+    private List<MenuItemEntity> menuItemEntityList;
 
+    public VerticalPagerAdapter(FragmentManager fm, Context context,List<MenuItemEntity> menuItemEntityList) {
+        super(fm);
+        Log.d("VerticalPagerAdapter", "构造构造构造");
+        this.context = context;
+        this.menuItemEntityList = menuItemEntityList;
+        //this.info_dataList = info_dataList;
     }
+
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,menuBean.getData().getList().get(position).getTitle());
+                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuItemEntityList.get(position).getTitle());
 
             case 1:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "269",menuBean.getData().getList().get(position).getTitle());
+                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "269",  menuItemEntityList.get(position).getTitle());
 
             case 2:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "268",menuBean.getData().getList().get(position).getTitle());
+                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "268",  menuItemEntityList.get(position).getTitle());
 
             case 3:
-                    //!!!!等待进一步解析：
-                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,menuBean.getData().getList().get(position).getTitle());
+                //!!!!等待进一步解析：
+                //接口里 又改为了 购物车
+                return ShopCarFragment.setUrlBodyGetInstance( menuItemEntityList.get(position).getTitle());
             case 4:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST,menuBean.getData().getList().get(position).getTitle());
-           case 5:
+                return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST,  menuItemEntityList.get(position).getTitle());
+            case 5:
 
-               return ShopCarFragment.setUrlBodyGetInstance(menuBean.getData().getList().get(position).getTitle());
+//                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuBean.getData().getList().get(position).getTitle());
+                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,  menuItemEntityList.get(position).getTitle());
             default:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return null;
@@ -65,6 +71,8 @@ private MenuBean menuBean;
 
     @Override
     public int getCount() {
-        return menuBean.getData().getList().size();
+//        return menuBean.getData().getList().size();
+        return  menuItemEntityList.size();
+
     }
 }

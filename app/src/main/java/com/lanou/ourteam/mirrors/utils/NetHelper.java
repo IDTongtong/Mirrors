@@ -44,23 +44,16 @@ public class NetHelper {
     private Context context;
 
     private NetHelper() {
-        Log.d("NetHelper", "5");
         requestQueue = Volley.newRequestQueue(BaseApplication.getContext());
         this.context = BaseApplication.getContext();
         initImageLoader();
-        Log.d("NetHelper", "6");
-        //netHelperInstance = new NetHelper();
     }
 
     public static NetHelper getInstance() {
-        Log.d("NetHelper", "1");
         if (netHelperInstance == null) {
-            Log.d("NetHelper", "2");
             synchronized (NetHelper.class) {
                 if (netHelperInstance == null) {
-                    Log.d("NetHelper", "3");
                     netHelperInstance = new NetHelper();
-                    Log.d("NetHelper", "4");
                 }
             }
         }
@@ -70,7 +63,6 @@ public class NetHelper {
 
 
     public void volleyPostTogetNetData(String url_body, final Map<String, String> params, final VolleyNetListener netListener) {
-        Log.d("NetHelper", "11");
 
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, Content.URL_HEAD + url_body,
                 new com.android.volley.Response.Listener<String>() {
@@ -113,12 +105,17 @@ public class NetHelper {
                 .equals(Environment.MEDIA_MOUNTED)) {
             File file = Environment.getExternalStorageDirectory();
             diskPath = file.getAbsolutePath();
+            //记得加读写存储卡的权限
+            Log.d("NetHelper", "外置sd卡:" + diskPath);
+
 
         } else {
             File file = BaseApplication.getContext().getFilesDir();
             diskPath = file.getAbsolutePath();
+            Log.d("NetHelper", "内置sd卡:" + diskPath);
+
         }
-        File file = new File(diskPath + "/img");
+        File file = new File(diskPath + "/ourteammirror");//文件夹名
         if (!file.exists()) {
             file.mkdir();
         }
@@ -153,11 +150,13 @@ public class NetHelper {
 
         @Override
         public Bitmap getBitmap(String url) {
+            //url = CommonUtils.stringToMD5(url);
             return cache.get(url);
         }
 
         @Override
         public void putBitmap(String url, Bitmap bitmap) {
+            //url = CommonUtils.stringToMD5(url);
             cache.put(url, bitmap);
         }
     }
@@ -167,34 +166,67 @@ public class NetHelper {
 
         @Override
         public Bitmap getBitmap(String url) {
-            //获取url中的图片名称
-            String fileName = url.substring(
-                    url.lastIndexOf("/") + 1,
-                    url.length()
-            );
+//            //获取url中的图片名称
+//            String fileName = url.substring(
+//                    url.lastIndexOf("/") + 1,
+//                    url.length()
+//            );
+            //MD5 加密网址整体作为文件名:
+            String fileName = CommonUtils.stringToMD5(url);
+            Log.d("NetHelper", "get___MD5的文件名:" + fileName);
+
             //用文件名拼接出实际文件存储路径
             String filePath = diskPath + "/" + fileName;
 
-            Bitmap bitmap = BitmapFactory.decodeFile(filePath);
+            //
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            options.inJustDecodeBounds = true;
+
+            BitmapFactory.decodeFile(filePath, options);
+
+            //想要得到缩放的值
+            final int REQUIRED_SIZE = 100;
+            int width_temp = options.outWidth;
+            int height_temp = options.outHeight;
+            Log.d("DiskCache", "width_temp上:" + width_temp);
+            Log.d("DiskCache", "height_temp上:" + height_temp);
+            int scale = 1;
+            while (true) {
+                if (width_temp / 2 < REQUIRED_SIZE | height_temp / 2 < REQUIRED_SIZE) {
+                    Log.d("DiskCache", "if里走没走");
+                    break;
+                }
+                width_temp /= 2;
+                height_temp /= 2;
+                Log.d("DiskCache", "width_temp:" + width_temp);
+                Log.d("DiskCache", "height_temp:" + height_temp);
+                scale *= 2;
+            }
+            Log.d("DiskCache", "缩放比例为:" + scale);
+
+            BitmapFactory.Options options1 = new BitmapFactory.Options();
+            options1.inSampleSize = scale;
+
+
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath,options1);
             return bitmap;
         }
 
         @Override
         public void putBitmap(String url, Bitmap bitmap) {
-            //获取url中的图片名称
-            String fileName = url.substring(
-                    url.lastIndexOf("/") + 1,
-                    url.length()
-            );
+
+            String fileName = CommonUtils.stringToMD5(url);
+            Log.d("NetHelper", "put___MD5的文件名:" + fileName);
+
             //用文件名拼接出实际文件存储路径
             String filePath = diskPath + "/" + fileName;
-
+            Log.d("NetHelper", "put执行___文件路径:" + filePath);
             FileOutputStream fos = null;
             try {
                 fos = new FileOutputStream(filePath);
                 //将bitmap对象写入文件中
                 bitmap.compress(Bitmap.CompressFormat.PNG,
-                        100, fos);
+                        10, fos);
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
