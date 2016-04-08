@@ -1,9 +1,8 @@
 package com.lanou.ourteam.mirrors.bean;
 
 import java.util.List;
-
 /**
- * Created by ZHDelete on 16/3/31.
+ * Created by ZHDelete on 16/4/8.
  */
 public class MrtjBean {
 
@@ -11,14 +10,14 @@ public class MrtjBean {
     /**
      * result : 1
      * msg :
-     * data : {"pagination":{"first_time":"1456217902","last_time":"1456217902","has_more":"2"},"list":[{"type":"1","data_info":{"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti411dffb6b99c9118224178ba9d49e84e4.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}}]}
+     * data : {"pagination":{"first_time":"1456217902","last_time":"1456217902","has_more":"2"},"list":[{"type":"1","data_info":{"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti48ce547dd685d7530bb1603403c23758c.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver17c4b9b6d37bb6dc4de4ac4623155c549.jpg","cellHeight":"480","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/U0cdb5b740efb0dad5787ea049874bab8.jpg","cellHeight":"776","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"wear_video":[{"type":"8","data":"http://7xr7f7.com2.z0.glb.qiniucdn.com/Jimmy%20fairly%20-%20Spring%202014-HD.mp4"},{"type":"9","data":"http://image.mirroreye.cn/3IKMUH2KD0R1T198a1d37a462486f0464f4a731fbf94c1b4605721845021358429bb2fbcc9c30b3.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584c8d4e3987263425cf762cb1210ffe60fd.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584cca3a7e30c383f9bd6003b3e8b5ca2fce.jpg"},{"type":"5","data":"http://image.mirroreye.cn/79ff4cb975f2f821d13ac0cffe0fc80ff4d5012e8fe71556a7f1ea1527fd47830.jpg"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}}]}
      */
 
     private String result;
     private String msg;
     /**
      * pagination : {"first_time":"1456217902","last_time":"1456217902","has_more":"2"}
-     * list : [{"type":"1","data_info":{"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti411dffb6b99c9118224178ba9d49e84e4.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}}]
+     * list : [{"type":"1","data_info":{"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti48ce547dd685d7530bb1603403c23758c.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver17c4b9b6d37bb6dc4de4ac4623155c549.jpg","cellHeight":"480","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/U0cdb5b740efb0dad5787ea049874bab8.jpg","cellHeight":"776","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"wear_video":[{"type":"8","data":"http://7xr7f7.com2.z0.glb.qiniucdn.com/Jimmy%20fairly%20-%20Spring%202014-HD.mp4"},{"type":"9","data":"http://image.mirroreye.cn/3IKMUH2KD0R1T198a1d37a462486f0464f4a731fbf94c1b4605721845021358429bb2fbcc9c30b3.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584c8d4e3987263425cf762cb1210ffe60fd.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584cca3a7e30c383f9bd6003b3e8b5ca2fce.jpg"},{"type":"5","data":"http://image.mirroreye.cn/79ff4cb975f2f821d13ac0cffe0fc80ff4d5012e8fe71556a7f1ea1527fd47830.jpg"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}}]
      */
 
     private DataEntity data;
@@ -57,7 +56,7 @@ public class MrtjBean {
         private PaginationEntity pagination;
         /**
          * type : 1
-         * data_info : {"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti411dffb6b99c9118224178ba9d49e84e4.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}
+         * data_info : {"goods_id":"96Psa1455524521","goods_pic":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg","model":"GM-S-09|BIG BULLY 飛行員太陽鏡","goods_img":"http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti48ce547dd685d7530bb1603403c23758c.jpg","goods_name":"GENTLE MONSTER","last_storge":"0","whole_storge":"3","height":"","ordain":"1","product_area":"韓國首爾","goods_price":"0.01","discount_price":"0.01","brand":"BIG BULLY 飛行員太陽鏡","info_des":"Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字\u2014\u2014绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。\n搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋","goods_data":[{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}],"design_des":[{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver17c4b9b6d37bb6dc4de4ac4623155c549.jpg","cellHeight":"480","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/U0cdb5b740efb0dad5787ea049874bab8.jpg","cellHeight":"776","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}],"wear_video":[{"type":"8","data":"http://7xr7f7.com2.z0.glb.qiniucdn.com/Jimmy%20fairly%20-%20Spring%202014-HD.mp4"},{"type":"9","data":"http://image.mirroreye.cn/3IKMUH2KD0R1T198a1d37a462486f0464f4a731fbf94c1b4605721845021358429bb2fbcc9c30b3.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584c8d4e3987263425cf762cb1210ffe60fd.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584cca3a7e30c383f9bd6003b3e8b5ca2fce.jpg"},{"type":"5","data":"http://image.mirroreye.cn/79ff4cb975f2f821d13ac0cffe0fc80ff4d5012e8fe71556a7f1ea1527fd47830.jpg"}],"goods_share":"http://api101.test.mirroreye.cn/index.php/goodweb/info?id="}
          */
 
         private List<ListEntity> list;
@@ -114,7 +113,7 @@ public class MrtjBean {
              * goods_id : 96Psa1455524521
              * goods_pic : http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver155cbc9a39c911ee63efda10378130330.jpg
              * model : GM-S-09|BIG BULLY 飛行員太陽鏡
-             * goods_img : http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti411dffb6b99c9118224178ba9d49e84e4.jpg
+             * goods_img : http://7xprhi.com2.z0.glb.qiniucdn.com/weibiaoti48ce547dd685d7530bb1603403c23758c.jpg
              * goods_name : GENTLE MONSTER
              * last_storge : 0
              * whole_storge : 3
@@ -127,7 +126,8 @@ public class MrtjBean {
              * info_des : Gentle Monster一直是大热的韩国眼镜品牌，继全智贤在《星你》中的热推后，在热播韩剧《看见味道的少女》中又被当作定情信物，是权志龙等韩流明星的热衷单品，也备受李晨、范冰冰、Anglebaby等明星追捧。GM除了设计复古气息浓郁的圆形墨镜，还有许多配色夸张、造型奇特的镜面太阳镜，这也印证了品牌的名字——绅士怪物。而这款独特的BIG BULLY，是最新推出的时尚款。
              搭配建议：银色袖口、白色双肩包、J.Crew衬衫、GIUSEPPE ZANOTTI白色运动鞋
              * goods_data : [{"introContent":"这款眼镜来自现在正热的韩国大势眼镜品牌Gentle Monster，专注复古，眼镜均为纯手工打造。这款飞行员金属太阳镜，镜圈采用黑色金属框，散发前卫与帅气相融合的气息，银色镜片时髦又新颖。","cellHeight":"590","name":"","location":"來自時尚之都韓國","country":"首爾","english":"The frame comes from Korea"},{"introContent":"从侧面看，银色金属框较宽，相比镜框纤细的镜腿与镜框形成强烈反差，镜腿也采用黑色金属，纤细精致的极简设计，使整个太阳镜十分轻巧，告别黑色沉闷感。","cellHeight":"590","name":"專註復古","location":"","country":"","english":""},{"introContent":"因为是来自韩国的品牌，设计的眼镜都非常符合亚洲人的脸型，专注复古，将复古与潮流完美融合，是权志龙、Ziont都非常喜欢的眼镜品牌。纯手工制作的镜框打造完美，拥有独特视觉质感，偏圆的镜框立刻打开脸型。","cellHeight":"590","name":"明星同款","location":"","country":"","english":""},{"introContent":"在Gentle Monstor那里，复古可能不是那么纯粹，毕竟这是一个前卫的时代。Gentle Monstor的特别之处在于除了贯彻复古时尚理念，还以\u201c创新实验\u201d为设计理念，在复古镜框中加入了前卫新潮的设计元素，每一款眼镜都被放在复古与前卫融合的漆皮手袋里。","cellHeight":"590","name":"復古與前衛融合","location":"","country":"","english":""}]
-             * design_des : [{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}]
+             * design_des : [{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver17c4b9b6d37bb6dc4de4ac4623155c549.jpg","cellHeight":"480","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver38807872f22325a71d51a3591472c5e93.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/silver4fa4390c4a9b6ed4114d54313c9481e65.jpg","cellHeight":"480","type":"1"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/5918145b03d2e5eca887244874ee74e5f3ed401599783296b62fe768f4bb213e051a035.jpg","cellHeight":"550","type":"2"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/U0cdb5b740efb0dad5787ea049874bab8.jpg","cellHeight":"776","type":"4"},{"img":"http://7xprhi.com2.z0.glb.qiniucdn.com/111144f5dfcb7c7557efe71a3a7331f3bd03.jpg","cellHeight":"828","type":"3"}]
+             * wear_video : [{"type":"8","data":"http://7xr7f7.com2.z0.glb.qiniucdn.com/Jimmy%20fairly%20-%20Spring%202014-HD.mp4"},{"type":"9","data":"http://image.mirroreye.cn/3IKMUH2KD0R1T198a1d37a462486f0464f4a731fbf94c1b4605721845021358429bb2fbcc9c30b3.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584c8d4e3987263425cf762cb1210ffe60fd.jpg"},{"type":"5","data":"http://image.mirroreye.cn/6cfcfc7b5a670b2714933b33b574f584cca3a7e30c383f9bd6003b3e8b5ca2fce.jpg"},{"type":"5","data":"http://image.mirroreye.cn/79ff4cb975f2f821d13ac0cffe0fc80ff4d5012e8fe71556a7f1ea1527fd47830.jpg"}]
              * goods_share : http://api101.test.mirroreye.cn/index.php/goodweb/info?id=
              */
 
@@ -176,12 +176,18 @@ public class MrtjBean {
 
                 private List<GoodsDataEntity> goods_data;
                 /**
-                 * img : http://7xprhi.com2.z0.glb.qiniucdn.com/sliver21b93bca79f1dca3a37a3eb7e7850095e.jpg
+                 * img : http://7xprhi.com2.z0.glb.qiniucdn.com/gmsliver17c4b9b6d37bb6dc4de4ac4623155c549.jpg
                  * cellHeight : 480
-                 * type : 1
+                 * type : 4
                  */
 
                 private List<DesignDesEntity> design_des;
+                /**
+                 * type : 8
+                 * data : http://7xr7f7.com2.z0.glb.qiniucdn.com/Jimmy%20fairly%20-%20Spring%202014-HD.mp4
+                 */
+
+                private List<WearVideoEntity> wear_video;
 
                 public void setGoods_id(String goods_id) {
                     this.goods_id = goods_id;
@@ -251,6 +257,10 @@ public class MrtjBean {
                     this.design_des = design_des;
                 }
 
+                public void setWear_video(List<WearVideoEntity> wear_video) {
+                    this.wear_video = wear_video;
+                }
+
                 public String getGoods_id() {
                     return goods_id;
                 }
@@ -317,6 +327,10 @@ public class MrtjBean {
 
                 public List<DesignDesEntity> getDesign_des() {
                     return design_des;
+                }
+
+                public List<WearVideoEntity> getWear_video() {
+                    return wear_video;
                 }
 
                 public static class GoodsDataEntity {
@@ -405,7 +419,30 @@ public class MrtjBean {
                         return type;
                     }
                 }
+
+                public static class WearVideoEntity {
+                    private String type;
+                    private String data;
+
+                    public void setType(String type) {
+                        this.type = type;
+                    }
+
+                    public void setData(String data) {
+                        this.data = data;
+                    }
+
+                    public String getType() {
+                        return type;
+                    }
+
+                    public String getData() {
+                        return data;
+                    }
+                }
             }
         }
     }
 }
+
+
