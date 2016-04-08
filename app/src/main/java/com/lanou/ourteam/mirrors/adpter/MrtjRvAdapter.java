@@ -1,15 +1,18 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.GoodShopSecondActivity;
 import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
 
@@ -31,7 +34,7 @@ public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListE
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
 
-        MrtjBean.DataEntity.ListEntity listEntity = list.get(position);
+        final MrtjBean.DataEntity.ListEntity listEntity = list.get(position);
         MrtjViewHolder mrtjViewHolder = (MrtjViewHolder) holder;
         mrtjViewHolder.goodsNameTv.setText(listEntity.getData_info().getGoods_name());
         mrtjViewHolder.productAreaTv.setText(listEntity.getData_info().getProduct_area());
@@ -44,8 +47,18 @@ public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListE
 
         );
         String goods_img = listEntity.getData_info().getGoods_img();
-        Log.d("MrtjRvAdapter", "图片网址:" + goods_img);
         imageLoader.get(goods_img, imageListener);
+        mrtjViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent  = new Intent(context, GoodShopSecondActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("background", listEntity.getData_info().getGoods_img());
+                intent.putExtra("goodid",listEntity.getData_info().getGoods_id());
+                Log.d("sssaMrtjRvAdapter", listEntity.getData_info().getGoods_id());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -57,13 +70,15 @@ public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListE
     class MrtjViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
         private TextView goodsNameTv, productAreaTv, brandTv;
-
+        private RelativeLayout relativeLayout;
         public MrtjViewHolder(View itemView) {
             super(itemView);
             picIv = (ImageView) itemView.findViewById(R.id.goods_list_item_pic);
             goodsNameTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_name_tv);
             productAreaTv = (TextView) itemView.findViewById(R.id.goods_list_item_produce_area_tv);
             brandTv = (TextView) itemView.findViewById(R.id.goods_list_item_brand_tv);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.goods_list_item_relativilayouty);
+
         }
     }
 }
