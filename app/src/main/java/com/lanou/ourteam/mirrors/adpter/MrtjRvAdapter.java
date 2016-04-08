@@ -1,12 +1,15 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
@@ -70,12 +73,23 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
 
         if (CommonUtils.isNetworkAvailable()) {
             //bindview 相关 from here
-            MrtjBean.DataEntity.ListEntity listEntity = (MrtjBean.DataEntity.ListEntity) list.get(position);
+            final MrtjBean.DataEntity.ListEntity listEntity = (MrtjBean.DataEntity.ListEntity) list.get(position);
 
             mrtjViewHolder.goodsPriceTv.setText(listEntity.getData_info().getGoods_price());
             mrtjViewHolder.goodsNameTv.setText(listEntity.getData_info().getGoods_name());
             mrtjViewHolder.productAreaTv.setText(listEntity.getData_info().getProduct_area());
             mrtjViewHolder.brandTv.setText(listEntity.getData_info().getBrand());
+            mrtjViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, com.lanou.ourteam.mirrors.adpter.GoodShopSecondActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    intent.putExtra("background", listEntity.getData_info().getGoods_img());
+                    intent.putExtra("goodid", listEntity.getData_info().getGoods_id());
+                    Log.d("sssaMrtjRvAdapter", listEntity.getData_info().getGoods_id());
+                    context.startActivity(intent);
+                }
+            });
 
             String goods_img = listEntity.getData_info().getGoods_img();
             Log.d("MrtjRvAdapter", "图片网址:" + goods_img);
@@ -119,6 +133,12 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
                 mrtjViewHolder.productAreaTv.setText(mrtjItemEntity.getProduce_area());
                 mrtjViewHolder.brandTv.setText(mrtjItemEntity.getBrand());
                 imageLoader.get(mrtjItemEntity.getGoods_img(), imageListener);
+                mrtjViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(context, "没有网点不进去的", Toast.LENGTH_SHORT).show();
+                    }
+                });
 
             }
 
@@ -145,7 +165,7 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
     class MrtjViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
         private TextView goodsNameTv, goodsPriceTv,productAreaTv, brandTv;
-
+        private RelativeLayout relativeLayout;
         public MrtjViewHolder(View itemView) {
             super(itemView);
             picIv = (ImageView) itemView.findViewById(R.id.goods_list_item_pic);
@@ -153,6 +173,8 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
             goodsNameTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_name_tv);
             productAreaTv = (TextView) itemView.findViewById(R.id.goods_list_item_produce_area_tv);
             brandTv = (TextView) itemView.findViewById(R.id.goods_list_item_brand_tv);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.goods_list_item_relativilayouty);
+
         }
     }
 }
