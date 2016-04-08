@@ -20,7 +20,7 @@ public class AnalyzeJson {
     StoryBean storyBean;
     UserBean userBean;
 
-
+    GoodsItemBean goodsItemBean;
 
 
     public AnalyzeJson() {
@@ -39,7 +39,6 @@ public class AnalyzeJson {
         }
         return goodsListAllBean;
     }
-
 
 
     public MrtjBean AnalyzeMrtj(String string) {
@@ -65,13 +64,14 @@ public class AnalyzeJson {
         }
         return storyBean;
     }
+
     public UserBean AnalyzeUser(String string) {
         Log.d("AnalyzeJson", "上");
 
         try {
             JSONObject jsonObject = new JSONObject(string);
             userBean = gson.fromJson(jsonObject.toString(), UserBean.class);
-        Log.d("AnalyzeJson", "下");
+            Log.d("AnalyzeJson", "下");
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -79,6 +79,15 @@ public class AnalyzeJson {
         return userBean;
     }
 
+    public GoodsItemBean analyGoodsItem(String string) {
+        try {
+            JSONObject jsonObject = new JSONObject(string);
+            goodsItemBean = gson.fromJson(string, GoodsItemBean.class);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return goodsItemBean;
+    }
 
 
 }
