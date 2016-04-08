@@ -20,4 +20,9 @@ public class Content {
     //专题分析
     public static final String STORY_LIST = "index.php/story/story_list";
 
+
+    //goods_info 每条商品的 数据
+
+    public static final String GOODS_INFO = "index.php/products/goods_info";
+
 }

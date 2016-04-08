@@ -21,7 +21,7 @@ import java.util.List;
 /**
  * Created by ZHDelete on 16/4/1.
  */
-public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
+public class MrtjRvAdapter extends BaseRecyclerAdapter<MrtjBean.DataEntity.ListEntity> {
     private DaoEntityHelper daoEntityHelper;
 
     private List<MrtjItemEntity> mrtjItemEntityList;
