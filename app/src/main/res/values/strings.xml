@@ -17,6 +17,8 @@
     <string name="login_createaccount">創建賬號</string>
     <string name="phonenum_input">手機號</string>
     <string name="login">賬號登錄</string>
+    <string name="text_login">登陸</string>
+    <string name="mainactivity_shopping">购物车</string>
 
 
 </resources>
