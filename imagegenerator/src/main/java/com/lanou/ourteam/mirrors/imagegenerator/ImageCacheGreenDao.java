@@ -25,7 +25,6 @@ public class ImageCacheGreenDao {
         goodsItemEntity.addStringProperty("type");
         goodsItemEntity.addStringProperty("goods_img");
         goodsItemEntity.addStringProperty("goods_name");
-        goodsItemEntity.addStringProperty("goods_price");
         goodsItemEntity.addStringProperty("produce_area");
         goodsItemEntity.addStringProperty("brand");
 
