@@ -69,10 +69,10 @@ public class MrtjFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 
+
                 MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
 
-                Log.d("dddMrtjFragment", "***4444");
-                //  getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.main_framelayout, new TempFragment()).commit();
+
 
             }
         });

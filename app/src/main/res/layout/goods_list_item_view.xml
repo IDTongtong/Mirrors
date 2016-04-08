@@ -35,6 +35,13 @@
             android:textSize="@dimen/goods_list_item_goodsname_text_sizw" />
 
         <TextView
+            android:id="@+id/goods_list_item_goods_price_tv"
+            android:text="¥1500"
+            android:textColor="@color/text_black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
             android:id="@+id/goods_list_item_produce_area_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

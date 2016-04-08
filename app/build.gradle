@@ -31,4 +31,8 @@ dependencies {
     compile 'com.google.code.gson:gson:2.2.4'
     compile 'com.squareup.picasso:picasso:2.3.2'
     compile 'com.jakewharton:butterknife:5.1.1'
+    compile 'de.greenrobot:greendao:2.1.0'
+
+
+
 }

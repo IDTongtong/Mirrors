@@ -26,7 +26,11 @@ import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
+
+import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
+import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.CommonUtils;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -44,8 +48,10 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
-    String title;//上边的title
+
     boolean flag = true;
+
+    String title;//上边的title
     VerticalViewPager verticalViewPager;
     @InjectView(R.id.mian_login_iv)
     TextView mianLoginIv;
@@ -57,10 +63,17 @@ public class MainActivity extends BaseActivity {
     private TextView loginTv;
     MenuBean menuBean;
 
+    private DaoEntityHelper daoEntityHelper;
+
 
     public static final String MRTJ = "METJ";
     public static final String STORY_LIST = "专题分析";
     public static final String SHOPPING_CAR = "购物车";
+
+    List<MenuBean.DataEntity.ListEntity> listEntityList;
+
+    List<MenuItemEntity> menuItemEntityList;
+
 
     @Override
     protected int setContent() {
@@ -92,39 +105,80 @@ public class MainActivity extends BaseActivity {
         info_dataList.add(STORY_LIST);
         info_dataList.add(SHOPPING_CAR);
 
+
         Map<String, String> params = new HashMap();
 
-
         params.put("token", "");
+
+
+        Log.d("MainActivity", "YYYYY");
+
 
         NetHelper.getInstance().volleyPostTogetNetData(Content.MENU_LIST, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
                 Gson gson = new Gson();
-                Log.d("ssssMainActivityRecycleView", string);
+                Log.d("MainActivity", string);
                 try {
 
                     JSONObject jsonObject = new JSONObject(string);
                     menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
-                    mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), BaseApplication.getContext(), info_dataList, menuBean);
-                    verticalViewPager.setAdapter(mAdapter);
+
+                    //listEntityList = menuBean.getData().getList();
+                    //Log.d("MainActivity", "listEntityList大小:" + listEntityList.size());
+                    Log.d("MainActivity", "解析菜单bean 成功");
+                    listEntityList = menuBean.getData().getList();
+                    Log.d("MainActivity", "listEntityList  size" + listEntityList.size());
+
+
+                    if (CommonUtils.isNetworkAvailable()) {
+                        menuItemEntityList = new ArrayList<>();
+
+                        for (int i = 0; i < listEntityList.size(); i++) {
+                            MenuItemEntity menuItemEntity = new MenuItemEntity();
+                            MenuBean.DataEntity.ListEntity listEntity = listEntityList.get(i);
+
+                            menuItemEntity.setStore(listEntity.getStore());
+                            menuItemEntity.setInfo_data(listEntity.getInfo_data());
+                            menuItemEntity.setType(listEntity.getType());
+                            menuItemEntity.setButtomColor(listEntity.getButtomColor());
+                            menuItemEntity.setTopColor(listEntity.getTopColor());
+                            menuItemEntity.setTitle(listEntity.getTitle());
+
+                            menuItemEntityList.add(menuItemEntity);
+                        }
+
+                        daoEntityHelper.deleteMenuAll();
+                        daoEntityHelper.insertMenuList(menuItemEntityList);
+                        Log.d("MainActivity", "MenuList 加入数据库成功");
+
+                        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(),
+                                MainActivity.this, menuItemEntityList);
+
+                        verticalViewPager.setAdapter(mAdapter);
+                    }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
-                Log.d("qqq", "===" + string);
+
             }
 
             @Override
             public void onFail(String failStr) {
-                Log.d("MainActivityRecycleView", "===" + "Fail");
+                Log.d("MainActivity", "***" + failStr);
             }
         });
-
-
-        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, info_dataList, menuBean);
-        verticalViewPager.setAdapter(mAdapter);
+//<<<<<<< HEAD
+//
+//
+//        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, info_dataList, menuBean);
+//        verticalViewPager.setAdapter(mAdapter);
+//=======
+//        Log.d("MainActivity", "HHHHH");
+//>>>>>>> feature/ZYM_节后第二次推送
 
 
         mirrorIv.setOnClickListener(new View.OnClickListener() {
@@ -133,6 +187,31 @@ public class MainActivity extends BaseActivity {
                 playHeartbeatAnimation();
             }
         });
+
+
+        //有网的时候 清空数据库相关,但是如果在MainActivity 到Fragment期间,断网,有待考虑
+        daoEntityHelper = DaoEntityHelper.getInstance();
+        if (CommonUtils.isNetworkAvailable()) {
+            daoEntityHelper.deleteMrtjAll();
+            daoEntityHelper.deleteGoodsAll();
+            daoEntityHelper.deleteStoryAll();
+            // daoEntityHelper.deleteMenuAll();
+
+            Log.d("MainActivity", "MainActivity里 数据控清空执行");
+        }
+
+
+        if (!CommonUtils.isNetworkAvailable()) {
+            Log.d("MainActivity", "没网是 viewpager 适配器 构造方法");
+            menuItemEntityList = daoEntityHelper.queryMenu();
+
+            mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(),
+                    MainActivity.this, menuItemEntityList);
+
+            verticalViewPager.setAdapter(mAdapter);
+        }
+
+
     }
 
 
@@ -181,8 +260,7 @@ public class MainActivity extends BaseActivity {
     }
 
     //暴露方法 得到position
-    public void getDatafromFragment(int position
-    ) {
+    public void getDatafromFragment(int position) {
         Log.d("MainActivity", "从fragment历来" + position);
 
         //这个是设置viewPager切换过度时间的类

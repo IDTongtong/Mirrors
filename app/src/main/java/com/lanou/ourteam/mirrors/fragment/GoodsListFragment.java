@@ -35,7 +35,8 @@ public class GoodsListFragment extends BaseFragment {
     private NetHelper netHelper;
     private GoodsListRvAdapter mAdapter;
     //Only the original thread that created a view hierarchy can touch its views.
-String title;
+
+    String title;
     LinearLayout linearLayoutTop;
     TextView textViewToptv;
     GoodsListAllBean goodsListAllBean;
@@ -43,13 +44,13 @@ String title;
     private String url_body;
     private String category_id;
 
-    public static GoodsListFragment setUrlBodyGetInstance(String url_body, String category_id,String title) {
+    public static GoodsListFragment setUrlBodyGetInstance(String url_body, String category_id, String title) {
         GoodsListFragment instance = new GoodsListFragment();
         Bundle bundle = new Bundle();
         Log.d("GoodsListFragment", "1///" + url_body);
         bundle.putString("url_body", url_body);
         bundle.putString("category_id", category_id);
-        bundle.putString("goodtitle",title);
+        bundle.putString("goodtitle", title);
         instance.setArguments(bundle);
 
         return instance;
@@ -72,9 +73,10 @@ String title;
             @Override
             public void onClick(View v) {
 
+
                 MyPopWindow.getPopWindow(getContext()).showPopupWindow(v,title);
 
-            //    myPopWindow.showPopupWindow(v,title);
+
 
 
             }
@@ -88,18 +90,19 @@ String title;
 
         netHelper = NetHelper.getInstance();
 
-        LinearLayoutManager lm = new LinearLayoutManager(context);
-        lm.setOrientation(LinearLayoutManager.HORIZONTAL);
-
-        mRecyclerView.setLayoutManager(lm);
-        mAdapter = new GoodsListRvAdapter(context);
-        mRecyclerView.setAdapter(mAdapter);
-
         Bundle bundle = getArguments();
         url_body = bundle.getString("url_body");
         Log.d("GoodsListFragment", "***" + url_body);
         category_id = bundle.getString("category_id");
-title = bundle.getString("goodtitle");
+        title = bundle.getString("goodtitle");
+
+        LinearLayoutManager lm = new LinearLayoutManager(context);
+        lm.setOrientation(LinearLayoutManager.HORIZONTAL);
+
+        mRecyclerView.setLayoutManager(lm);
+        mAdapter = new GoodsListRvAdapter(context,category_id);
+        mRecyclerView.setAdapter(mAdapter);
+
 
         Map<String, String> params = new HashMap();
 
