@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/secondshop_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/secondshop_background"
+        android:scaleType="fitXY"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/secondshop_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+    <com.zhy.autolayout.AutoRelativeLayout
+
+        android:id="@+id/secondshop_lineout"
+        android:visibility="invisible"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/secondshop_returnbt"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_goods_content_return_btn_margin_left"
+            android:src="@mipmap/return_btnxh"
+            android:text="666" />
+
+        <Button
+            android:id="@+id/secondshop_wear_picyure"
+            android:layout_width="105dp"
+            android:layout_height="45dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/activity_goods_content_wear_tv_margin_left"
+            android:layout_toRightOf="@+id/secondshop_returnbt"
+            android:background="@mipmap/adorn_photos_btnxh"
+            android:text="@string/activity_goods_content_wear"
+            android:textColor="#ffffff"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/secondshop_shop"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+
+            android:layout_marginRight="@dimen/activity_goods_content_buy_margin_right"
+            android:src="@mipmap/buy_btn"
+
+            android:text="666" />
+
+
+    </com.zhy.autolayout.AutoRelativeLayout>
+</com.zhy.autolayout.AutoRelativeLayout>

@@ -1,16 +1,19 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.GoodShopSecondActivity;
 import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.GoodsItemEntity;
@@ -63,26 +66,22 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-//        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
+//        final GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
 //
 //        holder.goodsNameTv.setText(listEntity.getGoods_name());
 //        holder.productAreaTv.setText(listEntity.getProduct_area());
 //        holder.brandTv.setText(listEntity.getBrand());
-//        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
+//        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent  = new Intent(context, GoodShopSecondActivity.class);
+//                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent.putExtra("background",listEntity.getGoods_img() );
+//                intent.putExtra("goodid",listEntity.getGoods_id());
 //
-//
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                holder.picIv,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
-//        String goods_img = listEntity.getGoods_img();
-//        Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
-//        imageLoader.get(goods_img, imageListener);
-//
-//
-////        Picasso.with(context).load(goods_img).into(holder.picIv);
+//                context.startActivity(intent);
+//            }
+//        });
 
         ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
                 holder.picIv,
@@ -161,7 +160,12 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
 
     class MyViewHolder extends RecyclerView.ViewHolder {
         private ImageView picIv;
+
         private TextView goodsNameTv,goodsPriceTv, productAreaTv, brandTv;
+
+
+        private RelativeLayout relativeLayout;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -170,6 +174,7 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
             goodsNameTv = (TextView) itemView.findViewById(R.id.goods_list_item_goods_name_tv);
             productAreaTv = (TextView) itemView.findViewById(R.id.goods_list_item_produce_area_tv);
             brandTv = (TextView) itemView.findViewById(R.id.goods_list_item_brand_tv);
+            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.goods_list_item_relativilayouty);
         }
     }
 }
