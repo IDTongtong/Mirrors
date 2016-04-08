@@ -19,7 +19,7 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+
 
 /**
  * Created by ZHDelete on 16/4/8.
