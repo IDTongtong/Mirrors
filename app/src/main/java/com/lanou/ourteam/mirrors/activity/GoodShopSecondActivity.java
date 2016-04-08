@@ -1,20 +1,7 @@
 package com.lanou.ourteam.mirrors.adpter;
 
-import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-
-import com.android.volley.toolbox.ImageLoader;
-import com.lanou.ourteam.mirrors.R;
-
-
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,11 +9,14 @@ import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
+import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.WearPhotoActivity;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.GoodsDetailsBean;
@@ -42,24 +32,33 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 /**
  * Created by dllo on 16/4/7.
  * 二级列表的activity
  */
-public class GoodShopSecondActivity extends BaseActivity  {
+public class GoodShopSecondActivity extends BaseActivity {
 
     RecyclerView recyclerView;
     GoodShopSecondActivityAdapter adapter;
     ArrayList<String> datas;
     RelativeLayout relativeLayout;
+    @InjectView(R.id.secondshop_wear_picyure)
+    Button secondshopWearPicyure;
     private int value;
     private boolean isup = true, isDown = true;
     private boolean dyUp = true, dyDown = true;
     private boolean down = false;
     ImageView imageViewbackground;
     ////该步是第二种动画出现的步骤,暂未用上
-    String goodsid;
+
     ImageView imageViewReturn;
+
+    private String goodsid;
+    //private String goods_id;
 
     @Override
     protected int setContent() {
@@ -106,7 +105,8 @@ public class GoodShopSecondActivity extends BaseActivity  {
                     Gson gson = new Gson();
                     JSONObject jsonObject = new JSONObject(string);
                     GoodsDetailsBean goodsDetailsBean = gson.fromJson(jsonObject.toString(), GoodsDetailsBean.class);
-
+                    //goods_id = goodsDetailsBean.getData().getGoods_id();
+                    //Log.d("GoodShopSecondActivity", "*-*-*-" + goods_id);
                     adapter.addData(goodsDetailsBean);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -203,4 +203,16 @@ public class GoodShopSecondActivity extends BaseActivity  {
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.secondshop_wear_picyure)
+    public void onClick() {
+        WearPhotoActivity.startWearPhotoActivity(this,goodsid);
+
+    }
 }

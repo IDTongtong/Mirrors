@@ -19,7 +19,7 @@ public class AnalyzeJson {
     MrtjBean mrtjBean;
     StoryBean storyBean;
     UserBean userBean;
-
+    GoodsItemBean goodsItemBean;
 
 
 
@@ -79,6 +79,11 @@ public class AnalyzeJson {
         return userBean;
     }
 
+    public GoodsItemBean analyzeGoodsItem(String string ) {
+
+        goodsItemBean = gson.fromJson(string, GoodsItemBean.class);
+        return goodsItemBean;
+    }
 
 
 }
