@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.activity;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
@@ -11,22 +12,16 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
-
-import com.lanou.ourteam.mirrors.adpter.MainActicityViewpagerAdapter;
-import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
-import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
-
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
@@ -53,8 +48,11 @@ public class MainActivity extends BaseActivity {
 
     String title;//上边的title
     VerticalViewPager verticalViewPager;
-    @InjectView(R.id.mian_login_iv)
-    TextView mianLoginIv;
+    @InjectView(R.id.main_login_iv)
+    TextView mainLoginIv;
+    @InjectView(R.id.main_shopping_iv)
+    TextView mainShoppingIv;
+
     private VerticalPagerAdapter mAdapter;
     NetHelper netHelper;
     List<String> info_dataList = new ArrayList<>();
@@ -94,7 +92,19 @@ public class MainActivity extends BaseActivity {
 
 
     }
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
+        if (isLogin) {
+            mainLoginIv.setVisibility(View.GONE);
+            mainShoppingIv.setVisibility(View.VISIBLE);
+        } else {
+            mainLoginIv.setVisibility(View.VISIBLE);
+            mainShoppingIv.setVisibility(View.GONE);
+        }
+    }
     @Override
     protected void initData() {
 
@@ -272,12 +282,23 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
 
-    @OnClick(R.id.mian_login_iv)
-    public void onClick() {
-
-        jumpToActivity(this, LoginActivity.class, null);
-
+    @OnClick({R.id.main_login_iv, R.id.main_shopping_iv})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.main_login_iv:
+                jumpToActivity(this, LoginActivity.class, null);
+                break;
+            case R.id.main_shopping_iv:
+                verticalViewPager.setCurrentItem(menuBean.getData().getList().size()-1);
+                break;
+        }
     }
 
 

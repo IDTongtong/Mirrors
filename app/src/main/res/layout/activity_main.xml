@@ -29,7 +29,7 @@
             android:src="@mipmap/mirror" />
 
         <TextView
-            android:id="@+id/mian_login_iv"
+            android:id="@+id/main_login_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -39,4 +39,16 @@
             android:text="@string/mainactivity_login"
             android:textColor="#ffffff"
             android:textSize="@dimen/mainactivitylogintextsize" />
+    <TextView
+        android:id="@+id/main_shopping_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/mainactivityloginbottom"
+        android:layout_marginRight="@dimen/mainactivityloginright"
+        android:text="购物车"
+        android:textColor="#ffffff"
+        android:textSize="@dimen/mainactivitylogintextsize" />
+
     </com.zhy.autolayout.AutoRelativeLayout>
