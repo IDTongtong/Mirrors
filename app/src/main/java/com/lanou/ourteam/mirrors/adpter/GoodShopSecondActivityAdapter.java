@@ -41,6 +41,8 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  */
 public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
     //******
+    private NetHelper netHelper = NetHelper.getInstance();
+
 
     //接口传position
     PoisitionListener poisitionListener;
@@ -60,7 +62,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
     }
 
-    public void addData(GoodsDetailsBean  datas) {
+    public void addData(GoodsDetailsBean datas) {
         this.datas = datas;
 
     }
@@ -112,19 +114,19 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             headViewHolder.headBrandTv.setText(datas.getData().getBrand());
             headViewHolder.headInfoDesTv.setText(datas.getData().getInfo_des());
             headViewHolder.headGoodsPriceTv.setText(datas.getData().getGoods_price());
-         headViewHolder.imageViewShare.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
+            headViewHolder.imageViewShare.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
-                 ShareUtils.showShare(position, datas.getData().getGoods_share());
-             }
-         });
+                    ShareUtils.showShare(position, datas.getData().getGoods_share());
+                }
+            });
 
             //设置透明度的变化
-            headViewHolder.relativeLayoutHead.getBackground().setAlpha(layoutScrollValue/5);
+            headViewHolder.relativeLayoutHead.getBackground().setAlpha(layoutScrollValue / 5);
 
 
-            Log.d("fffGoodShopSecondActivityA", "layoutScrollValue:" + layoutScrollValue);
+            Log.d("GoodShopSecondActivityA", "layoutScrollValue:" + layoutScrollValue);
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
 
@@ -132,13 +134,15 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             GoodsTitleViewHolder goodsTitleViewHolder = (GoodsTitleViewHolder) holder;
             goodsTitleViewHolder.goodsTitleBrandTv.setText(datas.getData().getBrand());
 
-            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                    goodsTitleViewHolder.goodsTitleImg,
-                    R.mipmap.ic_launcher,
-                    R.mipmap.loading
+//            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                    goodsTitleViewHolder.goodsTitleImg,
+//                    R.mipmap.ic_launcher,
+//                    R.mipmap.loading
+//
+//            );
+//            NetHelper.getInstance().getImageLoader().get(datas.getData().getGoods_pic(), imageListener);
+            netHelper.loadImageWithVolley(goodsTitleViewHolder.goodsTitleImg, datas.getData().getGoods_pic());
 
-            );
-            NetHelper.getInstance().getImageLoader().get(datas.getData().getGoods_pic(), imageListener);
             goodsTitleViewHolder.goodsTitleLocationTv.setText(datas.getData().getGoods_data().get(0).getLocation());
             goodsTitleViewHolder.goodsTitleCountryTv.setText(datas.getData().getGoods_data().get(0).getCountry());
             goodsTitleViewHolder.goodsTitleEnglishTv.setText(datas.getData().getGoods_data().get(0).getEnglish());
@@ -164,7 +168,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             // Log.d("GoodShopSecondActivityA", "datas.getData().getDesign_des().size()+2:" + (datas.getData().getDesign_des().size() + 2));
 
 
-            if (datas.getData().getDesign_des().get(position-2).getType().equals("1") ) {
+            if (datas.getData().getDesign_des().get(position - 2).getType().equals("1")) {
                 goodsDetailsViewHolder.goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
                 goodsDetailsViewHolder.goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
@@ -173,14 +177,14 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.GONE);
             }
 
-            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                    goodsDetailsViewHolder.goodsDetailsImg,
-                    R.mipmap.ic_launcher,
-                    R.mipmap.loading
-
-            );
-            NetHelper.getInstance().getImageLoader().get(datas.getData().getDesign_des().get(position - 2).getImg(), imageListener);
-
+//            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                    goodsDetailsViewHolder.goodsDetailsImg,
+//                    R.mipmap.ic_launcher,
+//                    R.mipmap.loading
+//
+//            );
+//            NetHelper.getInstance().getImageLoader().get(datas.getData().getDesign_des().get(position - 2).getImg(), imageListener);
+            netHelper.loadBigImageWithPicasso(goodsDetailsViewHolder.goodsDetailsImg, datas.getData().getDesign_des().get(position - 2).getImg());
 
         }
 
@@ -205,7 +209,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-      Log.d("sssGoodShopSecondActivityA", "datas.getData().getDesign_des().size() + 2:" + (datas.getData().getDesign_des().size() + 2));
+        Log.d("sssGoodShopSecondActivityA", "datas.getData().getDesign_des().size() + 2:" + (datas.getData().getDesign_des().size() + 2));
         return datas.getData().getDesign_des().size() + 2;
 
     }
@@ -218,14 +222,15 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         //需要网络解析的数据
         private TextView headGoodsNameTv, headBrandTv, headInfoDesTv, headGoodsPriceTv;
         private RelativeLayout relativeLayoutHead;
-private  ImageView imageViewShare;
+        private ImageView imageViewShare;
+
         public HeadViewHolder(View itemView) {
             super(itemView);
             headGoodsNameTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_name);
             headBrandTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_brand);
             headInfoDesTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_info_des);
             headGoodsPriceTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_price);
-       imageViewShare = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
+            imageViewShare = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
             relativeLayoutHead = (RelativeLayout) itemView.findViewById(R.id.
                     item_goodsfragment_content_head_relativelayout);
 

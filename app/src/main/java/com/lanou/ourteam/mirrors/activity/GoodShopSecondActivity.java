@@ -63,6 +63,8 @@ public class GoodShopSecondActivity extends BaseActivity {
     private String goodsid;
     //private String goods_id;
 
+    private NetHelper netHelper;
+
     @Override
     protected int setContent() {
         return R.layout.activity_second_good_shop;
@@ -75,14 +77,19 @@ public class GoodShopSecondActivity extends BaseActivity {
         goodsid = intent.getStringExtra("goodid");
         Log.d("ddd", goodsid);
         String background = intent.getStringExtra("background");
-        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                imageViewbackground,
-                R.mipmap.ic_launcher,
-                R.mipmap.loading
 
-        );
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                imageViewbackground,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading
+//
+//        );
 
-        NetHelper.getInstance().getImageLoader().get(background, imageListener);
+//        NetHelper.getInstance().getImageLoader().get(background, imageListener);
+
+        netHelper = NetHelper.getInstance();
+        netHelper.loadImageWithVolley(imageViewbackground,background);
+
         Map<String, String> params = new HashMap();
         params.put("version", "1.0.1");
         params.put("device_type", "3");
