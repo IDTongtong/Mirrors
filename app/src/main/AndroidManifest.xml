@@ -52,6 +52,8 @@
         <activity android:name=".activity.CreateAccountActivity" />
         <activity android:name=".adpter.GoodShopSecondActivity"/>
         <activity android:name=".activity.WearPhotoActivity"/>
+        <activity android:name=".activity.PicDetailsActivity"/>
+
         <!-- ***************************************************mob分享-->
         <activity
             android:name="com.mob.tools.MobUIShell"

@@ -43,13 +43,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/create_marginleft"
             android:src="@mipmap/create_account_unline" />
+
         <com.zhy.autolayout.AutoRelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
+
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/activity_wear_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
 
             <com.zhy.autolayout.AutoRelativeLayout
 
@@ -82,10 +84,7 @@
         </com.zhy.autolayout.AutoRelativeLayout>
 
 
-
     </LinearLayout>
-
-
 
 
 </com.zhy.autolayout.AutoLinearLayout>
