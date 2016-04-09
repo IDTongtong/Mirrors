@@ -185,7 +185,7 @@ public class NetHelper {
             BitmapFactory.decodeFile(filePath, options);
 
             //想要得到缩放的值
-            final int REQUIRED_SIZE = 100;
+            final int REQUIRED_SIZE = 800;
             int width_temp = options.outWidth;
             int height_temp = options.outHeight;
             Log.d("DiskCache", "width_temp上:" + width_temp);

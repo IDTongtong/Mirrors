@@ -136,7 +136,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             GoodsDetailsViewHolder goodsDetailsViewHolder = (GoodsDetailsViewHolder) holder;
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsDetailsViewHolder.goodsDetailsRelativeLayout.getLayoutParams();
             int detailsHeight = goodsDetailsViewHolder.detailsRelativeLayoutAll.getHeight();
-            params.setMargins(0, (int) (100 + (valueTitle * 0.15) + position * 200), 0, 0);
+            params.setMargins(0, (int) (100 + (valueTitle * 0.17) + position * 200), 0, 0);
             goodsDetailsViewHolder.goodsDetailsRelativeLayout.setLayoutParams(params);
             // Log.d("GoodShopSecondActivityA", "datas.getData().getDesign_des().size()+2:" + (datas.getData().getDesign_des().size() + 2));
 

@@ -83,7 +83,7 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                         R.mipmap.loading,
                         R.mipmap.ic_launcher
                 );
-                imageLoader.get(list.get(position).getData(), imageListener, 480, 800);
+                imageLoader.get(list.get(position).getData(), imageListener, 1280, 1280);
                 break;
 
         }

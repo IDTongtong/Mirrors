@@ -7,21 +7,18 @@
     <ImageView
         android:id="@+id/secondshop_background"
         android:scaleType="fitXY"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/secondshop_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        />
+        android:layout_height="match_parent" />
 
     <com.zhy.autolayout.AutoRelativeLayout
 
         android:id="@+id/secondshop_lineout"
-
+        android:visibility="invisible"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_alignParentBottom="true"
@@ -54,10 +51,8 @@
             android:layout_height="42dp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-
             android:layout_marginRight="@dimen/activity_goods_content_buy_margin_right"
             android:src="@mipmap/buy_btn"
-
             android:text="666" />
 
 
