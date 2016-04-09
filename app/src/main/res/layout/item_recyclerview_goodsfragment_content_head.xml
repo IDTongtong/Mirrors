@@ -7,6 +7,14 @@
     android:id="@+id/item_goodsfragment_content_head_relativelayout"
 
     >
+    <ImageView
+        android:id="@+id/item_goodsfragment_content_head_share"
+        android:layout_marginTop="@dimen/goodscontent_head_share_margintop"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/goodscontent_head_share_marginright"
+        android:src="@mipmap/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/item_goodsfragment_content_head_frame"

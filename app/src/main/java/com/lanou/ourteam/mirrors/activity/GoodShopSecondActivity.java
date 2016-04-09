@@ -70,7 +70,7 @@ public class GoodShopSecondActivity extends BaseActivity {
     protected void initData() {
         Intent intent = getIntent();
         goodsid = intent.getStringExtra("goodid");
-        Log.d("", goodsid);
+        Log.d("ddd", goodsid);
         String background = intent.getStringExtra("background");
         ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
                 imageViewbackground,
@@ -81,7 +81,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
         NetHelper.getInstance().getImageLoader().get(background, imageListener);
         Map<String, String> params = new HashMap();
-
+ params.put("version","1.0.1");
         params.put("device_type", "3");
         params.put("goods_id", goodsid);
 
@@ -125,6 +125,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+
         imageViewReturn = (ImageView) findViewById(R.id.secondshop_returnbt);
         imageViewReturn.setOnClickListener(new View.OnClickListener() {
             @Override
