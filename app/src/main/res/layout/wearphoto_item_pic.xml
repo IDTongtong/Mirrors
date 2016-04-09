@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginLeft="@dimen/create_margin"
     android:layout_marginRight="@dimen/create_margin"
     android:layout_marginTop="5dp"
-    android:gravity="center">
+    android:gravity="center"
+    android:id="@+id/wear_item_pic_ll">
 
 
 
