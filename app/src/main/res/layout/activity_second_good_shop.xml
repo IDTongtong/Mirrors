@@ -43,7 +43,7 @@
             android:background="@mipmap/adorn_photos_btn"
             android:text="@string/activity_goods_content_wear"
             android:textColor="#ffffff"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
 
         <ImageView
             android:id="@+id/secondshop_shop"

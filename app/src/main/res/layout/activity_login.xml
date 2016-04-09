@@ -120,5 +120,31 @@
             android:textColor="@color/text_white"
             android:textSize="@dimen/create_creataccount_wordsize" />
 
+<TextView
+    android:textColor="#333333"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginTop="@dimen/story_detail_text_size_20px"
+    android:textSize="@dimen/margin_30px"
+    android:text="使用社交账号"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_marginTop="@dimen/login_50px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+   android:id="@+id/sina_login"
+                android:src="@mipmap/sina_icon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+            <ImageView
+                android:id="@+id/whechat_login"
+                android:src="@mipmap/wechat_icon"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content" />
+        </com.zhy.autolayout.AutoLinearLayout>
+
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>
