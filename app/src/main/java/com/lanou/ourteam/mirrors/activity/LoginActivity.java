@@ -28,6 +28,12 @@ import java.util.Map;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
+import cn.sharesdk.framework.Platform;
+import cn.sharesdk.framework.PlatformActionListener;
+import cn.sharesdk.framework.ShareSDK;
+import cn.sharesdk.sina.weibo.SinaWeibo;
+import cn.sharesdk.tencent.qzone.QZone;
+import cn.sharesdk.wechat.friends.Wechat;
 
 /**
  * Created by zt on 16/3/29.
@@ -49,7 +55,10 @@ public class LoginActivity extends BaseActivity implements Url {
     TextView loginLand;
     @InjectView(R.id.login_btn_create)
     TextView loginBtnCreate;
-
+    @InjectView(R.id.sina_login)
+    ImageView sinaLogin;
+    @InjectView(R.id.whechat_login)
+    ImageView whechatLogin;
 
 
     @Override
@@ -128,7 +137,7 @@ public class LoginActivity extends BaseActivity implements Url {
     }
 
 
-    @OnClick({R.id.login_close_iv, R.id.login_land, R.id.login_btn_create})
+    @OnClick({R.id.login_close_iv, R.id.login_land, R.id.login_btn_create, R.id.sina_login, R.id.whechat_login})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.login_close_iv:
@@ -143,6 +152,77 @@ public class LoginActivity extends BaseActivity implements Url {
             case R.id.login_btn_create:
                 jumpToActivity(this, CreateAccountActivity.class, null);
                 break;
+            case R.id.sina_login:
+                ShareSDK.initSDK(this);
+                Platform platform = ShareSDK.getPlatform(SinaWeibo.NAME);
+                if (platform.isAuthValid()) {
+                    platform.removeAccount();
+                }
+                platform.setPlatformActionListener(new PlatformActionListener() {
+                    @Override
+                    public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
+
+                        String image = platform.getDb().getUserIcon();
+                        String name = platform.getDb().getUserName();
+                        String id = platform.getDb().getUserId();
+
+                        Map<String, String> params = new HashMap<>();
+                        params.put("wb_name", name);
+                        params.put("wb_ima", image);
+                      params.put("wb_id", id);
+                        params.put("iswb_orwx","1");
+                        NetHelper.getInstance().volleyPostTogetNetData("index.php/user/bundling", params, new VolleyNetListener() {
+                            @Override
+                            public void onSuccess(String string) {
+                                try {
+                                    Log.d("sssoginActivity", string);
+                                    JSONObject jsonObject = new JSONObject(string);
+                                    if (jsonObject.has("result")) {
+                                        String result = jsonObject.getString("result");
+                                        switch (result) {
+                                            case "":
+                                                String msg = jsonObject.getString("msg");
+                                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                                break;
+                                            case "1":
+                                                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
+                                                SharedPreferences.Editor editor = sharedPreferences.edit();
+                                                editor.putBoolean("isLogin", true);
+                                                editor.commit();
+                                                Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
+                                                finish();
+                                                break;
+                                        }
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            @Override
+                            public void onFail(String failStr) {
+                                Log.d("sssoginActivity", failStr);
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onError(Platform platform, int i, Throwable throwable) {
+
+                    }
+
+                    @Override
+                    public void onCancel(Platform platform, int i) {
+
+                    }
+                });
+                platform.SSOSetting(false);
+                platform.showUser(null);
+
+                break;
+            case R.id.whechat_login:
+
         }
     }
 
@@ -186,6 +266,14 @@ public class LoginActivity extends BaseActivity implements Url {
             }
         });
 
+    }
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
     }
 
 

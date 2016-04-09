@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.GoodShopSecondActivity;
 import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
@@ -82,7 +83,7 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
             mrtjViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, com.lanou.ourteam.mirrors.adpter.GoodShopSecondActivity.class);
+                    Intent intent = new Intent(context, GoodShopSecondActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("background", listEntity.getData_info().getGoods_img());
                     intent.putExtra("goodid", listEntity.getData_info().getGoods_id());
