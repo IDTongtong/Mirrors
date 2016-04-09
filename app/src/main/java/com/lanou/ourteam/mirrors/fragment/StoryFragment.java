@@ -26,7 +26,7 @@ import java.util.Map;
  */
 public class StoryFragment extends BaseFragment {
 
-TextView textViewToptv;
+    TextView textViewToptv;
     String title;
     private RecyclerView mRecyclerView;
     private NetHelper netHelper;
@@ -35,7 +35,7 @@ TextView textViewToptv;
     StoryBean storyBean;
     LinearLayout linearLayoutTop;
 
-    public static StoryFragment setUrlBodyGetInstance(String url_body,String title) {
+    public static StoryFragment setUrlBodyGetInstance(String url_body, String title) {
         StoryFragment instance = new StoryFragment();
         Bundle bundle = new Bundle();
         Log.d("StoryFragment", "1///" + url_body);
@@ -54,15 +54,15 @@ TextView textViewToptv;
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-textViewToptv = (TextView) view.findViewById(R.id.common_lay_toptv);
+        textViewToptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         mRecyclerView = bindViewById(view, R.id.common_frag_rc_view);
-      //  final MyPopWindow myPopWindow = new MyPopWindow(getContext());
+        //  final MyPopWindow myPopWindow = new MyPopWindow(getContext());
         //最上边字的点击事件
-        linearLayoutTop = (LinearLayout)view.findViewById(R.id.common_lay_yoplayout);
+        linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v,title);
+                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
 
                 // myPopWindow.showPopupWindow(v,title);
             }
@@ -76,7 +76,7 @@ textViewToptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         url_body = bundle.getString("url_body");
         title = bundle.getString("stroytitle");
         Log.d("MrtjFragment", "***   " + url_body);
-textViewToptv.setText(title);
+        textViewToptv.setText(title);
 
         mRecyclerView.setLayoutManager(lm);
         mAdapter = new StoryRvAdapter(context);
@@ -95,8 +95,8 @@ textViewToptv.setText(title);
             @Override
             public void onSuccess(String string) {
                 Log.d("MrtjFragment", "----" + string);
-                AnalyzeJson ananlyzeJson = new AnalyzeJson();
-                storyBean = ananlyzeJson.AnalyzeStory(string);
+                AnalyzeJson ananlyzeJson = AnalyzeJson.getInstance();
+                storyBean = ananlyzeJson.analyzeStory(string);
                 List<StoryBean.DataEntity.ListEntity> listEntityList = storyBean.getData().getList();
                 mAdapter.addData(listEntityList);
             }

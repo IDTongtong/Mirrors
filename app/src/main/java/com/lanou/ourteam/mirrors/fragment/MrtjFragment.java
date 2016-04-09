@@ -102,8 +102,8 @@ public class MrtjFragment extends BaseFragment {
             @Override
             public void onSuccess(String string) {
                 Log.d("MrtjFragment", "----" + string);
-                AnalyzeJson ananlyzeJson = new AnalyzeJson();
-                mrtjBean = ananlyzeJson.AnalyzeMrtj(string);
+                AnalyzeJson ananlyzeJson = AnalyzeJson.getInstance();
+                mrtjBean = ananlyzeJson.analyzeMrtj(string);
                 List<MrtjBean.DataEntity.ListEntity> listEntityList = mrtjBean.getData().getList();
                 mAdapter.addData(listEntityList);
             }

@@ -12,6 +12,9 @@ import org.json.JSONObject;
  */
 public class AnalyzeJson {
 
+    private static AnalyzeJson analyzeJsonInstance;
+
+
     private Gson gson;
 
 
@@ -24,9 +27,21 @@ public class AnalyzeJson {
 
 
 
-    public AnalyzeJson() {
+    private AnalyzeJson() {
         super();
         gson = new Gson();
+    }
+
+    public static AnalyzeJson getInstance() {
+        if (analyzeJsonInstance == null) {
+            synchronized (AnalyzeJson.class) {
+                if (analyzeJsonInstance == null) {
+                    analyzeJsonInstance = new AnalyzeJson();
+
+                }
+            }
+        }
+        return analyzeJsonInstance;
     }
 
     public GoodsListAllBean analyzeGoodsList(String string) {
@@ -43,7 +58,7 @@ public class AnalyzeJson {
 
 
 
-    public MrtjBean AnalyzeMrtj(String string) {
+    public MrtjBean analyzeMrtj(String string) {
         try {
             JSONObject jsonObject = new JSONObject(string);
             mrtjBean = gson.fromJson(jsonObject.toString(), MrtjBean.class);
@@ -56,7 +71,7 @@ public class AnalyzeJson {
     }
 
 
-    public StoryBean AnalyzeStory(String string) {
+    public StoryBean analyzeStory(String string) {
         try {
             JSONObject jsonObject = new JSONObject(string);
             storyBean = gson.fromJson(jsonObject.toString(), StoryBean.class);
@@ -66,7 +81,7 @@ public class AnalyzeJson {
         }
         return storyBean;
     }
-    public UserBean AnalyzeUser(String string) {
+    public UserBean analyzeUser(String string) {
         Log.d("AnalyzeJson", "上");
 
         try {

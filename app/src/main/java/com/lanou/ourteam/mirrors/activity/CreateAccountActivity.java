@@ -104,8 +104,9 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                                 Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
                                 break;
                             case "1":
-                                AnalyzeJson gson = new AnalyzeJson();
-                                data = gson.AnalyzeUser(string);
+//                                AnalyzeJson gson = new AnalyzeJson();
+                                AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
+                                data = analyzeJson.analyzeUser(string);
                                 //TODO 对data 做后续操作
                                 Bundle bundle = new Bundle();
                                 bundle.putString("phoneNum", createPhoneEt.getText().toString());

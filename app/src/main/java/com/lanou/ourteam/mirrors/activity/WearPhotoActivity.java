@@ -68,9 +68,9 @@ public class WearPhotoActivity extends BaseActivity {
             @Override
             public void onSuccess(String string) {
 
-                AnalyzeJson analyzeJson = new AnalyzeJson();
-
+                AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 GoodsItemBean goodsItemBean = analyzeJson.analyzeGoodsItem(string);
+
                 Log.d("WearPhotoActivity", "&&&&&" + goodsItemBean.getData().getWear_video().get(0).getData());
 
                 mAdapter = new WearPhoRvAdapter(WearPhotoActivity.this);

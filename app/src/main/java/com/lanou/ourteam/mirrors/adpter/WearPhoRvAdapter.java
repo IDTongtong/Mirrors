@@ -78,12 +78,14 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 break;
             case TYPE_PICTURE:
                 CommonHolder commonHolder = (CommonHolder) holder;
-                ImageLoader.ImageListener imageListener = imageLoader.getImageListener(
-                        commonHolder.imageView,
-                        R.mipmap.loading,
-                        R.mipmap.ic_launcher
-                );
-                imageLoader.get(list.get(position).getData(), imageListener, 1280, 1280);
+//                ImageLoader.ImageListener imageListener = imageLoader.getImageListener(
+//                        commonHolder.imageView,
+//                        R.mipmap.loading,
+//                        R.mipmap.ic_launcher
+//                );
+//                imageLoader.get(list.get(position).getData(), imageListener, 1280, 1280);
+
+                netHelper.loadImageWithVolley(commonHolder.imageView, list.get(position).getData());
                 break;
 
         }

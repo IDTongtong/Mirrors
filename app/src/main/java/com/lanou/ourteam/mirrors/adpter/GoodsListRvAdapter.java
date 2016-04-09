@@ -68,31 +68,10 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
-//        GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
-//
-//        holder.goodsNameTv.setText(listEntity.getGoods_name());
-//        holder.productAreaTv.setText(listEntity.getProduct_area());
-//        holder.brandTv.setText(listEntity.getBrand());
-//        Log.d("GoodsListRvAdapter", "产地::" + listEntity.getProduct_area());
-//
-//
 //        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
 //                holder.picIv,
 //                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
-//        String goods_img = listEntity.getGoods_img();
-//        Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
-//        imageLoader.get(goods_img, imageListener);
-//
-//
-////        Picasso.with(context).load(goods_img).into(holder.picIv);
-
-        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                holder.picIv,
-                R.mipmap.ic_launcher,
-                R.mipmap.loading);
+//                R.mipmap.loading);
         if (CommonUtils.isNetworkAvailable()) {
 
             final GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);
@@ -105,7 +84,7 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
             holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,GoodShopSecondActivity.class);
+                    Intent intent = new Intent(context, GoodShopSecondActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     intent.putExtra("background", listEntity.getGoods_img());
                     intent.putExtra("goodid", listEntity.getGoods_id());
@@ -118,10 +97,10 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
 
             String goods_img = listEntity.getGoods_img();
             Log.d("GoodsListRvAdapter", "图片网址:" + goods_img);
-            imageLoader.get(goods_img, imageListener,400,200);
 
+//            imageLoader.get(goods_img, imageListener,400,200);
+            netHelper.loadImageWithVolley(holder.picIv, goods_img);
 
-//        Picasso.with(context).load(goods_img).into(holder.picIv);
 
 
 
@@ -154,7 +133,9 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
             holder.goodsPriceTv.setText(goodsItemEntity.getGoods_price());
             holder.productAreaTv.setText(goodsItemEntity.getProduce_area());
             holder.brandTv.setText(goodsItemEntity.getBrand());
-            imageLoader.get(goodsItemEntity.getGoods_img(), imageListener);
+
+           // imageLoader.get(goodsItemEntity.getGoods_img(), imageListener);
+            netHelper.loadImageWithVolley(holder.picIv, goodsItemEntity.getGoods_img());
 
             holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -108,12 +108,12 @@ public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.Lis
         StoryViewHolder storyViewHolder = (StoryViewHolder) holder;
 
 
-        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                storyViewHolder.picIv,
-                R.mipmap.ic_launcher,
-                R.mipmap.loading
-
-        );
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                storyViewHolder.picIv,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading
+//
+//        );
         if (CommonUtils.isNetworkAvailable()) {
 
             listEntity = list.get(position);
@@ -134,8 +134,9 @@ public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.Lis
 
             String goods_img = listEntity.getStory_img();
             Log.d("StoryRvAdapter", "图片网址:" + goods_img);
-            imageLoader.get(goods_img, imageListener,400,200);
 
+//            imageLoader.get(goods_img, imageListener,400,200);
+            netHelper.loadImageWithVolley(storyViewHolder.picIv,goods_img);
 
             storyViewHolder.story_titleTv.setText(listEntity.getStory_title());
 
@@ -176,7 +177,10 @@ public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.Lis
             //没网时 从数据库取
             StoryItemEntity storyItemEntity = storyItemEntityList.get(position);
             storyViewHolder.story_titleTv.setText(storyItemEntity.getStory_title());
-            imageLoader.get(storyItemEntity.getStory_img(), imageListener);
+
+//            imageLoader.get(storyItemEntity.getStory_img(), imageListener);
+            netHelper.loadImageWithVolley(storyViewHolder.picIv,storyItemEntity.getStory_img());
+
 
             storyViewHolder.picIv.setOnClickListener(new View.OnClickListener() {
                 @Override

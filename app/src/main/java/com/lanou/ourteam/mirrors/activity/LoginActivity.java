@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
-import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.UserBean;
 import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;

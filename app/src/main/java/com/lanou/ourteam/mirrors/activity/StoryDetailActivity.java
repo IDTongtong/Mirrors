@@ -103,7 +103,7 @@ public class StoryDetailActivity extends BaseActivity {
             public void onSuccess(String string) {
                 Log.d("StoryDetailActivity", "String 故事详情:" + string);
 
-                AnalyzeJson ananlyzeJson = new AnalyzeJson();
+                AnalyzeJson ananlyzeJson = AnalyzeJson.getInstance();
                 storyItemBean = ananlyzeJson.analyzeStoryItem(string);
 
 

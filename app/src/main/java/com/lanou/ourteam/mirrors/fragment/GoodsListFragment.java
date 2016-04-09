@@ -117,8 +117,9 @@ public class GoodsListFragment extends BaseFragment {
             @Override
             public void onSuccess(String string) {
                 Log.d("GoodsListFragment", "voley得到数据:" + string);
-                AnalyzeJson ananlyzeJson = new AnalyzeJson();
-                goodsListAllBean = ananlyzeJson.analyzeGoodsList(string);
+//                AnalyzeJson ananlyzeJson = new AnalyzeJson();
+                AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
+                goodsListAllBean = analyzeJson.analyzeGoodsList(string);
                 Log.d("GoodsListFragment", "***" + goodsListAllBean.getData().getList().get(0).getGoods_img());
                 mAdapter.initData(goodsListAllBean);
                 textViewToptv.setText(title);

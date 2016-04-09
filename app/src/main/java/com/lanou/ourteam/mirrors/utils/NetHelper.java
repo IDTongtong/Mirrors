@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Environment;
 import android.support.v4.util.LruCache;
 import android.util.Log;
+import android.widget.ImageView;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.RequestQueue;
@@ -14,6 +15,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.squareup.okhttp.Callback;
@@ -23,6 +25,7 @@ import com.squareup.okhttp.Request;
 
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
+import com.squareup.picasso.Picasso;
 
 
 import java.io.File;
@@ -128,6 +131,76 @@ public class NetHelper {
     public ImageLoader getImageLoader() {
         return imageLoader;
     }
+
+
+    public void loadImageWithVolley(ImageView imageView, String image_rul) {
+        ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
+                R.mipmap.loading,
+                R.mipmap.fail);
+        imageLoader.get(image_rul, imageListener, 480, 800, ImageView.ScaleType.FIT_XY);
+
+    }
+
+    public void loadImageWithVolley(ImageView imageView, String image_rul,int targetWidth, int targetHeight) {
+        ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
+                R.mipmap.loading,
+                R.mipmap.fail);
+        imageLoader.get(image_rul, imageListener, targetWidth, targetHeight, ImageView.ScaleType.FIT_XY);
+
+    }
+
+    public void loadImageWithPicasso(ImageView imageView, String image_url) {
+        Picasso.with(imageView.getContext())
+                .load(image_url)
+
+                .centerCrop()
+                .placeholder(R.mipmap.loading)
+                .error(R.mipmap.fail)
+                .into(imageView);
+//        Picasso.with( imageView.getContext() )
+//         .load(url)
+//         .resize(dp2px(250), dp2px(250))
+//         .centerCrop()
+//         .into(imageView);
+
+
+    }
+
+    public void loadImageWithPicasso(ImageView imageView, String image_url, int targetWidth, int targetHeight) {
+        Picasso.with(imageView.getContext())
+                .load(image_url)
+                .resize(targetWidth, targetHeight)
+                .centerCrop()//缩放方式
+                .placeholder(R.mipmap.loading)
+                .error(R.mipmap.fail)
+                .into(imageView);
+
+    }
+
+    public void loadBigImageWithPicasso(ImageView imageView, String image_url) {
+
+        /**
+         * Indicate that this action should not use the memory cache for attempting to load or save the
+         * image. This can be useful when you know an image will only ever be used once (e.g., loading
+         * an image from the filesystem and uploading to a remote server).
+         * 不用 memory cache load 或者 save
+         * 常用于,已经知道,一个图片,将只被使用一次,
+         * 不如 从 文件系统加载一张图,然后上传到远端服务器
+         */
+
+        Picasso.with(imageView.getContext())
+                .load(image_url)
+                .skipMemoryCache()
+                .placeholder(R.mipmap.loading)
+                .error(R.mipmap.fail)
+                .into(imageView);
+    }
+
+
+
+
+
+
 
     public class MemoryCache implements
             ImageLoader.ImageCache {

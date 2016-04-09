@@ -66,10 +66,10 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
 
 
         MrtjViewHolder mrtjViewHolder = (MrtjViewHolder) holder;
-        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-                mrtjViewHolder.picIv,
-                R.mipmap.ic_launcher,
-                R.mipmap.loading);
+//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+//                mrtjViewHolder.picIv,
+//                R.mipmap.ic_launcher,
+//                R.mipmap.loading);
 
         if (CommonUtils.isNetworkAvailable()) {
             //bindview 相关 from here
@@ -93,7 +93,8 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
 
             String goods_img = listEntity.getData_info().getGoods_img();
             Log.d("MrtjRvAdapter", "图片网址:" + goods_img);
-            imageLoader.get(goods_img, imageListener,400,200);
+//            imageLoader.get(goods_img, imageListener,400,200);
+            netHelper.loadImageWithVolley(mrtjViewHolder.picIv, goods_img);
 
             //bindview 相关 up here
 
@@ -132,7 +133,10 @@ public class MrtjRvAdapter<ListEntity> extends BaseRecyclerAdapter {
                 mrtjViewHolder.goodsPriceTv.setText(mrtjItemEntity.getGoods_price());
                 mrtjViewHolder.productAreaTv.setText(mrtjItemEntity.getProduce_area());
                 mrtjViewHolder.brandTv.setText(mrtjItemEntity.getBrand());
-                imageLoader.get(mrtjItemEntity.getGoods_img(), imageListener);
+
+//                imageLoader.get(mrtjItemEntity.getGoods_img(), imageListener);
+                netHelper.loadImageWithVolley(mrtjViewHolder.picIv, mrtjItemEntity.getGoods_img());
+
                 mrtjViewHolder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
