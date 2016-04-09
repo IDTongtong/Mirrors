@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
 import com.lanou.ourteam.mirrors.bean.StoryDetailText;
+import com.lanou.ourteam.mirrors.bean.StoryItemBean;
 import com.lanou.ourteam.mirrors.fragment.StoryDetailFragment;
 
 import java.util.List;
@@ -18,29 +19,32 @@ public class StoryVerticalPagerAdapter extends FragmentPagerAdapter {
 
     private Context context;
 
-    private List<StoryDetailText> textList;
+    List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array;
 
-    public StoryVerticalPagerAdapter(FragmentManager fm, Context context) {
+
+    public StoryVerticalPagerAdapter(FragmentManager fm, Context context,
+                                     List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array) {
 
         super(fm);
         this.context = context;
+        this.text_array = text_array;
         Log.d("StoryVerticalPagerAdapt", "故事详情vp 是否执行");
 
     }
 
 
-    public void initData(List<StoryDetailText> textList) {
-        this.textList = textList;
-
-
-    }
+//    public void initData(List<StoryDetailText> textList) {
+//        this.textList = textList;
+//
+//
+//    }
 
     @Override
     public Fragment getItem(int position) {
         StoryDetailFragment storyDetailFragment = StoryDetailFragment.setDataGetInstance();
 
 
-        storyDetailFragment.setData(textList, position);
+        storyDetailFragment.setData(text_array, position);
 
         return storyDetailFragment;
 
@@ -49,7 +53,7 @@ public class StoryVerticalPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return textList.size();
+        return text_array.size();
 //        return 10;
     }
 }

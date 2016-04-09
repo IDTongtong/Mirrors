@@ -24,4 +24,7 @@ public class Content {
    //goods_info 每条商品的 数据
 
     public static final String GOODS_INFO = "index.php/products/goods_info";
+
+    //故事详情
+    public static final String STORY_INFO = "index.php/story/info";
 }
