@@ -9,6 +9,7 @@ import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.StoryBean;
 import com.lanou.ourteam.mirrors.bean.StoryDetailText;
+import com.lanou.ourteam.mirrors.bean.StoryItemBean;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.List;
@@ -19,11 +20,10 @@ import java.util.List;
 public class StoryDetailFragment extends BaseFragment{
 
 
-    private StoryBean.DataEntity.ListEntity listEntity;
-    private List<StoryDetailText> textList;
+    List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array;
     private TextView smallTitleTv, titleTv, subTitleTv;
-    private NetHelper netHelper;
-    String backIv_url, smallTitle, title, subTitle;
+    String smallTitle, title, subTitle;
+
 
     public static StoryDetailFragment setDataGetInstance() {
 
@@ -31,13 +31,12 @@ public class StoryDetailFragment extends BaseFragment{
         return instance;
     }
 
-    public void setData( List<StoryDetailText> textList, int position) {
+    public void setData( List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array, int position) {
 
-        this.textList = textList;
-        backIv_url = textList.get(position).getImg_array();
-        smallTitle = textList.get(position).getSmallTitle();
-        title = textList.get(position).getTitle();
-        subTitle = textList.get(position).getSubTitle();
+        this.text_array = text_array;
+        smallTitle = text_array.get(position).getSmallTitle();
+        title = text_array.get(position).getTitle();
+        subTitle = text_array.get(position).getSubTitle();
     }
 
     @Override
@@ -45,7 +44,6 @@ public class StoryDetailFragment extends BaseFragment{
         super.onViewCreated(view, savedInstanceState);
 
 
-        // backIv = bindViewById(view, R.id.fragment_story_detail_back_iv);
         smallTitleTv = bindViewById(view, R.id.fragment_story_detail_smallTitle);
         titleTv = bindViewById(view, R.id.fragment_story_detail_title);
         subTitleTv = bindViewById(view, R.id.fragment_story_detail_subTitle);
