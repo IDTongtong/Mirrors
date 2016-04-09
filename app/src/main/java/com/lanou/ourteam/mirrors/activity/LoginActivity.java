@@ -164,7 +164,7 @@ public class LoginActivity extends BaseActivity implements Url {
                         String image = platform.getDb().getUserIcon();
                         String name = platform.getDb().getUserName();
                         String id = platform.getDb().getUserId();
-                        NetHelper netHelper = NetHelper.getInstance();
+
                         Map<String, String> params = new HashMap<>();
                         params.put("wb_name", name);
                         params.put("wb_ima", image);

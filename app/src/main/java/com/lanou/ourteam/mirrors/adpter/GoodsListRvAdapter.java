@@ -14,13 +14,14 @@ import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.GoodShopSecondActivity;
 import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.GoodsItemEntity;
 import com.lanou.ourteam.mirrors.utils.CommonUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
-import com.lanou.ourteam.mirrors.adpter.GoodShopSecondActivity;
+
 
 import java.util.List;
 

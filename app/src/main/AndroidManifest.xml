@@ -50,7 +50,7 @@
         <activity android:name=".activity.StoryDetailActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.CreateAccountActivity" />
-        <activity android:name=".adpter.GoodShopSecondActivity"/>
+        <activity android:name=".activity.GoodShopSecondActivity"/>
         <activity android:name=".activity.WearPhotoActivity"/>
         <!-- ***************************************************mob分享-->
         <activity

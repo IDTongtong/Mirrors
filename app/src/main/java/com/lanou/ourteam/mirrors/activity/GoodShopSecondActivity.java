@@ -1,4 +1,4 @@
-package com.lanou.ourteam.mirrors.adpter;
+package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,17 +6,20 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.WearPhotoActivity;
+import com.lanou.ourteam.mirrors.adpter.GoodShopSecondActivityAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.GoodsDetailsBean;
@@ -149,7 +152,6 @@ public class GoodShopSecondActivity extends BaseActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Log.d("fffGoodShopSecondActivity", "value:" + value);
                 if (dyUp) {//判断滑动方向  dy>0为上滑
 
                     //该数值为滑动到recycleview第三个布局by滑动的数值范围
@@ -204,6 +206,7 @@ public class GoodShopSecondActivity extends BaseActivity {
     }
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -216,4 +219,7 @@ public class GoodShopSecondActivity extends BaseActivity {
         WearPhotoActivity.startWearPhotoActivity(this,goodsid);
 
     }
+
+
+
 }

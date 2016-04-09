@@ -5,11 +5,13 @@ import android.content.SharedPreferences;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
@@ -38,6 +40,8 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * Created by dllo on 16/4/7.
  */
 public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
+    //******
+
     //接口传position
     PoisitionListener poisitionListener;
     private int layoutScrollValue, valueDy;
@@ -112,10 +116,15 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
              @Override
              public void onClick(View v) {
 
-                 ShareUtils.showShare(position,datas.getData().getGoods_share());
+                 ShareUtils.showShare(position, datas.getData().getGoods_share());
              }
          });
 
+            //设置透明度的变化
+            headViewHolder.relativeLayoutHead.getBackground().setAlpha(layoutScrollValue/5);
+
+
+            Log.d("fffGoodShopSecondActivityA", "layoutScrollValue:" + layoutScrollValue);
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
 
@@ -134,6 +143,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             goodsTitleViewHolder.goodsTitleCountryTv.setText(datas.getData().getGoods_data().get(0).getCountry());
             goodsTitleViewHolder.goodsTitleEnglishTv.setText(datas.getData().getGoods_data().get(0).getEnglish());
             goodsTitleViewHolder.goodsTitleIntroContent.setText(datas.getData().getGoods_data().get(0).getIntroContent());
+            goodsTitleViewHolder.goodsTitleRelativeLayout.getBackground().setAlpha(255);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsTitleViewHolder.goodsTitleRelativeLayout.getLayoutParams();
             params.setMargins(0, (int) (100 + (valueTitle * 0.1)), ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             goodsTitleViewHolder.goodsTitleRelativeLayout.setLayoutParams(params);
@@ -145,12 +155,12 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
             GoodsDetailsViewHolder goodsDetailsViewHolder = (GoodsDetailsViewHolder) holder;
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsDetailsViewHolder.goodsDetailsRelativeLayout.getLayoutParams();
-            int detailsHeight = goodsDetailsViewHolder.detailsRelativeLayoutAll.getHeight();
 
 
             params.setMargins(0, (int) (150 + (valueTitle * 0.25) + position * 250), 0, 0);
 
             goodsDetailsViewHolder.goodsDetailsRelativeLayout.setLayoutParams(params);
+            goodsDetailsViewHolder.goodsDetailsRelativeLayout.getBackground().setAlpha(255);
             // Log.d("GoodShopSecondActivityA", "datas.getData().getDesign_des().size()+2:" + (datas.getData().getDesign_des().size() + 2));
 
 
@@ -268,5 +278,6 @@ private  ImageView imageViewShare;
 
         }
     }
+
 
 }
