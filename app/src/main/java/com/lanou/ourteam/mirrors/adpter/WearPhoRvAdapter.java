@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.lanou.ourteam.mirrors.bean.GoodsItemBean;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 
@@ -35,12 +37,18 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
     private NetHelper netHelper;
     private ImageLoader imageLoader;
 
+
+    private List<String> image_url_list = new ArrayList<>();
+
     public WearPhoRvAdapter(Context context) {
         super(context);
         this.context = context;
         inflater = LayoutInflater.from(context);
         netHelper = NetHelper.getInstance();
         imageLoader = netHelper.getImageLoader();
+
+
+
     }
 
     @Override
@@ -122,18 +130,28 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
 
         @Override
         public void onClick(View v) {
+
+
+            for (int i = 0; i < list.size(); i++) {
+                String type = list.get(i).getType();
+                if (!type.equals("8")) {
+                    String image_url = list.get(i).getData();
+                    image_url_list.add(image_url);
+                }
+            }
             Intent intent = new Intent(context, PicDetailsActivity.class);
-            //  intent.putExtra("images", (ArrayList<String>) datas);//非必须
+            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
+            intent.putStringArrayListExtra("images", (ArrayList<String>) image_url_list);
             intent.putExtra("position", position);
             int[] location = new int[2];
-            imageView.getLocationOnScreen(location);
+            imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
             intent.putExtra("locationX", location[0]);//必须
             intent.putExtra("locationY", location[1]);//必须
 
             intent.putExtra("width", imageView.getWidth());//必须
             intent.putExtra("height", imageView.getHeight());//必须
             context.startActivity(intent);
-         //   overridePendingTransition(0, 0);
+
 
         }
     }
