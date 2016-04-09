@@ -17,6 +17,9 @@
     <string name="login_createaccount">創建賬號</string>
     <string name="phonenum_input">手機號</string>
     <string name="login">賬號登錄</string>
+    <string name="story_detail_title_text">這些才是真正的時尚電影</string>
+    <string name="story_detail_subtitle">似乎每个想踏进时尚圈的人，都热衷于把《穿Prada的女魔头》挂在口中，还有很多电影纪录片，或者与时尚有关的电影，值得我们去细细品味。</string>
+    <string name="story_detail_smallTitle_text">忘了《穿Prada的女魔頭》</string>
 
 
 </resources>

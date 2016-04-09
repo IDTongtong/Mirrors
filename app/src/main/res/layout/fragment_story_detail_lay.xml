@@ -6,7 +6,7 @@
 <RelativeLayout
 
     android:layout_centerInParent="true"
-    android:layout_width="640px"
+    android:layout_width="@dimen/story_detail_width"
     android:layout_height="wrap_content"
     android:background="@drawable/show_06_border"
     >
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/story_detail_smalltitle_matgintop"
-            android:text="忘了《穿Prada的女魔頭》"
+            android:text="@string/story_detail_smallTitle_text"
             android:textColor="@color/text_white"
             android:textSize="@dimen/story_detail_text_size_22px"
 
@@ -34,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/story_detail_title_matgintop"
-            android:text="這些才是真正的時尚電影"
+            android:text="@string/story_detail_title_text"
             android:textColor="@color/text_white"
             android:textSize="@dimen/story_detail_text_size_34px" />
 
@@ -43,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/story_detail_subtitle_matgintop"
-            android:text="似乎每个想踏进时尚圈的人，都热衷于把《穿Prada的女魔头》挂在口中，还有很多电影纪录片，或者与时尚有关的电影，值得我们去细细品味。"
+            android:text="@string/story_detail_subtitle"
             android:textColor="@color/text_white"
             android:textSize="@dimen/story_detail_text_size_20px" />
 

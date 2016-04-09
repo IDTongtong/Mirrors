@@ -5,7 +5,7 @@
         android:fromXScale="1.1"
         android:fromYScale="1.1"
         android:pivotX="50%"
-        android:pivotY="50%"
+        android:pivotY="100%"
         android:toXScale="1"
         android:toYScale="1"
         android:fillEnabled="true"/>

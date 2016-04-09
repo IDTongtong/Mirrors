@@ -104,7 +104,12 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             headViewHolder.headBrandTv.setText(datas.getData().getBrand());
             headViewHolder.headInfoDesTv.setText(datas.getData().getInfo_des());
             headViewHolder.headGoodsPriceTv.setText(datas.getData().getGoods_price());
+         headViewHolder.imageViewShare.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
 
+             }
+         });
 
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
@@ -136,7 +141,10 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             GoodsDetailsViewHolder goodsDetailsViewHolder = (GoodsDetailsViewHolder) holder;
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsDetailsViewHolder.goodsDetailsRelativeLayout.getLayoutParams();
             int detailsHeight = goodsDetailsViewHolder.detailsRelativeLayoutAll.getHeight();
-            params.setMargins(0, (int) (100 + (valueTitle * 0.17) + position * 200), 0, 0);
+
+
+            params.setMargins(0, (int) (150 + (valueTitle * 0.25) + position * 250), 0, 0);
+
             goodsDetailsViewHolder.goodsDetailsRelativeLayout.setLayoutParams(params);
             // Log.d("GoodShopSecondActivityA", "datas.getData().getDesign_des().size()+2:" + (datas.getData().getDesign_des().size() + 2));
 
@@ -145,7 +153,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
                 goodsDetailsViewHolder.goodsDetailsDetailsName.setText(datas.getData().getGoods_data().get(position - 2).getName());
                 goodsDetailsViewHolder.goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
-            } else if (position == datas.getData().getDesign_des().size() + 1) {
+            } else {
                 //涉及到recycleview横布局的复用 必须让他强行显示
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.GONE);
             }
@@ -195,16 +203,17 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         //需要网络解析的数据
         private TextView headGoodsNameTv, headBrandTv, headInfoDesTv, headGoodsPriceTv;
         private RelativeLayout relativeLayoutHead;
-
+private  ImageView imageViewShare;
         public HeadViewHolder(View itemView) {
             super(itemView);
             headGoodsNameTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_name);
             headBrandTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_brand);
             headInfoDesTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_info_des);
             headGoodsPriceTv = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_head_goods_price);
-
+       imageViewShare = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_head_share);
             relativeLayoutHead = (RelativeLayout) itemView.findViewById(R.id.
                     item_goodsfragment_content_head_relativelayout);
+
             // relativeLayoutHead.
         }
     }
@@ -254,5 +263,32 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
         }
     }
-
+//    private void showShare() {
+//        ShareSDK.initSDK(this);
+//        OnekeyShare oks = new OnekeyShare();
+//        //关闭sso授权
+//        oks.disableSSOWhenAuthorize();
+//
+//// 分享时Notification的图标和文字  2.5.9以后的版本不调用此方法
+//        //oks.setNotification(R.drawable.ic_launcher, getString(R.string.app_name));
+//        // title标题，印象笔记、邮箱、信息、微信、人人网和QQ空间使用
+//        oks.setTitle("分享");
+//        // titleUrl是标题的网络链接，仅在人人网和QQ空间使用
+//        oks.setTitleUrl("http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=" + text);
+//        // text是分享文本，所有平台都需要这个字段
+//        oks.setText("我是分享文本");
+//        // imagePath是图片的本地路径，Linked-In以外的平台都支持此参数
+//        //oks.setImagePath("/sdcard/test.jpg");//确保SDcard下面存在此张图片
+//        // url仅在微信（包括好友和朋友圈）中使用
+//        oks.setUrl("http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=" + text);
+//        // comment是我对这条分享的评论，仅在人人网和QQ空间使用
+//        oks.setComment("我是测试评论文本");
+//        // site是分享此内容的网站名称，仅在QQ空间使用
+//        oks.setSite(getString(R.string.app_name));
+//        // siteUrl是分享此内容的网站地址，仅在QQ空间使用
+//        oks.setSiteUrl("http://3g.163.com/ntes/special/0034073A/wechat_article.html?docid=" + text);
+//
+//// 启动分享GUI
+//        oks.show(this);
+//    }
 }
