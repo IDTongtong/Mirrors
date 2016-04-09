@@ -34,7 +34,7 @@ public class StoryDetailActivity extends BaseActivity {
 
     private ImageView backIv;
     private NetHelper netHelper;
-    private ImageLoader imageLoader;
+//    private ImageLoader imageLoader;
     private String backIv_url;
 
     List<String> img_array;
@@ -81,7 +81,7 @@ public class StoryDetailActivity extends BaseActivity {
 
         );
 
-        imageLoader = netHelper.getImageLoader();
+//        imageLoader = netHelper.getImageLoader();
 
 //        Bundle bundle = getIntent().getExtras();
 //        textList = (List<StoryDetailText>) bundle.getSerializable("textList");
@@ -117,8 +117,8 @@ public class StoryDetailActivity extends BaseActivity {
                 mVerticalPager.setAdapter(mAdapter);
 
                 //有网时 通过网络拉取图片,没网时 进不来 保证 进来 就有图,而不是 viewpager滑一次 才有图
-                imageLoader.get(backIv_url, imageListener, 768, 1280);
-
+//                imageLoader.get(backIv_url, imageListener, 768, 1280);
+                netHelper.loadImageWithVolley(backIv,backIv_url);
 
             }
 
@@ -148,7 +148,8 @@ public class StoryDetailActivity extends BaseActivity {
                 Log.d("StoryDetailActivity", "2");
 
                 backIv_url = img_array.get(position);
-                imageLoader.get(backIv_url, imageListener);
+//                imageLoader.get(backIv_url, imageListener);
+                netHelper.loadImageWithVolley(backIv,backIv_url);
 
 
             }

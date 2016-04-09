@@ -4,9 +4,4 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.lanou.ourteam.mirrors.common.customhem.SmoothImageView
-        android:id="@+id/wear_pic_detail_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
 </LinearLayout>

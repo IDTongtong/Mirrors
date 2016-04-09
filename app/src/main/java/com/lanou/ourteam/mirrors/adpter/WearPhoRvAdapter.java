@@ -35,18 +35,13 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
     private Context context;
     private LayoutInflater inflater;
     private NetHelper netHelper;
-    private ImageLoader imageLoader;
 
-
-    private List<String> image_url_list = new ArrayList<>();
 
     public WearPhoRvAdapter(Context context) {
         super(context);
         this.context = context;
         inflater = LayoutInflater.from(context);
         netHelper = NetHelper.getInstance();
-        imageLoader = netHelper.getImageLoader();
-
 
 
     }
@@ -80,25 +75,59 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
+        List<String> videoList = new ArrayList<>();
+        final List<String> imageList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            String type = list.get(i).getType();
+            if (type.equals("8")) {
+                videoList.add(list.get(i).getData());
+                Log.d("WearPhoRvAdapter", "QQQQ   " + list.get(i).getData());
+            }
+            if (!type.equals("8")) {
+                imageList.add(list.get(i).getData());
+                Log.d("WearPhoRvAdapter", "WWWW   " + list.get(i).getData());
+            }
+
+        }
+
+
         this.position = position;
         int viewType = getItemViewType(position);
         switch (viewType) {
             case TYPE_VIDEO:
                 VideoHolder videoHolder = (VideoHolder) holder;
-                videoHolder.jcVideoPlayer.setUp(list.get(position).getData(), "", false);
-                Log.d("WearPhoRvAdapter", "视频地址:" + list.get(position).getData());
+
+                Log.d("WearPhoRvAdapter", "视频list 大小:  " + videoList.size());
+                videoHolder.jcVideoPlayer.setUp(videoList.get(0), "", false);
+
                 break;
             case TYPE_PICTURE:
-                CommonHolder commonHolder = (CommonHolder) holder;
-//                ImageLoader.ImageListener imageListener = imageLoader.getImageListener(
-//                        commonHolder.imageView,
-//                        R.mipmap.loading,
-//                        R.mipmap.ic_launcher
-//                );
-//                imageLoader.get(list.get(position).getData(), imageListener, 1280, 1280);
 
-                netHelper.loadImageWithVolley(commonHolder.imageView, list.get(position).getData());
+                final CommonHolder commonHolder = (CommonHolder) holder;
+                Log.d("WearPhoRvAdapter", "图片list 大小:  " + imageList.size());
+
+                netHelper.loadImageWithVolley(commonHolder.imageView, imageList.get(position - 1));
+                commonHolder.imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+            Intent intent = new Intent(context, PicDetailsActivity.class);
+            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
+            intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
+            intent.putExtra("position", position);
+            int[] location = new int[2];
+            commonHolder.imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
+            intent.putExtra("locationX", location[0]);//必须
+            intent.putExtra("locationY", location[1]);//必须
+
+            intent.putExtra("width", commonHolder.imageView.getWidth());//必须
+            intent.putExtra("height", commonHolder.imageView.getHeight());//必须
+            context.startActivity(intent);
+                    }
+                });
+
                 break;
 
         }
@@ -118,7 +147,7 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
         }
     }
 
-    class CommonHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class CommonHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageView;
         private LinearLayout linearLayout;
@@ -127,35 +156,28 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.wear_item_pic_iv);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.wear_item_pic_ll);
-            linearLayout.setOnClickListener(this);
+           // linearLayout.setOnClickListener(this);
         }
 
-        @Override
-        public void onClick(View v) {
-
-
-            for (int i = 0; i < list.size(); i++) {
-                String type = list.get(i).getType();
-                if (!type.equals("8")) {
-                    String image_url = list.get(i).getData();
-                    image_url_list.add(image_url);
-                }
-            }
-            Intent intent = new Intent(context, PicDetailsActivity.class);
-            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
-            intent.putStringArrayListExtra("images", (ArrayList<String>) image_url_list);
-            intent.putExtra("position", position);
-            int[] location = new int[2];
-            imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
-            intent.putExtra("locationX", location[0]);//必须
-            intent.putExtra("locationY", location[1]);//必须
-
-            intent.putExtra("width", imageView.getWidth());//必须
-            intent.putExtra("height", imageView.getHeight());//必须
-            context.startActivity(intent);
-
-
-        }
+//        @Override
+//        public void onClick(View v) {
+//
+//
+////            Intent intent = new Intent(context, PicDetailsActivity.class);
+////            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
+////            intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
+////            intent.putExtra("position", position);
+////            int[] location = new int[2];
+////            imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
+////            intent.putExtra("locationX", location[0]);//必须
+////            intent.putExtra("locationY", location[1]);//必须
+////
+////            intent.putExtra("width", imageView.getWidth());//必须
+////            intent.putExtra("height", imageView.getHeight());//必须
+////            context.startActivity(intent);
+//
+//
+//        }
     }
 
 

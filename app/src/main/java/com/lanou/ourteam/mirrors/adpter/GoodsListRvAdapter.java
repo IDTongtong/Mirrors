@@ -32,7 +32,7 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
     private LayoutInflater inflater;
     List<GoodsListAllBean.DataEntity.ListEntity> listEntityList;
     private NetHelper netHelper;
-    private ImageLoader imageLoader;
+    //private ImageLoader imageLoader;
     private GoodsListAllBean goodsListAllBean;
 
 
@@ -45,7 +45,7 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
         this.inflater = LayoutInflater.from(context);
 
         netHelper = NetHelper.getInstance();
-        imageLoader = netHelper.getImageLoader();
+        //imageLoader = netHelper.getImageLoader();
 
         daoEntityHelper = DaoEntityHelper.getInstance();
         type = category_id;

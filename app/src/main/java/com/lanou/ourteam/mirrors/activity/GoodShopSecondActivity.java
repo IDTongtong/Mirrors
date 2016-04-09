@@ -81,7 +81,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
         NetHelper.getInstance().getImageLoader().get(background, imageListener);
         Map<String, String> params = new HashMap();
- params.put("version","1.0.1");
+        params.put("version", "1.0.1");
         params.put("device_type", "3");
         params.put("goods_id", goodsid);
 
@@ -213,7 +213,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
     @OnClick(R.id.secondshop_wear_picyure)
     public void onClick() {
-        WearPhotoActivity.startWearPhotoActivity(this,goodsid);
+        WearPhotoActivity.startWearPhotoActivity(this, goodsid);
 
     }
 }

@@ -149,10 +149,10 @@ public class NetHelper {
 
     }
 
+    //有问题,不可调用 ,裁剪 添上 就好
     public void loadImageWithPicasso(ImageView imageView, String image_url) {
         Picasso.with(imageView.getContext())
                 .load(image_url)
-
                 .centerCrop()
                 .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)
