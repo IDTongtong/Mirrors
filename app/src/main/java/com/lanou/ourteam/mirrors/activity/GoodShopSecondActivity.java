@@ -94,13 +94,13 @@ public class GoodShopSecondActivity extends BaseActivity {
         params.put("version", "1.0.1");
         params.put("device_type", "3");
         params.put("goods_id", goodsid);
-
+        adapter = new GoodShopSecondActivityAdapter();
         NetHelper.getInstance().volleyPostTogetNetData(Content.GOODS_DETIALS_LIST, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
 
                 try {
-                    adapter = new GoodShopSecondActivityAdapter();
+
                     adapter.setPositionListener(new PoisitionListener() {
                         @Override
                         public void getPoisition(int poition) {
@@ -108,16 +108,18 @@ public class GoodShopSecondActivity extends BaseActivity {
                         }
                     });
                     //  adapter.setPositionListener(this);
-                    GridLayoutManager gm = new GridLayoutManager(BaseApplication.getContext(), 1);
-                    gm.setOrientation(LinearLayoutManager.VERTICAL);
-                    recyclerView.setLayoutManager(gm);
-                    recyclerView.setAdapter(adapter);
+
                     Gson gson = new Gson();
                     JSONObject jsonObject = new JSONObject(string);
                     GoodsDetailsBean goodsDetailsBean = gson.fromJson(jsonObject.toString(), GoodsDetailsBean.class);
                     //goods_id = goodsDetailsBean.getData().getGoods_id();
                     //Log.d("GoodShopSecondActivity", "*-*-*-" + goods_id);
                     adapter.addData(goodsDetailsBean);
+                    GridLayoutManager gm = new GridLayoutManager(BaseApplication.getContext(), 1);
+                    gm.setOrientation(LinearLayoutManager.VERTICAL);
+                    recyclerView.setLayoutManager(gm);
+
+                    recyclerView.setAdapter(adapter);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

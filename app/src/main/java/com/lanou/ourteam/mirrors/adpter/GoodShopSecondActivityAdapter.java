@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.toolbox.ImageLoader;
+import com.facebook.drawee.backends.pipeline.Fresco;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.lanou.ourteam.mirrors.R;
 
 
@@ -42,7 +45,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
 public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
     //******
     private NetHelper netHelper = NetHelper.getInstance();
-
+    Context contex2t;
 
     //接口传position
     PoisitionListener poisitionListener;
@@ -88,6 +91,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        Fresco.initialize(parent.getContext());
 
         if (viewType == TYPE_HEAD) {
             View view1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recyclerview_goodsfragment_content_head, null);
@@ -173,6 +177,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
                 goodsDetailsViewHolder.goodsDetailsIntroContent.setText(datas.getData().getGoods_data().get(position - 2).getIntroContent());
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.VISIBLE);
             } else {
+
                 //涉及到recycleview横布局的复用 必须让他强行显示
                 goodsDetailsViewHolder.goodsDetailsRelativeLayout.setVisibility(View.GONE);
             }
@@ -184,7 +189,9 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 //
 //            );
 //            NetHelper.getInstance().getImageLoader().get(datas.getData().getDesign_des().get(position - 2).getImg(), imageListener);
-            netHelper.loadBigImageWithPicasso(goodsDetailsViewHolder.goodsDetailsImg, datas.getData().getDesign_des().get(position - 2).getImg());
+            //  Uri imageUri = Uri.parse(datas.getData().getDesign_des().get(position - 2).getImg());
+            // goodsDetailsViewHolder.goodsDetailsImg.setImageURI(imageUri);
+            netHelper.loadImageWithVolley(goodsDetailsViewHolder.goodsDetailsImg, datas.getData().getDesign_des().get(position - 2).getImg(), 1000, 1200);
 
         }
 
