@@ -28,6 +28,7 @@
 
     <dimen name="text_size_30px">30px</dimen>
     <dimen name="text_size_24px">24px</dimen>
+    <dimen name="text_size_26px">26px</dimen>
 
 
     <dimen name="goods_list_item_margin_right">22px</dimen>
@@ -62,6 +63,38 @@
     <dimen name="story_detail_share_margin_bottom">40px</dimen>
     <dimen name="story_detail_share_margin_text_ll">50px</dimen>
     <dimen name="story_detail_share_margin_right">50px</dimen>
+
+    <!-- activity purchase dimens-->
+    <dimen name="activity_purchase_user_add_margin_top">40dp</dimen>
+    <dimen name="activity_purchase_margin_left">30px</dimen>
+    <dimen name="activity_purchase_goods_all_info_margin_top">40px</dimen>
+    <dimen name="activity_purchase_buy_btn_margin_top">50px</dimen>
+
+        <!-- 收件人 地址相关-->
+    <dimen name="address_receiver_margin_left">24px</dimen>
+    <dimen name="address_receiver_margin_top">40px</dimen>
+    <dimen name="address_add_margin_top">20px</dimen>
+    <dimen name="address_phone_num_margin_top">20px</dimen>
+    <dimen name="address_phone_num_margin_bottom">40px</dimen>
+    <dimen name="address_divider_height">1px</dimen>
+    <dimen name="address_change_insert_tv_height">80px</dimen>
+    <!-- 收件人 地址相关 up -->
+
+    <dimen name="activity_purchase_goods_name_margin_top">40px</dimen>
+    <dimen name="activity_purchase_goods_des_margin_top">30px</dimen>
+    <dimen name="activity_purchase_goods_price_margin_top">30px</dimen>
+    <dimen name="activity_purchase_goods_price_margin_bottom">30px</dimen>
+    <dimen name="activity_purchase_goods_price_textsize">24px</dimen>
+    <dimen name="activity_purchase_goods_iv_width">228px</dimen>
+    <dimen name="activity_purchase_goods_iv_height">228px</dimen>
+
+    <!--我的所有地址相关-->
+    <dimen name="activity_addlist_new_add_tv_height">160px</dimen>
+
+    <!--address_item 相关-->
+    <dimen name="address_list_item_height">188px</dimen>
+    <dimen name="address_list_item_delete_width">130px</dimen>
+    <dimen name="address_list_item_edit_margin_right">60px</dimen>
 
 
     <!-- up herer zh dimens-->

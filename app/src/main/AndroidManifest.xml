@@ -53,6 +53,8 @@
         <activity android:name=".activity.GoodShopSecondActivity"/>
         <activity android:name=".activity.WearPhotoActivity"/>
         <activity android:name=".activity.PicDetailsActivity"/>
+        <activity android:name=".activity.PurchaseActivity"/>
+        <activity android:name=".activity.AddressListActivity"/>
 
         <!-- ***************************************************mob分享-->
         <activity

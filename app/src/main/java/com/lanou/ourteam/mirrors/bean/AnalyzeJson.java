@@ -24,6 +24,7 @@ public class AnalyzeJson {
     UserBean userBean;
     GoodsItemBean goodsItemBean;
     StoryItemBean storyItemBean;
+    AddressListBean addressListBean;
 
 
 
@@ -108,4 +109,10 @@ public class AnalyzeJson {
         Log.d("AnanlyzeJson", "解析是否成功:" + storyItemBean.getData().getStory_data().getText_array().get(1).getGoodsname());
         return storyItemBean;
     }
+
+    public AddressListBean analyzeAddressList(String string) {
+        addressListBean = gson.fromJson(string, AddressListBean.class);
+        return addressListBean;
+    }
+
 }

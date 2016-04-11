@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f1f1f1"
+    android:orientation="vertical"
+    android:padding="30px">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/activity_order_detail"
+            android:textColor="@color/text_black"
+            android:textSize="34px" />
+
+        <ImageView
+            android:id="@+id/activity_purdetails_iv_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="16px"
+            android:src="@mipmap/close" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20px"
+        android:src="@mipmap/create_account_unline" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_purchase_user_add_margin_top"
+        android:background="@drawable/address_insert_bg"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/address_receiver_margin_left">
+
+        <TextView
+            android:id="@+id/activity_purchase_address_reciever_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/address_receiver_margin_top"
+            android:text="收件人:Mr.H"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_size_26px" />
+
+        <TextView
+            android:id="@+id/activity_purchase_address_add_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/address_add_margin_top"
+            android:text="地址:大连 software park"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_size_24px" />
+
+        <TextView
+            android:id="@+id/activity_purchase_address_phone_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/address_phone_num_margin_bottom"
+            android:layout_marginTop="@dimen/address_phone_num_margin_top"
+            android:text="17077777777"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_size_24px" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_divider_height"
+            android:background="@color/activity_purchase_address_divider_bg" />
+
+        <TextView
+            android:id="@+id/activity_purchase_address_changeoradd_tv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/address_change_insert_tv_height"
+            android:textColor="@color/text_black"
+            android:textSize="@dimen/text_size_26px"
+            android:gravity="center"
+            android:text="更改地址"
+            />
+
+    </LinearLayout>
+    <!--暂时注掉,不要删-->
+    <!--<EditText-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="180px"-->
+    <!--android:layout_marginTop="40px"-->
+    <!--android:background="@mipmap/address_input"-->
+    <!--android:gravity="top|left"-->
+    <!--android:hint="请填写收件人信息"-->
+    <!--android:padding="21px"-->
+    <!--android:textColorHint="#333"-->
+    <!--android:textSize="26px" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/activity_purdetails_tv_place"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="80px"-->
+    <!--android:layout_marginTop="1px"-->
+    <!--android:background="@mipmap/address_input"-->
+    <!--android:gravity="center"-->
+    <!--android:text="填写地址"-->
+    <!--android:textColor="#333"-->
+    <!--android:textSize="26px" />-->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_purchase_goods_all_info_margin_top"
+        android:background="@mipmap/address_input">
+
+        <ImageView
+            android:id="@+id/activity_purchase_goods_iv"
+            android:layout_width="@dimen/activity_purchase_goods_iv_width"
+            android:layout_height="@dimen/activity_purchase_goods_iv_height"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/activity_purchase_goods_iv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/activity_purchase_goods_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_purchase_goods_name_margin_top"
+                android:text="woodlike"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_size_30px" />
+
+            <TextView
+                android:id="@+id/activity_purchase_info_des_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_purchase_goods_des_margin_top"
+                android:maxLines="3"
+                android:text="啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦啦"
+                android:textColor="@color/text_black"
+                android:textSize="@dimen/text_size_30px" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/activity_purchase_goods_price_margin_bottom"
+                android:layout_marginTop="@dimen/activity_purchase_goods_price_margin_top"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/money" />
+
+                <TextView
+                    android:id="@+id/activity_purchase_goods_price_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8px"
+                    android:text="0.01"
+                    android:textColor="@color/activity_purchase_price"
+                    android:textSize="@dimen/activity_purchase_goods_price_textsize" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/activity_purdetails_btn"
+        android:layout_width="match_parent"
+        android:layout_height="80px"
+        android:layout_marginTop="50px"
+        android:background="@drawable/selector_create_account"
+        android:gravity="center"
+        android:text="确认下单"
+        android:textColor="#ffffff" />
+</com.zhy.autolayout.AutoLinearLayout>

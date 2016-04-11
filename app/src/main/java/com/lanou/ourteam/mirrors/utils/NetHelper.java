@@ -135,6 +135,13 @@ public class NetHelper {
     }
 
 
+    //慎用
+    public void loadOriginImageWithVolley(ImageView imageView, String image_rul) {
+        ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
+                R.mipmap.loading,
+                R.mipmap.fail);
+        imageLoader.get(image_rul, imageListener);
+    }
     public void loadImageWithVolley(ImageView imageView, String image_rul) {
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
                 R.mipmap.loading,
@@ -155,6 +162,7 @@ public class NetHelper {
     public void loadImageWithPicasso(ImageView imageView, String image_url) {
         Picasso.with(imageView.getContext())
                 .load(image_url)
+                .resize(480,800)
                 .centerCrop()
                 .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)

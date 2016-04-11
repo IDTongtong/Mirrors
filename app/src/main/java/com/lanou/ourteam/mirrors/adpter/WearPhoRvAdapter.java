@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -77,17 +78,25 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         List<String> videoList = new ArrayList<>();
+        String video_url = null;
+        String video_cover_url = null;
         final List<String> imageList = new ArrayList<>();
+
 
         for (int i = 0; i < list.size(); i++) {
             String type = list.get(i).getType();
             if (type.equals("8")) {
                 videoList.add(list.get(i).getData());
+                video_url = list.get(i).getData();
                 Log.d("WearPhoRvAdapter", "QQQQ   " + list.get(i).getData());
-            }
-            if (!type.equals("8")) {
-                imageList.add(list.get(i).getData());
+            }else if (type.equals("9")) {
+                video_cover_url = list.get(i).getData();
                 Log.d("WearPhoRvAdapter", "WWWW   " + list.get(i).getData());
+
+            }
+            else {
+                imageList.add(list.get(i).getData());
+                Log.d("WearPhoRvAdapter", "EEEE   " + list.get(i).getData());
             }
 
         }
@@ -100,7 +109,13 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 VideoHolder videoHolder = (VideoHolder) holder;
 
                 Log.d("WearPhoRvAdapter", "视频list 大小:  " + videoList.size());
-                videoHolder.jcVideoPlayer.setUp(videoList.get(0), "", false);
+//                videoHolder.jcVideoPlayer.setUp(videoList.get(0), "", false);
+                videoHolder.jcVideoPlayer.setUp(video_url, "", false);
+                ImageView ivThumb = videoHolder.jcVideoPlayer.ivThumb;
+
+//                netHelper.loadBigImageWithPicasso(ivThumb,video_cover_url);
+                netHelper.loadOriginImageWithVolley(ivThumb, video_cover_url);
+
 
                 break;
             case TYPE_PICTURE:
@@ -135,7 +150,7 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
 
     @Override
     public int getItemCount() {
-        return isLength() ? list.size() : 0;
+        return isLength() ? list.size() - 1 : 0;
     }
 
     class VideoHolder extends RecyclerView.ViewHolder {

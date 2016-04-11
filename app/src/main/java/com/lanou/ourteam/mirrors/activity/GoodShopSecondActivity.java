@@ -58,12 +58,15 @@ public class GoodShopSecondActivity extends BaseActivity {
     ImageView imageViewbackground;
     ////该步是第二种动画出现的步骤,暂未用上
 
-    ImageView imageViewReturn;
+    private ImageView imageViewReturn,purchaseIv;
 
     private String goodsid;
-    //private String goods_id;
 
     private NetHelper netHelper;
+
+    //购买相关 变量   暂不知道是 在确认下单 页 在此拉取,
+    private String goods_pic,goods_name,info_des,goods_price;
+
 
     @Override
     protected int setContent() {
@@ -118,6 +121,12 @@ public class GoodShopSecondActivity extends BaseActivity {
                     //goods_id = goodsDetailsBean.getData().getGoods_id();
                     //Log.d("GoodShopSecondActivity", "*-*-*-" + goods_id);
                     adapter.addData(goodsDetailsBean);
+                    //向 下订单页面 传递数据,在此 得到
+                    goods_pic = goodsDetailsBean.getData().getGoods_pic();
+                    goods_name = goodsDetailsBean.getData().getGoods_name();
+                    info_des = goodsDetailsBean.getData().getInfo_des();
+                    goods_price = goodsDetailsBean.getData().getGoods_price();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -143,6 +152,23 @@ public class GoodShopSecondActivity extends BaseActivity {
                 finish();
             }
         });
+
+        //跳转到 购买 activity 相关 from here
+        purchaseIv = (ImageView) findViewById(R.id.secondshop_shop);
+        purchaseIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("GoodShopSecondActivity", "goods_id  " + goodsid);
+                PurchaseActivity.startPurchaseActivity(GoodShopSecondActivity.this,
+                        goodsid,
+                        goods_pic,
+                        goods_name,
+                        info_des,
+                        goods_price);
+            }
+        });
+        //跳转到 购买 activity 相关 up here
+
         imageViewbackground = (ImageView) findViewById(R.id.secondshop_background);
         datas = new ArrayList<>();
         for (int i = 0; i < 15; i++) {
