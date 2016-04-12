@@ -34,4 +34,5 @@ dependencies {
     compile 'fm.jiecao:jiecaovideoplayer:2.0_preview'
     compile 'com.jakewharton:butterknife:5.1.1'
 
+
 }

@@ -9,7 +9,7 @@ import cn.sharesdk.onekeyshare.OnekeyShare;
  * Created by dllo on 16/4/9.
  */
 public class ShareUtils {
-    public static void showShare(int posotion,String url) {
+    public static void showShare(String url) {
         ShareSDK.initSDK(BaseApplication.getContext());
         OnekeyShare oks = new OnekeyShare();
         //关闭sso授权

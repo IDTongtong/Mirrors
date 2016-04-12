@@ -38,30 +38,27 @@ public class VerticalPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
+        switch (menuItemEntityList.get(position).getType()) {
+            case "6":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuItemEntityList.get(position).getTitle());
 
-            case 1:
+            case "3":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "269",  menuItemEntityList.get(position).getTitle());
+                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, menuItemEntityList.get(position).getInfo_data(),  menuItemEntityList.get(position).getTitle());
 
-            case 2:
-                Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, "268",  menuItemEntityList.get(position).getTitle());
 
-            case 3:
+            case "4":
                 //!!!!等待进一步解析：
                 //接口里 又改为了 购物车
                 return ShopCarFragment.setUrlBodyGetInstance( menuItemEntityList.get(position).getTitle());
-            case 4:
+            case "2":
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST,  menuItemEntityList.get(position).getTitle());
-            case 5:
-
-//                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuBean.getData().getList().get(position).getTitle());
-                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,  menuItemEntityList.get(position).getTitle());
+//            case 5:
+//
+////                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuBean.getData().getList().get(position).getTitle());
+//                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,  menuItemEntityList.get(position).getTitle());
             default:
                 Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
                 return null;

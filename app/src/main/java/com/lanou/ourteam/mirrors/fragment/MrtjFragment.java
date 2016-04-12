@@ -10,11 +10,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.MainActivity;
 import com.lanou.ourteam.mirrors.adpter.MrtjRvAdapter;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
-import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
+
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -26,7 +27,7 @@ import java.util.Map;
  * Created by ZHDelete on 16/4/1.
  */
 public class MrtjFragment extends BaseFragment {
-
+MainActivity mainActivity;
     private RecyclerView mRecyclerView;
     private NetHelper netHelper;
     private String url_body;
@@ -62,15 +63,16 @@ public class MrtjFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         textViewtoptv = (TextView) view.findViewById(R.id.common_lay_toptv);
         mRecyclerView = bindViewById(view, R.id.common_frag_rc_view);
-
+mainActivity = (MainActivity) context;
         //最上边字的点击事件
         linearLayoutTop = (LinearLayout) view.findViewById(R.id.common_lay_yoplayout);
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
+Bundle bundle = getArguments();
+                String title = bundle.getString("title");
+mainActivity.showMenu(title);
+              //  MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
 
 
 

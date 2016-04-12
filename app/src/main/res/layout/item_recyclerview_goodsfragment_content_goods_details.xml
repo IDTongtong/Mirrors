@@ -2,16 +2,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:fresco="http://schemas.android.com/tools"
+    android:layout_marginTop="10dp"
     android:background="@color/text_white"
     android:id="@+id/item_goodsfragment_content_goods_details_relativelayout_all">
 
-
     <ImageView
-        android:id="@+id/item_goodsfragment_content_goods_details_img"
 
+        android:id="@+id/item_goodsfragment_content_goods_details_img"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher" />
+        android:layout_height="300dp"
+
+       android:layout_centerHorizontal="true"
+        ></ImageView>
+
 
     <RelativeLayout
         android:id="@+id/item_goodsfragment_content_goods_details_relativelayout"

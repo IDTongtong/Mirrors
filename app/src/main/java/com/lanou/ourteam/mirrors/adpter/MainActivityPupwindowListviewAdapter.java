@@ -12,32 +12,35 @@ import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
+import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
+
+import java.util.List;
 
 /**
  * Created by dllo on 16/3/31.
  */
 public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
-    MenuBean menuBean;
     Context context;
     String title;
     int position;
+    List<MenuItemEntity> menuItemEntityList;
 
-    public MainActivityPupwindowListviewAdapter(MenuBean menuBean, Context context, String title) {
+    public MainActivityPupwindowListviewAdapter(List<MenuItemEntity> menuItemEntityList, Context context, String title) {
         // Log.d("aasMainActivityPupwindowLi", datas.get(1));
         this.context = context;
-        this.menuBean = menuBean;
+        this.menuItemEntityList = menuItemEntityList;
         this.title = title;
-        Log.d("", title);
+        notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return menuBean.getData().getList().size();
+        return menuItemEntityList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return menuBean.getData().getList().get(position);
+        return menuItemEntityList.get(position);
     }
 
     @Override
@@ -61,7 +64,7 @@ public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
         }
 
 
-        myViewHolder.textViewTab.setText(menuBean.getData().getList().get(position).getTitle());
+        myViewHolder.textViewTab.setText(menuItemEntityList.get(position).getTitle());
         return convertView;
     }
 
@@ -73,10 +76,10 @@ public class MainActivityPupwindowListviewAdapter extends BaseAdapter {
         public MyViewHolder(View v) {
             textViewTab = (TextView) v.findViewById(R.id.acticty_main_popwondow_listview_tv);
             imageViewline = (ImageView) v.findViewById(R.id.popwindow_all_line_iv);
-
-            if (menuBean.getData().getList().get(position).getTitle().equals(title)) {
+         //传来tilte 如果相等 就让他显示那条线
+            if (title.equals(menuItemEntityList.get(position).getTitle())) {
                 Log.d("MainActivityPupwindowLi", "position:" + position);
-                textViewTab.setTextColor(Color.parseColor(menuBean.getData().getColor_data().getSelect_font_color()));
+                textViewTab.setTextColor(Color.parseColor(menuItemEntityList.get(position).getButtomColor()));
                 imageViewline.setVisibility(View.VISIBLE);
             }
         }
