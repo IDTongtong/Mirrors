@@ -31,4 +31,6 @@ public class Content {
 
     //address_list
     public static final String ADDRESS_LIST = "index.php/user/address_list";
+    //del_address
+    public static final String DEL_ADDRESS = "index.php/user/del_address";
 }

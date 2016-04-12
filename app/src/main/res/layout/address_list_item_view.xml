@@ -62,6 +62,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/add_item_delete_tv"
             android:layout_width="@dimen/address_list_item_delete_width"
             android:layout_height="match_parent"
             android:background="@color/address_list_item_del_red_bg"

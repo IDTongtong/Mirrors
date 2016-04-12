@@ -8,24 +8,38 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.AddressListBean;
+import com.lanou.ourteam.mirrors.listenerinterface.AddDelListener;
+import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.NetHelper;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ZHDelete on 16/4/11.
  */
 public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEntity.ListEntity> {
 
+    private NetHelper netHelper;
+    private AddDelListener addDelListener;
 
     public AddListRvAdapter(Context context) {
         super(context);
     }
 
-
+    public void setOnAddDelListener(AddDelListener addDelListener) {
+        this.addDelListener = addDelListener;
+    }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -34,12 +48,16 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         AddViewHolder addViewHolder = (AddViewHolder) holder;
         AddressListBean.DataEntity.ListEntity listEntity = list.get(position);
         addViewHolder.receiverTv.setText(listEntity.getUsername());
         addViewHolder.phoneNumTv.setText(listEntity.getCellphone());
         addViewHolder.addTv.setText(listEntity.getAddr_info());
+
+        final String addr_id = listEntity.getAddr_id();
+        Log.d("AddListRvAdapter", "地址id:   " + addr_id);
+
         addViewHolder.editIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,15 +66,24 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
             }
         });
 
+        addViewHolder.deleteTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO 跳转至 删除本条收货地址
+                addDelListener.onAddItemDelListener(addr_id, position);
+
+            }
+        });
+
     }
 
     @Override
     public int getItemCount() {
-        return isLength()?list.size():0;
+        return isLength() ? list.size() : 0;
     }
 
     class AddViewHolder extends RecyclerView.ViewHolder {
-        private TextView receiverTv,addTv, phoneNumTv;
+        private TextView receiverTv, addTv, phoneNumTv, deleteTv;
         private ImageView editIv;
 
         public AddViewHolder(View itemView) {
@@ -66,6 +93,7 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
             addTv = (TextView) itemView.findViewById(R.id.add_item_add_tv);
             phoneNumTv = (TextView) itemView.findViewById(R.id.add_item_phone_tv);
             editIv = (ImageView) itemView.findViewById(R.id.add_item_edit_iv);
+            deleteTv = (TextView) itemView.findViewById(R.id.add_item_delete_tv);
         }
     }
 }

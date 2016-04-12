@@ -4,12 +4,13 @@ import android.content.Context;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
 /**
- * Created by Bruce on 11/24/14.
+ * Created by SunJian on 11/24/14.
  * <p/>
  * 观察QQ的滑动删除效果，可以猜测可以滑动删除的部分主要包含两个部分，
  * 一个是内容区域（用于放置正常显示的view），另一个是操作区域（用于放置删除按钮）。
@@ -35,12 +36,16 @@ import android.widget.LinearLayout;
 
 public class SwipeLayout extends LinearLayout {
 
+
+
+
     private ViewDragHelper viewDragHelper;
     private View contentView;  // 左边的view
     private View actionView;   // 右边的view
     private int dragDistance;  // 拖动的距离
     private final double AUTO_OPEN_SPEED_LIMIT = 800.0;
-    private int draggedX;
+
+    private int draggedX;//向左 拖动的距离
 
     public SwipeLayout(Context context) {
         this(context, null);
@@ -90,7 +95,8 @@ public class SwipeLayout extends LinearLayout {
     // ViewDragHelper在处理拖动过程的时候，会调用ViewDragHelper.Callback对象的一系列方法。
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
-        if (viewDragHelper.shouldInterceptTouchEvent(ev)) {  // 有兴趣的 可以看看shouldInterceptTouchEvent这个方法  －.－
+        if (viewDragHelper.shouldInterceptTouchEvent(ev)) {
+        // 有兴趣的 可以看看shouldInterceptTouchEvent这个方法
             return true;
         }
         return super.onInterceptTouchEvent(ev);
@@ -119,10 +125,24 @@ public class SwipeLayout extends LinearLayout {
             return view == contentView || view == actionView;
         }
 
+
+        /**
+         *   * @param changedView View whose position changed
+         * @param left New X coordinate of the left edge of the view
+         * @param top New Y coordinate of the top edge of the view
+         * @param dx Change in X position from the last call
+         * @param dy Change in Y position from the last call
+         * @param changedView
+         * @param left
+         * @param top
+         * @param dx
+         * @param dy
+         */
         //onViewPositionChanged在被拖动的view位置改变的时候调用，
         // 如果被拖动的view是contentView，我们需要在这里更新actionView的位置
         @Override
         public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+            Log.d("DragHelperCallback", "left:  "+left);
             draggedX = left;
             if (changedView == contentView) {
                 actionView.offsetLeftAndRight(dx);
@@ -164,6 +184,7 @@ public class SwipeLayout extends LinearLayout {
         public void onViewReleased(View releasedChild, float xvel, float yvel) {
             super.onViewReleased(releasedChild, xvel, yvel);
             boolean settleToOpen = false;
+
             if (xvel > AUTO_OPEN_SPEED_LIMIT) {
                 settleToOpen = false;
             } else if (xvel < -AUTO_OPEN_SPEED_LIMIT) {
@@ -177,6 +198,10 @@ public class SwipeLayout extends LinearLayout {
             final int settleDestX = settleToOpen ? -dragDistance : 0;
             viewDragHelper.smoothSlideViewTo(contentView, settleDestX, 0);
             ViewCompat.postInvalidateOnAnimation(SwipeLayout.this);
+
+
+
         }
     }
+
 }
