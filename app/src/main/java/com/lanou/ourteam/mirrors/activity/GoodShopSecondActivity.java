@@ -114,12 +114,13 @@ public class GoodShopSecondActivity extends BaseActivity {
                     GoodsDetailsBean goodsDetailsBean = gson.fromJson(jsonObject.toString(), GoodsDetailsBean.class);
                     //goods_id = goodsDetailsBean.getData().getGoods_id();
                     //Log.d("GoodShopSecondActivity", "*-*-*-" + goods_id);
-                    adapter.addData(goodsDetailsBean);
+
                     GridLayoutManager gm = new GridLayoutManager(BaseApplication.getContext(), 1);
                     gm.setOrientation(LinearLayoutManager.VERTICAL);
                     recyclerView.setLayoutManager(gm);
 
                     recyclerView.setAdapter(adapter);
+                    adapter.addData(goodsDetailsBean);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

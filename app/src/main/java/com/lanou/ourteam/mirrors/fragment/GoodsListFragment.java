@@ -12,12 +12,13 @@ import android.widget.TextView;
 
 
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.MainActivity;
 import com.lanou.ourteam.mirrors.adpter.GoodsListRvAdapter;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.GoodsListAllBean;
 import com.lanou.ourteam.mirrors.bean.MrtjBean;
-import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
+
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -40,7 +41,7 @@ public class GoodsListFragment extends BaseFragment {
     LinearLayout linearLayoutTop;
     TextView textViewToptv;
     GoodsListAllBean goodsListAllBean;
-    MrtjBean mrtjBean;
+   MainActivity mainActivity;
     private String url_body;
     private String category_id;
 
@@ -65,6 +66,7 @@ public class GoodsListFragment extends BaseFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        mainActivity = (MainActivity) getContext();
         mRecyclerView = (RecyclerView) view.findViewById(R.id.common_frag_rc_view);
       //  final MyPopWindow myPopWindow = new MyPopWindow(getContext());
         //最上边字的点击事件
@@ -72,10 +74,10 @@ public class GoodsListFragment extends BaseFragment {
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
-                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v,title);
-
+                Bundle bundle = getArguments();
+                String title = bundle.getString("goodtitle");
+                //MyPopWindow.getPopWindow(getContext()).showPopupWindow(v,title);
+mainActivity.showMenu(title);
 
 
 

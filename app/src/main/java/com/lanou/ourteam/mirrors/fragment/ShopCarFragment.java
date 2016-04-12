@@ -6,14 +6,16 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.MainActivity;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
-import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
+
 
 /**
  * Created by dllo on 16/4/5.
  */
 public class ShopCarFragment extends BaseFragment {
-    TextView shopCarTv;
+    private TextView shopCarTv;
+   private MainActivity mainActivity;
     @Override
     protected int setContent() {
         return R.layout.myshopcar_fragment;
@@ -32,13 +34,17 @@ public class ShopCarFragment extends BaseFragment {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
       //  final MyPopWindow popWindow = new MyPopWindow(getContext());
+        mainActivity = (MainActivity) context;
         shopCarTv = (TextView) getActivity().findViewById(R.id.mycar_tv);
         Bundle bundle = getArguments();
-        final String tilte = bundle.getString("stopcartitle");
+
         shopCarTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, tilte);
+                Bundle bundle = getArguments();
+                String title = bundle.getString("stopcartitle");
+               // MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, tilte);
+                mainActivity.showMenu(title);
 
             }
         });

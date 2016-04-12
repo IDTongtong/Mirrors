@@ -4,14 +4,17 @@ package com.lanou.ourteam.mirrors.activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
@@ -22,6 +25,8 @@ import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
+
+import com.lanou.ourteam.mirrors.fragment.MenuFragment;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
@@ -46,7 +51,7 @@ public class MainActivity extends BaseActivity {
 
     boolean flag = true;
 
-    String title;//上边的title
+    FrameLayout menuFrameLayout;
     VerticalViewPager verticalViewPager;
     @InjectView(R.id.main_login_iv)
     TextView mainLoginIv;
@@ -60,18 +65,13 @@ public class MainActivity extends BaseActivity {
 
     private TextView loginTv;
     MenuBean menuBean;
-
     private DaoEntityHelper daoEntityHelper;
-
-
     public static final String MRTJ = "METJ";
     public static final String STORY_LIST = "专题分析";
     public static final String SHOPPING_CAR = "购物车";
-
     List<MenuBean.DataEntity.ListEntity> listEntityList;
-
     List<MenuItemEntity> menuItemEntityList;
-
+    FragmentManager fm = getSupportFragmentManager();
 
     @Override
     protected int setContent() {
@@ -81,17 +81,18 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        menuFrameLayout = (FrameLayout) findViewById(R.id.main_activity_menulayout);
         if (flag) {
             flag = false;
             jumpToActivity(this, WelcomeActivity.class, null);
 
         }
         mirrorIv = (ImageView) findViewById(R.id.main_mirror_iv);
-
         verticalViewPager = (VerticalViewPager) findViewById(R.id.main_vertical_viewpger);
 
 
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -105,6 +106,7 @@ public class MainActivity extends BaseActivity {
             mainShoppingIv.setVisibility(View.GONE);
         }
     }
+
     @Override
     protected void initData() {
 
@@ -154,7 +156,7 @@ public class MainActivity extends BaseActivity {
                             menuItemEntity.setButtomColor(listEntity.getButtomColor());
                             menuItemEntity.setTopColor(listEntity.getTopColor());
                             menuItemEntity.setTitle(listEntity.getTitle());
-
+                         menuItemEntity.setButtomColor(menuBean.getData().getColor_data().getSelect_font_color());
                             menuItemEntityList.add(menuItemEntity);
                         }
 
@@ -181,14 +183,6 @@ public class MainActivity extends BaseActivity {
                 Log.d("MainActivity", "***" + failStr);
             }
         });
-//<<<<<<< HEAD
-//
-//
-//        mAdapter = new VerticalPagerAdapter(getSupportFragmentManager(), this, info_dataList, menuBean);
-//        verticalViewPager.setAdapter(mAdapter);
-//=======
-//        Log.d("MainActivity", "HHHHH");
-//>>>>>>> feature/ZYM_节后第二次推送
 
 
         mirrorIv.setOnClickListener(new View.OnClickListener() {
@@ -275,7 +269,7 @@ public class MainActivity extends BaseActivity {
 
         //这个是设置viewPager切换过度时间的类
         ViewPagerScroller scroller = new ViewPagerScroller(this);
-        scroller.setScrollDuration(50);
+        scroller.setScrollDuration(100);
         scroller.initViewPagerScroll(verticalViewPager);
         //这个是设置切换过渡时间为0毫秒
         verticalViewPager.setCurrentItem(position);
@@ -296,7 +290,7 @@ public class MainActivity extends BaseActivity {
                 jumpToActivity(this, LoginActivity.class, null);
                 break;
             case R.id.main_shopping_iv:
-                verticalViewPager.setCurrentItem(menuBean.getData().getList().size()-1);
+                verticalViewPager.setCurrentItem(menuBean.getData().getList().size() - 1);
                 break;
         }
     }
@@ -346,5 +340,26 @@ public class MainActivity extends BaseActivity {
         }
     }
 
+    public void showMenu(String title) {
+        MenuFragment menuFragment = new MenuFragment();
+
+
+        Bundle bundle = new Bundle();
+        bundle.putString("menutitle", title);
+
+        menuFragment.setArguments(bundle);
+        fm.beginTransaction().add(R.id.main_activity_menulayout, menuFragment).commit();
+        Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.mypopwindow_anim);
+
+        menuFrameLayout.setVisibility(View.VISIBLE);
+        menuFrameLayout.setAnimation(animation);
+
+    }
+
+    public void dissMenu() {
+        fm.isDestroyed();
+        menuFrameLayout.setVisibility(View.GONE);
+        Log.d("dddMainActivity", "hhh");
+    }
 }
 

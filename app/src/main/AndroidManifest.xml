@@ -31,6 +31,7 @@
     <!-- 第三方登入分享的权限*********************************************-->
 
     <application
+
         android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/mirror_icon"

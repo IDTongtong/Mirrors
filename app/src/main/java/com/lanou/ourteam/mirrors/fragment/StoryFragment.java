@@ -13,7 +13,7 @@ import com.lanou.ourteam.mirrors.adpter.StoryRvAdapter;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.StoryBean;
-import com.lanou.ourteam.mirrors.common.customhem.MyPopWindow;
+
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
@@ -62,7 +62,6 @@ public class StoryFragment extends BaseFragment {
         linearLayoutTop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MyPopWindow.getPopWindow(getContext()).showPopupWindow(v, title);
 
                 // myPopWindow.showPopupWindow(v,title);
             }
