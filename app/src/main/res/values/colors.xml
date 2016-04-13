@@ -8,6 +8,14 @@
     <!-- from herer zh dimens-->
     <color name="text_white">#ffffff</color>
     <color name="text_black">#333333</color>
+
+
+    <!-- zh activity purchase-->
+    <color name="activity_purchase_bg">#f1f1f1</color>
+    <color name="activity_purchase_price">#ff5aab</color>
+    <color name="activity_purchase_address_divider_bg">#ddd</color>
+    <color name="address_list_item_del_red_bg">#ff5aab</color>
+
     <!-- up herer zh dimens-->
 
     <color name="login_background">#f1f1f1</color>

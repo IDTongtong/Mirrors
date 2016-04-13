@@ -3,6 +3,7 @@ package com.lanou.ourteam.mirrors.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.v4.util.LruCache;
 import android.util.Log;
@@ -15,6 +16,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
@@ -133,6 +135,13 @@ public class NetHelper {
     }
 
 
+    //慎用
+    public void loadOriginImageWithVolley(ImageView imageView, String image_rul) {
+        ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
+                R.mipmap.loading,
+                R.mipmap.fail);
+        imageLoader.get(image_rul, imageListener);
+    }
     public void loadImageWithVolley(ImageView imageView, String image_rul) {
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
                 R.mipmap.loading,
@@ -153,6 +162,7 @@ public class NetHelper {
     public void loadImageWithPicasso(ImageView imageView, String image_url) {
         Picasso.with(imageView.getContext())
                 .load(image_url)
+                .resize(480,800)
                 .centerCrop()
                 .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)
@@ -194,6 +204,21 @@ public class NetHelper {
                 .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)
                 .into(imageView);
+    }
+
+    public void loadImageWithFresco(SimpleDraweeView simpleDraweeView, String image_url) {
+        /**
+         *  //创建SimpleDraweeView对象
+         simpleDraweeView = (SimpleDraweeView) findViewById(R.id.main_sdv);
+         //创建将要下载的图片的URI
+         Uri imageUri = Uri.parse("http://my.csdn.net/uploads/avatar/4/E/8/1_y1scp.jpg");
+         //开始下载
+         simpleDraweeView.setImageURI(imageUri);
+         */
+
+        Uri image_uri = Uri.parse(image_url);
+        simpleDraweeView.setImageURI(image_uri);
+
     }
 
 

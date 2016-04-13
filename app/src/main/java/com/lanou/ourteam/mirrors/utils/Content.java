@@ -27,4 +27,10 @@ public class Content {
 
     //故事详情
     public static final String STORY_INFO = "index.php/story/info";
+
+
+    //address_list
+    public static final String ADDRESS_LIST = "index.php/user/address_list";
+    //del_address
+    public static final String DEL_ADDRESS = "index.php/user/del_address";
 }

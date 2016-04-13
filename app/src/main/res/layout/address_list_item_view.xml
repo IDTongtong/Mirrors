@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/address_list_item_height"
+    android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/address_insert_bg"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/address_receiver_margin_left">
+
+                    <TextView
+                        android:id="@+id/add_item_reciever_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/address_receiver_margin_top"
+                        android:text="收件人:Mr.H"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/text_size_26px" />
+
+                    <TextView
+                        android:id="@+id/add_item_add_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/address_add_margin_top"
+                        android:text="地址:大连 software park"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/text_size_24px" />
+
+                    <TextView
+                        android:id="@+id/add_item_phone_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/address_phone_num_margin_top"
+                        android:text="17077777777"
+                        android:textColor="@color/text_black"
+                        android:textSize="@dimen/text_size_24px" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/add_item_edit_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/address_list_item_edit_margin_right"
+                    android:src="@mipmap/address_edit" />
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/add_item_del_rl"-->
+            <!--android:layout_width="@dimen/address_list_item_delete_width"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:clickable="true"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<TextView-->
+                <!--android:id="@+id/add_item_delete_tv"-->
+                <!--android:layout_width="@dimen/address_list_item_delete_width"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@color/address_list_item_del_red_bg"-->
+                <!--android:gravity="center"-->
+                <!--android:text="删除"-->
+                <!--android:textColor="@color/text_white"-->
+                <!--android:textSize="@dimen/text_size_26px" />-->
+        <!--</RelativeLayout>-->
+    <TextView
+        android:id="@+id/add_item_delete_tv"
+        android:layout_width="@dimen/address_list_item_delete_width"
+        android:layout_height="match_parent"
+        android:background="@color/address_list_item_del_red_bg"
+        android:gravity="center"
+        android:text="删除"
+        android:textColor="@color/text_white"
+        android:textSize="@dimen/text_size_26px" />
+
+
+</LinearLayout>
