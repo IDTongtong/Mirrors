@@ -12,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.toolbox.ImageLoader;
 
 import com.lanou.ourteam.mirrors.R;
 
@@ -72,8 +70,9 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
     /**
      * 该方法为接收activity传来的监听recycleview滑动距离的value
      */
-    public void setScrollValue(int scrollValue) {
+    public void setScrollValue(int scrollValue,int valueDy ) {
         this.layoutScrollValue = scrollValue;
+        this.valueDy = valueDy;
 
         //刷新UI
         /**
@@ -111,6 +110,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
         poisitionListener.getPoisition(position);
+
         if (getItemViewType(position) == TYPE_HEAD) {
             HeadViewHolder headViewHolder = (HeadViewHolder) holder;
             ((HeadViewHolder) holder).headGoodsNameTv.setText(datas.getData().getGoods_name());
@@ -121,15 +121,14 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
 
-                    ShareUtils.showShare( datas.getData().getGoods_share());
+                    ShareUtils.showShare(datas.getData().getGoods_share());
                 }
             });
 
             //设置透明度的变化
-            headViewHolder.relativeLayoutHead.getBackground().setAlpha(layoutScrollValue / 5);
+            headViewHolder.relativeLayoutHead.getBackground().setAlpha(255);
 
-
-            Log.d("GoodShopSecondActivityA", "layoutScrollValue:" + layoutScrollValue);
+            Log.d("GoodShopSecondActivityA", "valueDy:" + valueDy);
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
 
@@ -137,13 +136,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             GoodsTitleViewHolder goodsTitleViewHolder = (GoodsTitleViewHolder) holder;
             goodsTitleViewHolder.goodsTitleBrandTv.setText(datas.getData().getBrand());
 
-//            ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                    goodsTitleViewHolder.goodsTitleImg,
-//                    R.mipmap.ic_launcher,
-//                    R.mipmap.loading
-//
-//            );
-//            NetHelper.getInstance().getImageLoader().get(datas.getData().getGoods_pic(), imageListener);
+
             netHelper.loadImageWithVolley(goodsTitleViewHolder.goodsTitleImg, datas.getData().getGoods_pic());
 
             goodsTitleViewHolder.goodsTitleLocationTv.setText(datas.getData().getGoods_data().get(0).getLocation());
@@ -211,7 +204,6 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        Log.d("sssGoodShopSecondActivityA", "datas.getData().getDesign_des().size() + 2:" + (datas.getData().getDesign_des().size() + 2));
         return datas.getData().getDesign_des().size() + 2;
 
     }

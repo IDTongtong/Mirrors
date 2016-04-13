@@ -44,14 +44,14 @@ import butterknife.OnClick;
  * 二级列表的activity
  */
 public class GoodShopSecondActivity extends BaseActivity {
-
+    int value = 0;
     RecyclerView recyclerView;
     GoodShopSecondActivityAdapter adapter;
     ArrayList<String> datas;
     RelativeLayout relativeLayout;
     @InjectView(R.id.secondshop_wear_picyure)
     Button secondshopWearPicyure;
-    private int value;
+
     private boolean isup = true, isDown = true;
     private boolean dyUp = true, dyDown = true;
     private boolean down = false;
@@ -81,14 +81,6 @@ public class GoodShopSecondActivity extends BaseActivity {
         Log.d("ddd", goodsid);
         String background = intent.getStringExtra("background");
 
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                imageViewbackground,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
-
-//        NetHelper.getInstance().getImageLoader().get(background, imageListener);
 
         netHelper = NetHelper.getInstance();
         netHelper.loadImageWithVolley(imageViewbackground,background);
@@ -161,7 +153,6 @@ public class GoodShopSecondActivity extends BaseActivity {
         purchaseIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("GoodShopSecondActivity", "goods_id  " + goodsid);
                 PurchaseActivity.startPurchaseActivity(GoodShopSecondActivity.this,
                         goodsid,
                         goods_pic,
@@ -188,10 +179,11 @@ public class GoodShopSecondActivity extends BaseActivity {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
+
                 if (dyUp) {//判断滑动方向  dy>0为上滑
 
                     //该数值为滑动到recycleview第三个布局by滑动的数值范围
-                    if (value <= -2600) {
+                    if (value <= -3000) {
                         if (isup) {
                             Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.into);
                             relativeLayout.setAnimation(animation);
@@ -206,7 +198,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
                 } else if (down) {
 
-                    if (value >= -2550) {
+                    if (value >= -2950) {
                         if (isDown) {
                             Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.exit);
                             relativeLayout.setAnimation(animation);
@@ -222,7 +214,9 @@ public class GoodShopSecondActivity extends BaseActivity {
                  * 这里的 value 是获得recyclerview 所有的滑动距离,将每一次的滑动距离叠加形成的结果.
                  * */
                 value -= dy;
-                adapter.setScrollValue(value);
+                Log.d("变化值", "layoutScrollValue:" + value);
+
+                adapter.setScrollValue(value,dy);
 
 
                 //这是Recyclerview 的方法来获得当前的 value 值.
