@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.activity.AddressListActivity;
 import com.lanou.ourteam.mirrors.bean.AddressListBean;
+import com.lanou.ourteam.mirrors.common.customhem.SwipeListView;
 import com.lanou.ourteam.mirrors.listenerinterface.AddDelListener;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
@@ -33,12 +34,18 @@ public class AddListAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater inflater;
     private List<AddressListBean.DataEntity.ListEntity> listEntityList;
+    private SwipeListView mListView;
     private NetHelper netHelper;
 
 
 
-    public AddListAdapter(Context context) {
+    public AddListAdapter(Context context,
+                          List<AddressListBean.DataEntity.ListEntity> listEntityList,
+                          SwipeListView mListView) {
         this.context = context;
+        this.listEntityList = listEntityList;
+        this.mListView = mListView;
+
         inflater = LayoutInflater.from(context);
         netHelper = NetHelper.getInstance();
 
@@ -128,10 +135,11 @@ public class AddListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 String addr_id = listEntityList.get(position).getAddr_id();
-                Log.d("AddListAdapter", "addr_id***"+ addr_id);
+                Log.d("AddListAdapter", "addr_id***" + addr_id);
                 listEntityList.remove(position);
                 notifyDataSetChanged();
                 deleteAddOverService(addr_id);
+                mListView.turnToNormal();
 
 
             }

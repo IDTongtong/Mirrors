@@ -39,8 +39,7 @@ public class AddressListActivity extends BaseActivity  {
     protected void initView() {
 
         mSwipeListView = (SwipeListView) findViewById(R.id.activity_addresslist_swipelistview);
-        mListAdapter = new AddListAdapter(this);
-        mSwipeListView.setAdapter(mListAdapter);
+
 
         netHelper = NetHelper.getInstance();
 
@@ -55,7 +54,10 @@ public class AddressListActivity extends BaseActivity  {
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 addressListBean = analyzeJson.analyzeAddressList(string);
                 Log.d("AddressListActivity", "第一条地址:  " + addressListBean.getData().getList().get(0).getAddr_info());
-                mListAdapter.addData(addressListBean.getData().getList());
+                mListAdapter = new AddListAdapter(AddressListActivity.this,addressListBean.getData().getList(),mSwipeListView);
+                mSwipeListView.setAdapter(mListAdapter);
+
+                //mListAdapter.addData(addressListBean.getData().getList());
 
             }
 
