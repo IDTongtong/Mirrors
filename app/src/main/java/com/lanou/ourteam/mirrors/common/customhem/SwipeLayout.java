@@ -59,17 +59,12 @@ public class SwipeLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
         // 第一步 在容器中创建一个ViewDragHelper类的对象。
         viewDragHelper = ViewDragHelper.create(this, new DragHelperCallback());
-//        viewDragHelper=viewDragHelper.create(this, new ViewDragHelper.Callback() {
-//            @Override
-//            public boolean tryCaptureView(View child, int pointerId) {
-//                return false;
-//            }
-//        })
-//    }
+
     }
 
     @Override
     protected void onFinishInflate() {  // onFinishInflate方法 当View中所有的子控件均被映射成xml后触发
+        //super.onFinishInflate();
         contentView = getChildAt(0);
         actionView = getChildAt(1);
         actionView.setVisibility(GONE);
@@ -198,9 +193,6 @@ public class SwipeLayout extends LinearLayout {
             final int settleDestX = settleToOpen ? -dragDistance : 0;
             viewDragHelper.smoothSlideViewTo(contentView, settleDestX, 0);
             ViewCompat.postInvalidateOnAnimation(SwipeLayout.this);
-
-
-
         }
     }
 

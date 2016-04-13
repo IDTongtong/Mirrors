@@ -1,16 +1,20 @@
 package com.lanou.ourteam.mirrors.adpter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
+import com.lanou.ourteam.mirrors.activity.AddressEditActivity;
 import com.lanou.ourteam.mirrors.base.BaseRecyclerAdapter;
 import com.lanou.ourteam.mirrors.bean.AddressListBean;
 import com.lanou.ourteam.mirrors.listenerinterface.AddDelListener;
@@ -32,6 +36,10 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
 
     private NetHelper netHelper;
     private AddDelListener addDelListener;
+
+
+
+
 
     public AddListRvAdapter(Context context) {
         super(context);
@@ -56,6 +64,12 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
         addViewHolder.addTv.setText(listEntity.getAddr_info());
 
         final String addr_id = listEntity.getAddr_id();
+
+
+
+        addViewHolder.holder_position = position;
+        addViewHolder.addr_id = listEntity.getAddr_id();
+
         Log.d("AddListRvAdapter", "地址id:   " + addr_id);
 
         addViewHolder.editIv.setOnClickListener(new View.OnClickListener() {
@@ -63,17 +77,23 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
             public void onClick(View v) {
                 //TODO 跳转至 收货地址编辑 activity
                 Log.d("AddListRvAdapter", "跳转至 收货地址编辑 activity");
-            }
-        });
+                Intent intent = new Intent(context, AddressEditActivity.class);
 
-        addViewHolder.deleteTv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //TODO 跳转至 删除本条收货地址
-                addDelListener.onAddItemDelListener(addr_id, position);
+                intent.putExtra("addr_id", addr_id);
+                context.startActivity(intent);
+
 
             }
         });
+
+//        addViewHolder.deleteTv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //TODO 跳转至 删除本条收货地址
+//                addDelListener.onAddItemDelListener(addr_id, position);
+//
+//            }
+//        });
 
     }
 
@@ -82,7 +102,11 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
         return isLength() ? list.size() : 0;
     }
 
-    class AddViewHolder extends RecyclerView.ViewHolder {
+    class AddViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private int holder_position;
+        private String addr_id;
+
+        private RelativeLayout delRl;
         private TextView receiverTv, addTv, phoneNumTv, deleteTv;
         private ImageView editIv;
 
@@ -94,6 +118,18 @@ public class AddListRvAdapter extends BaseRecyclerAdapter<AddressListBean.DataEn
             phoneNumTv = (TextView) itemView.findViewById(R.id.add_item_phone_tv);
             editIv = (ImageView) itemView.findViewById(R.id.add_item_edit_iv);
             deleteTv = (TextView) itemView.findViewById(R.id.add_item_delete_tv);
+
+//            delRl = (RelativeLayout) itemView.findViewById(R.id.add_item_del_rl);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            //TODO 跳转至 删除本条收货地址
+            Log.d("AddViewHolder", "addr_id holder" + addr_id);
+            //addDelListener.onAddItemDelListener(addr_id, holder_position);
+            list.remove(holder_position);
+            notifyDataSetChanged();
         }
     }
 }
