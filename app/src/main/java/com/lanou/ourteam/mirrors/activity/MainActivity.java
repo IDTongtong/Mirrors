@@ -156,7 +156,7 @@ public class MainActivity extends BaseActivity {
                             menuItemEntity.setButtomColor(listEntity.getButtomColor());
                             menuItemEntity.setTopColor(listEntity.getTopColor());
                             menuItemEntity.setTitle(listEntity.getTitle());
-                         menuItemEntity.setButtomColor(menuBean.getData().getColor_data().getSelect_font_color());
+                            menuItemEntity.setButtomColor(menuBean.getData().getColor_data().getSelect_font_color());
                             menuItemEntityList.add(menuItemEntity);
                         }
 
@@ -228,7 +228,7 @@ public class MainActivity extends BaseActivity {
                 0.5f));
 
 
-        animationSet.setDuration(200);
+        animationSet.setDuration(100);
         animationSet.setInterpolator(new AccelerateInterpolator());
         //结尾停在最后一针
         animationSet.setFillAfter(true);
@@ -291,6 +291,7 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.main_shopping_iv:
                 verticalViewPager.setCurrentItem(menuBean.getData().getList().size() - 1);
+                dissMenu();
                 break;
         }
     }
@@ -348,7 +349,7 @@ public class MainActivity extends BaseActivity {
         bundle.putString("menutitle", title);
 
         menuFragment.setArguments(bundle);
-        fm.beginTransaction().add(R.id.main_activity_menulayout, menuFragment).commit();
+        fm.beginTransaction().replace(R.id.main_activity_menulayout, menuFragment).commit();
         Animation animation = AnimationUtils.loadAnimation(getBaseContext(), R.anim.mypopwindow_anim);
 
         menuFrameLayout.setVisibility(View.VISIBLE);
