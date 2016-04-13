@@ -95,6 +95,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         netHelper.volleyPostTogetNetData(Content.ADDRESS_LIST, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
+                Log.d("PurchaseActivity", "STRING" + string);
 
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 addressListBean = analyzeJson.analyzeAddressList(string);

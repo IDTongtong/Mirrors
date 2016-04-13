@@ -46,16 +46,16 @@
             </intent-filter>
         </activity>
 
-
+        <activity android:name=".activity.AddressAddActivity" />
         <activity android:name=".activity.WelcomeActivity" />
         <activity android:name=".activity.StoryDetailActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.CreateAccountActivity" />
-        <activity android:name=".activity.GoodShopSecondActivity"/>
-        <activity android:name=".activity.WearPhotoActivity"/>
-        <activity android:name=".activity.PicDetailsActivity"/>
-        <activity android:name=".activity.PurchaseActivity"/>
-        <activity android:name=".activity.AddressListActivity"/>
+        <activity android:name=".activity.GoodShopSecondActivity" />
+        <activity android:name=".activity.WearPhotoActivity" />
+        <activity android:name=".activity.PicDetailsActivity" />
+        <activity android:name=".activity.PurchaseActivity" />
+        <activity android:name=".activity.AddressListActivity" />
 
         <!-- ***************************************************mob分享-->
         <activity
