@@ -8,8 +8,8 @@ import android.widget.ImageView;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
-import com.lanou.ourteam.mirrors.common.customhem.SmoothImageView;
 
+import com.lanou.ourteam.mirrors.common.SmoothImageView;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager
+    <com.lanou.ourteam.mirrors.common.VerticalViewPager
         android:id="@+id/main_vertical_viewpger"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -1,4 +1,4 @@
-package com.lanou.ourteam.mirrors.common.customhem;
+package com.lanou.ourteam.mirrors.common;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;
@@ -8,6 +8,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/3/30.
+ *AUTO TY
  */
 public class VerticalViewPager extends ViewPager {
     private float startX,startY;

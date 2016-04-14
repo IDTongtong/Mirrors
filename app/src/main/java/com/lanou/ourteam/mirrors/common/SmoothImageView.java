@@ -1,4 +1,4 @@
-package com.lanou.ourteam.mirrors.common.customhem;
+package com.lanou.ourteam.mirrors.common;
 
 import android.animation.Animator;
 import android.animation.PropertyValuesHolder;

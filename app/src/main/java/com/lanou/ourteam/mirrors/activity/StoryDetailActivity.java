@@ -14,7 +14,7 @@ import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.StoryDetailText;
 import com.lanou.ourteam.mirrors.bean.StoryItemBean;
-import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
+import com.lanou.ourteam.mirrors.common.VerticalViewPager;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;

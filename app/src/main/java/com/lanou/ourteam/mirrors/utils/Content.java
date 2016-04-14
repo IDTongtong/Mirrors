@@ -9,7 +9,7 @@ public class Content {
 
     public static final String CATEGORY_LIST = "index.php/products/category_list";
     //浏览平光镜
-    public static final String GOODS_LIST = "index.php/products_test/goods_list";
+    public static final String GOODS_LIST = "index.php/products/goods_list";
     //
     public static final String SEND_CODE = "index.php/user/send_code";
     //每日推荐---浏览所有分类: 数据结构,多了一层,
@@ -36,6 +36,9 @@ public class Content {
     public static final String DEL_ADDRESS = "index.php/user/del_address";
     //addadress
     public static final String ADD_ADDRESS = "index.php/user/add_address";
+    //ediraddress
+
+    public static final String EDIT_ADDRESS = "index.php/user/edit_address";
 
     //下订单
     public static final String SUB_ORDER = "index.php/order/sub";

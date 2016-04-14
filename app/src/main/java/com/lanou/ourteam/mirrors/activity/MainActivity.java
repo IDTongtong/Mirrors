@@ -24,8 +24,8 @@ import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
-import com.lanou.ourteam.mirrors.common.customhem.VerticalViewPager;
 
+import com.lanou.ourteam.mirrors.common.VerticalViewPager;
 import com.lanou.ourteam.mirrors.fragment.MenuFragment;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
