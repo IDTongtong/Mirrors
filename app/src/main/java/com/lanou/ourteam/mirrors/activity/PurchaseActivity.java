@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -284,6 +285,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
     public void showPopupWindow(View v) {
         PopupWindow popupWindow = new PopupWindow(this);
+        popupWindow.setBackgroundDrawable(null);
         View view = getLayoutInflater().inflate(R.layout.ali_weixin_popwin_layout, null);
 
         popupWindow.setContentView(view);
@@ -294,8 +296,8 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         popupWindow.setOutsideTouchable(true);
         popupWindow.setTouchable(true);
 
-        LinearLayout weixinLl = (LinearLayout) view.findViewById(R.id.ali_weixin_weixinpay_linearl);
-        LinearLayout aliLl = (LinearLayout) view.findViewById(R.id.ali_weixin_alipay_linearl);
+        RelativeLayout weixinLl = (RelativeLayout) view.findViewById(R.id.ali_weixin_weixinpay_relativel);
+        RelativeLayout aliLl = (RelativeLayout) view.findViewById(R.id.ali_weixin_alipay_relativel);
         weixinLl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -317,7 +319,9 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         });
 //         popupWindow.showAsDropDown(v);
         //位置
-        popupWindow.showAtLocation(v, Gravity.CENTER, 300, -300);//0,0 距原点坐标
+        popupWindow.showAtLocation(v, Gravity.CENTER,
+                0,
+                0);//0,0 距原点坐标
 
     }
 

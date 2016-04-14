@@ -16,6 +16,8 @@
     <color name="activity_purchase_address_divider_bg">#ddd</color>
     <color name="address_list_item_del_red_bg">#ff5aab</color>
 
+    <color name="ali_weixin_popwin_divider_bg">#ddd</color>
+
     <!-- up herer zh dimens-->
 
     <color name="login_background">#f1f1f1</color>
