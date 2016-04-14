@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,10 +19,16 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 /**
  * Created by ZHDelete on 16/4/11.
  */
 public class PurchaseActivity extends BaseActivity implements View.OnClickListener {
+    @InjectView(R.id.activity_purdetails_iv_close)
+    ImageView activityPurdetailsIvClose;
     private String goods_id, goods_pic, goods_name, info_des, goods_price;
     private ImageView goodsIv;
     private TextView goodsNameTv, infoDesTv, priceTv, addChangeTv;
@@ -61,6 +68,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         priceTv = (TextView) findViewById(R.id.activity_purchase_goods_price_tv);
 
         addChangeTv = bindView(R.id.activity_purchase_address_changeoradd_tv);
+
         addChangeTv.setOnClickListener(this);
 
     }
@@ -118,5 +126,17 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
                 break;
 
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_purdetails_iv_close)
+    public void onClick() {
+        finish();
     }
 }

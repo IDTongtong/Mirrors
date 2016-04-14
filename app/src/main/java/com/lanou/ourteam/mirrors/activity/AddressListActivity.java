@@ -28,7 +28,7 @@ import butterknife.OnClick;
  * Created by ZHDelete on 16/4/11.
  */
 public class AddressListActivity extends BaseActivity {
-    private static final int LOGINCODE = 0;
+    private static final int LOGINCODE = 20;
     private static final int REGISTER = 10;
     @InjectView(R.id.activity_address_list_close_iv)
     ImageView closeIv;

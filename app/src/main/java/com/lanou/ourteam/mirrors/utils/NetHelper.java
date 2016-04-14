@@ -216,7 +216,7 @@ public class NetHelper {
         Picasso.with(imageView.getContext())
                 .load(image_url)
                 .skipMemoryCache()
-                .placeholder(R.mipmap.loading)
+//                .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)
                 .into(imageView);
     }
