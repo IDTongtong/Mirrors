@@ -1,10 +1,11 @@
 package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.AddListAdapter;
@@ -16,23 +17,27 @@ import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
+
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by ZHDelete on 16/4/11.
  */
-public class AddressListActivity extends BaseActivity  {
+public class AddressListActivity extends BaseActivity {
     private static final int LOGINCODE = 0;
     private static final int REGISTER = 10;
+    @InjectView(R.id.activity_address_list_close_iv)
+    ImageView closeIv;
     private NetHelper netHelper;
     private AddressListBean addressListBean;
     private SwipeListView mSwipeListView;
     private AddListAdapter mListAdapter;
-private TextView addAdresstv;
+    private TextView addAdresstv;
+
     @Override
     protected int setContent() {
         return R.layout.activity_address_list_lay;
@@ -64,7 +69,7 @@ private TextView addAdresstv;
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 addressListBean = analyzeJson.analyzeAddressList(string);
                 Log.d("AddressListActivity", "第一条地址:  " + addressListBean.getData().getList().get(0).getAddr_info());
-                mListAdapter = new AddListAdapter(AddressListActivity.this,addressListBean.getData().getList(),mSwipeListView);
+                mListAdapter = new AddListAdapter(AddressListActivity.this, addressListBean.getData().getList(), mSwipeListView);
                 mSwipeListView.setAdapter(mListAdapter);
 
                 //mListAdapter.addData(addressListBean.getData().getList());
@@ -85,4 +90,15 @@ private TextView addAdresstv;
     }
 
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_address_list_close_iv)
+    public void onClick() {
+        finish();
+    }
 }

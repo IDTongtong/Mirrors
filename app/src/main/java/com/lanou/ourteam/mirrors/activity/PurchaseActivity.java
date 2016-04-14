@@ -21,11 +21,10 @@ import java.util.Map;
 /**
  * Created by ZHDelete on 16/4/11.
  */
-public class PurchaseActivity extends BaseActivity implements View.OnClickListener{
-    private String goods_id,goods_pic,goods_name,info_des,goods_price;
+public class PurchaseActivity extends BaseActivity implements View.OnClickListener {
+    private String goods_id, goods_pic, goods_name, info_des, goods_price;
     private ImageView goodsIv;
-    private TextView goodsNameTv,infoDesTv,priceTv ,addChangeTv;
-
+    private TextView goodsNameTv, infoDesTv, priceTv, addChangeTv;
 
 
     private NetHelper netHelper;
@@ -65,11 +64,9 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         addChangeTv.setOnClickListener(this);
 
     }
+
     @Override
     protected void initData() {
-
-
-
 
 
         netHelper = NetHelper.getInstance();
@@ -105,10 +102,9 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
             @Override
             public void onFail(String failStr) {
-                Log.d("PurchaseActivity", "   "+failStr);
+                Log.d("PurchaseActivity", "   " + failStr);
             }
         });
-
 
 
     }
