@@ -174,7 +174,7 @@
     </RelativeLayout>
 
     <Button
-        android:id="@+id/activity_purdetails_btn"
+        android:id="@+id/activity_purchase_sub_order_btn"
         android:layout_width="match_parent"
         android:layout_height="80px"
         android:layout_marginTop="50px"

@@ -37,4 +37,10 @@ public class Content {
     //addadress
     public static final String ADD_ADDRESS = "index.php/user/add_address";
 
+    //下订单
+    public static final String SUB_ORDER = "index.php/order/sub";
+    //支付宝支付
+    public static final String ALI_PAY = "index.php/pay/ali_pay_sub";
+
+
 }

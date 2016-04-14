@@ -25,6 +25,8 @@ public class AnalyzeJson {
     GoodsItemBean goodsItemBean;
     StoryItemBean storyItemBean;
     AddressListBean addressListBean;
+    SubOrderBean subOrderBean;
+    AliPayBean aliPayBean;
 
 
 
@@ -113,6 +115,17 @@ public class AnalyzeJson {
     public AddressListBean analyzeAddressList(String string) {
         addressListBean = gson.fromJson(string, AddressListBean.class);
         return addressListBean;
+    }
+
+    public SubOrderBean analyzerSubOrder(String string) {
+        subOrderBean = gson.fromJson(string, SubOrderBean.class);
+        return subOrderBean;
+
+    }
+
+    public AliPayBean analyzeAliPay(String string) {
+        aliPayBean = gson.fromJson(string, AliPayBean.class);
+        return aliPayBean;
     }
 
 }
