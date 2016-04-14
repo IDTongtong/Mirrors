@@ -239,7 +239,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
         params.put("order_no", order_no);
         params.put("addr_id", addr_id);
-        params.put("goods_name", goods_name);
+        params.put("goodsname", goods_name);
         netHelper.volleyPostTogetNetData(Content.ALI_PAY, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
