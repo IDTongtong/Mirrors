@@ -8,6 +8,7 @@ import android.view.View;
 
 /**
  * Created by dllo on 16/3/30.
+ *AUTO TY
  */
 public class VerticalViewPager extends ViewPager {
     private float startX,startY;

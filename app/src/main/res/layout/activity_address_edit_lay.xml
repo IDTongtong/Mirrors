@@ -61,7 +61,7 @@
             android:layout_marginTop="20px"
             android:background="@mipmap/phonenum_input"
             android:maxLines="1"
-            android:numeric="integer" />
+        />
 
         <TextView
             android:layout_width="wrap_content"
@@ -79,7 +79,8 @@
             android:layout_marginTop="20px"
             android:background="@mipmap/phonenum_input"
             android:maxLines="1"
-            android:password="true" />
+            android:numeric="integer"
+             />
 
         <TextView
             android:layout_width="wrap_content"

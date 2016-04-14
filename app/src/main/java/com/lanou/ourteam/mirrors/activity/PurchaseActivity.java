@@ -2,10 +2,12 @@ package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
@@ -14,18 +16,27 @@ import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+import com.lanou.ourteam.mirrors.utils.ToastUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * Created by ZHDelete on 16/4/11.
  */
-public class PurchaseActivity extends BaseActivity implements View.OnClickListener{
-    private String goods_id,goods_pic,goods_name,info_des,goods_price;
+public class PurchaseActivity extends BaseActivity implements View.OnClickListener {
+    @InjectView(R.id.activity_purchase_address_reciever_tv)
+    TextView activityPurchaseAddressRecieverTv;
+    @InjectView(R.id.activity_purchase_address_add_tv)
+    TextView activityPurchaseAddressAddTv;
+    @InjectView(R.id.activity_purchase_address_phone_tv)
+    TextView activityPurchaseAddressPhoneTv;
+    private String goods_id, goods_pic, goods_name, info_des, goods_price;
     private ImageView goodsIv;
-    private TextView goodsNameTv,infoDesTv,priceTv ,addChangeTv;
-
+    private TextView goodsNameTv, infoDesTv, priceTv, addChangeTv;
 
 
     private NetHelper netHelper;
@@ -65,11 +76,9 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         addChangeTv.setOnClickListener(this);
 
     }
+
     @Override
     protected void initData() {
-
-
-
 
 
         netHelper = NetHelper.getInstance();
@@ -99,16 +108,21 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 addressListBean = analyzeJson.analyzeAddressList(string);
-                Log.d("PurchaseActivity", "第一条地址:  " + addressListBean.getData().getList().get(0).getAddr_info());
+                for (int i = 0; i < addressListBean.getData().getList().size(); i++) {
+                    if (addressListBean.getData().getList().get(i).getIf_moren().equals("1")){
 
+                        activityPurchaseAddressRecieverTv.setText(addressListBean.getData().getList().get(i).getUsername());
+                        activityPurchaseAddressAddTv.setText(addressListBean.getData().getList().get(i).getAddr_info());
+                        activityPurchaseAddressPhoneTv.setText(addressListBean.getData().getList().get(i).getCellphone());
+                    }
+                }
             }
 
             @Override
             public void onFail(String failStr) {
-                Log.d("PurchaseActivity", "   "+failStr);
+                Log.d("PurchaseActivity", "   " + failStr);
             }
         });
-
 
 
     }
@@ -118,9 +132,28 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         switch (v.getId()) {
             case R.id.activity_purchase_address_changeoradd_tv:
                 Intent intent = new Intent(PurchaseActivity.this, AddressListActivity.class);
-                startActivity(intent);
+                startActivityForResult(intent, 10);
                 break;
 
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 100) {
+            activityPurchaseAddressRecieverTv.setText(data.getStringExtra("username").toString());
+            activityPurchaseAddressAddTv.setText(data.getStringExtra("address").toString());
+            activityPurchaseAddressPhoneTv.setText(data.getStringExtra("username").toString());
+            Toast.makeText(this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
     }
 }

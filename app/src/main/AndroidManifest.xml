@@ -45,6 +45,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.AddressEditActivity"
+            />
 
         <activity android:name=".activity.AddressAddActivity" />
         <activity android:name=".activity.WelcomeActivity" />
@@ -55,7 +57,8 @@
         <activity android:name=".activity.WearPhotoActivity" />
         <activity android:name=".activity.PicDetailsActivity" />
         <activity android:name=".activity.PurchaseActivity" />
-        <activity android:name=".activity.AddressListActivity" />
+        <activity android:name=".activity.AddressListActivity"
+            />
 
         <!-- ***************************************************mob分享-->
         <activity

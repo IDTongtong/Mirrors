@@ -36,5 +36,8 @@ public class Content {
     public static final String DEL_ADDRESS = "index.php/user/del_address";
     //addadress
     public static final String ADD_ADDRESS = "index.php/user/add_address";
+    //ediraddress
+
+    public static final String EDIT_ADDRESS = "index.php/user/edit_address";
 
 }
