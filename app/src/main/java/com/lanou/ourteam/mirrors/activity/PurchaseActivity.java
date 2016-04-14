@@ -9,6 +9,7 @@ import android.text.TextUtils;
 
 import android.os.Bundle;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -38,6 +39,7 @@ import java.util.Map;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by ZHDelete on 16/4/11.
@@ -51,6 +53,8 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
     TextView activityPurchaseAddressAddTv;
     @InjectView(R.id.activity_purchase_address_phone_tv)
     TextView activityPurchaseAddressPhoneTv;
+    @InjectView(R.id.activity_purdetails_iv_close)
+    ImageView activityPurdetailsIvClose;
     private String goods_id, goods_pic, goods_name, info_des, goods_price;
     private ImageView goodsIv;
     private TextView goodsNameTv, infoDesTv, priceTv, addChangeTv;
@@ -348,5 +352,10 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_purdetails_iv_close)
+    public void onClick() {
+        finish();
     }
 }
