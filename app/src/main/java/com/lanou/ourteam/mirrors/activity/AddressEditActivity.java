@@ -13,10 +13,10 @@ public class AddressEditActivity extends BaseActivity {
 
     /**
      * private String username;
-     private String cellphone;
-     private String addr_info;
+     * private String cellphone;
+     * private String addr_info;
      */
-    private EditText userNameEt,cellPhoneEt, addrInfoEt;
+    private EditText userNameEt, cellPhoneEt, addrInfoEt;
     private NetHelper netHelper;
 
     @Override
@@ -32,6 +32,7 @@ public class AddressEditActivity extends BaseActivity {
         addrInfoEt = bindView(R.id.activity_address_edit_address_et);
 
     }
+
     @Override
     protected void initData() {
 

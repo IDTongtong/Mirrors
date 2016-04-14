@@ -65,7 +65,11 @@ public class NetHelper {
         return netHelperInstance;
     }
 
-
+    /**
+     * @param url_body
+     * @param params
+     * @param netListener
+     */
 
     public void volleyPostTogetNetData(String url_body, final Map<String, String> params, final VolleyNetListener netListener) {
 
@@ -94,7 +98,7 @@ public class NetHelper {
 
     }
 
-    public void okHttpPost(String url_body,RequestBody requestBody ,Callback responseCallback) {
+    public void okHttpPost(String url_body, RequestBody requestBody, Callback responseCallback) {
 
         Request request = new Request.Builder()
                 .url(Content.URL_HEAD + url_body)
@@ -104,6 +108,9 @@ public class NetHelper {
         OkHttpTools.enqueue(request, responseCallback);
     }
 
+    /**
+     * 图片缓存根路径
+     */
     private void initImageLoader() {
         //定义硬盘图片缓存的根路径
         if (Environment.getExternalStorageState()
@@ -142,6 +149,7 @@ public class NetHelper {
                 R.mipmap.fail);
         imageLoader.get(image_rul, imageListener);
     }
+
     public void loadImageWithVolley(ImageView imageView, String image_rul) {
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
                 R.mipmap.loading,
@@ -150,7 +158,7 @@ public class NetHelper {
 
     }
 
-    public void loadImageWithVolley(ImageView imageView, String image_rul,int targetWidth, int targetHeight) {
+    public void loadImageWithVolley(ImageView imageView, String image_rul, int targetWidth, int targetHeight) {
         ImageLoader.ImageListener imageListener = imageLoader.getImageListener(imageView,
                 R.mipmap.loading,
                 R.mipmap.fail);
@@ -159,10 +167,17 @@ public class NetHelper {
     }
 
     //有问题,不可调用 ,裁剪 添上 就好
+
+    /**
+     * 毕加索
+     *
+     * @param imageView
+     * @param image_url
+     */
     public void loadImageWithPicasso(ImageView imageView, String image_url) {
         Picasso.with(imageView.getContext())
                 .load(image_url)
-                .resize(480,800)
+                .resize(480, 800)
                 .centerCrop()
                 .placeholder(R.mipmap.loading)
                 .error(R.mipmap.fail)
@@ -222,11 +237,6 @@ public class NetHelper {
     }
 
 
-
-
-
-
-
     public class MemoryCache implements
             ImageLoader.ImageCache {
         private LruCache<String, Bitmap> cache;
@@ -259,8 +269,7 @@ public class NetHelper {
         }
     }
 
-    public class DiskCache implements
-            ImageLoader.ImageCache {
+    public class DiskCache implements ImageLoader.ImageCache {
 
         @Override
         public Bitmap getBitmap(String url) {
@@ -306,10 +315,15 @@ public class NetHelper {
             options1.inSampleSize = scale;
 
 
-            Bitmap bitmap = BitmapFactory.decodeFile(filePath,options1);
+            Bitmap bitmap = BitmapFactory.decodeFile(filePath, options1);
             return bitmap;
         }
 
+        /**
+         * 将Bitmap写入文件
+         * @param url
+         * @param bitmap
+         */
         @Override
         public void putBitmap(String url, Bitmap bitmap) {
 
@@ -353,6 +367,11 @@ public class NetHelper {
             diskCache = new DiskCache();
         }
 
+        /**
+         * 读取Bitmap
+         * @param url
+         * @return
+         */
         @Override
         public Bitmap getBitmap(String url) {
             Bitmap bitmap = memoryCache.getBitmap(url);
