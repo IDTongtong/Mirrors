@@ -37,6 +37,7 @@ public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<Recycl
     protected boolean isLength() {
         //判断集合是否为空,集合大小是否大于0
         return list != null && list.size() > 0;
+
     }
 
     @Override

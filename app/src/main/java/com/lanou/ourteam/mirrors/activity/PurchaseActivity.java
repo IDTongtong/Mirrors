@@ -32,7 +32,7 @@ import com.lanou.ourteam.mirrors.bean.SubOrderBean;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
-import com.lanou.ourteam.mirrors.utils.ToastUtils;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -228,6 +228,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
             @Override
             public void onFail(String failStr) {
 
+                Log.d("PurchaseActivity", "   " + failStr);
             }
         });
 

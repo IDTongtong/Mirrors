@@ -10,6 +10,7 @@ import com.squareup.okhttp.Callback;
  * Created by ZHDelete on 16/3/30.
  */
 public class OkHttpTools {
+
     private static final OkHttpClient mOkHttpClient = new OkHttpClient();
     static{
         mOkHttpClient.setConnectTimeout(30, TimeUnit.SECONDS);
