@@ -35,7 +35,10 @@ public abstract class BaseActivity extends AppCompatActivity {
         initData();
     }
 
-    // 绑定布局
+    /**
+     * 设置布局文件
+     * @return layout布局文件id
+     */
     protected abstract int setContent();
 
     // 加入数据

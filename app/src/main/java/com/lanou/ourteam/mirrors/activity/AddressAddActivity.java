@@ -9,8 +9,10 @@ import android.widget.ImageView;
 
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.HashMap;
@@ -71,7 +73,8 @@ public class AddressAddActivity extends BaseActivity {
                 if (activityAddaddressEditUserNameEt.getText()!=null&&activityAddaddressEditPhoneNumEt.getText()!=null&&activityAddaddressEditAddressEt.getText()!=null){
 
                     Map<String, String> params = new HashMap();
-                    params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+                    String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+                    params.put("token", token);
                     params.put("device_type", "3");
                     params.put("username",activityAddaddressEditUserNameEt.getText().toString());
                     params.put("cellphone",activityAddaddressEditPhoneNumEt.getText().toString());

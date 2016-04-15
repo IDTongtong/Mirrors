@@ -93,6 +93,7 @@ public class SwipeListView extends ListView {
         // 因为match_parent时，不管你怎么滑，都不会显示删除按钮
         // why？ 因为match_parent时，ViewGroup就不去布局剩下的view
         mLayoutParams.width = mScreenWidth;
+            //TODO 减去padding值，但是不想写
         mPointChild.getChildAt(0).setLayoutParams(mLayoutParams);}
     }
 
