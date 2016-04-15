@@ -36,6 +36,7 @@ import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -241,7 +242,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
     public void aliPay(String order_no, String addr_id, String goods_name) {
         Map<String, String> params = new HashMap();
- String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+        String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
         params.put("token", token);
 
         params.put("order_no", order_no);
@@ -350,8 +351,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
             activityPurchaseAddressPhoneTv.setText(data.getStringExtra("username").toString());
             Toast.makeText(this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
 
-        }
-        else if (resultCode == 200){
+        } else if (resultCode == 200) {
             activityPurchaseAddressRecieverTv.setText(data.getStringExtra("username").toString());
             activityPurchaseAddressAddTv.setText(data.getStringExtra("address").toString());
             activityPurchaseAddressPhoneTv.setText(data.getStringExtra("username").toString());
