@@ -96,6 +96,18 @@
     <dimen name="address_list_item_delete_width">130px</dimen>
     <dimen name="address_list_item_edit_margin_right">60px</dimen>
 
+    <!-- ali_weixin_popwin_dimens-->
+    <dimen name="ali_weixin_popwin_width">600px</dimen>
+    <dimen name="ali_weixin_popwin_height">388px</dimen>
+    <dimen name="ali_wixin_popwin_radius">10px</dimen>
+    <dimen name="ali_weixin_popwin_title_height">86px</dimen>
+    <dimen name="ali_weixin_popwin_weixin_margtin_top">50px</dimen>
+    <dimen name="ali_weixin_popwin_ali_margin_top">40px</dimen>
+    <dimen name="ali_weixin_popwin_ali_margin_bottom">50px</dimen>
+    <dimen name="ali_weixin_popwin_icon_margin_text">24px</dimen>
+
+
+
 
     <!-- up herer zh dimens-->
 
