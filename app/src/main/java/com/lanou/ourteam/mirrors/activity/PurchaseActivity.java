@@ -26,14 +26,15 @@ import com.alipay.sdk.app.PayTask;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.alipay.PayResult;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.AddressListBean;
 import com.lanou.ourteam.mirrors.bean.AliPayBean;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.SubOrderBean;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -175,7 +176,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 addressListBean = analyzeJson.analyzeAddressList(string);
                 for (int i = 0; i < addressListBean.getData().getList().size(); i++) {
-                    if (addressListBean.getData().getList().get(i).getIf_moren().equals("1")){
+                    if (addressListBean.getData().getList().get(i).getIf_moren().equals("1")) {
 
                         activityPurchaseAddressRecieverTv.setText(addressListBean.getData().getList().get(i).getUsername());
                         activityPurchaseAddressAddTv.setText(addressListBean.getData().getList().get(i).getAddr_info());
@@ -239,8 +240,9 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
     public void aliPay(String order_no, String addr_id, String goods_name) {
         Map<String, String> params = new HashMap();
+ String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+        params.put("token", token);
 
-        params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
         params.put("order_no", order_no);
         params.put("addr_id", addr_id);
         params.put("goodsname", goods_name);
@@ -344,6 +346,11 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
             activityPurchaseAddressPhoneTv.setText(data.getStringExtra("username").toString());
             Toast.makeText(this, "设置默认地址成功", Toast.LENGTH_SHORT).show();
 
+        }
+        else if (resultCode == 200){
+            activityPurchaseAddressRecieverTv.setText(data.getStringExtra("username").toString());
+            activityPurchaseAddressAddTv.setText(data.getStringExtra("address").toString());
+            activityPurchaseAddressPhoneTv.setText(data.getStringExtra("username").toString());
         }
     }
 
