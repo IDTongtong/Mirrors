@@ -89,12 +89,11 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 videoList.add(list.get(i).getData());
                 video_url = list.get(i).getData();
                 Log.d("WearPhoRvAdapter", "QQQQ   " + list.get(i).getData());
-            }else if (type.equals("9")) {
+            } else if (type.equals("9")) {
                 video_cover_url = list.get(i).getData();
                 Log.d("WearPhoRvAdapter", "WWWW   " + list.get(i).getData());
 
-            }
-            else {
+            } else {
                 imageList.add(list.get(i).getData());
                 Log.d("WearPhoRvAdapter", "EEEE   " + list.get(i).getData());
             }
@@ -123,23 +122,23 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 final CommonHolder commonHolder = (CommonHolder) holder;
                 Log.d("WearPhoRvAdapter", "图片list 大小:  " + imageList.size());
 
-                netHelper.loadImageWithVolley(commonHolder.imageView, imageList.get(position - 1));
+             //   netHelper.loadImageWithVolley(commonHolder.imageView, imageList.get(position - 1));
+                netHelper.loadBigImageWithPicasso(commonHolder.imageView, imageList.get(position - 1));
                 commonHolder.imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-            Intent intent = new Intent(context, PicDetailsActivity.class);
-            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
-            intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
-            intent.putExtra("position", position);
-            int[] location = new int[2];
-            commonHolder.imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
-            intent.putExtra("locationX", location[0]);//必须
-            intent.putExtra("locationY", location[1]);//必须
-
-            intent.putExtra("width", commonHolder.imageView.getWidth());//必须
-            intent.putExtra("height", commonHolder.imageView.getHeight());//必须
-            context.startActivity(intent);
+                        Intent intent = new Intent(context, PicDetailsActivity.class);
+                        //intent.putExtra("images", (Parcelable) image_url_list);//非必须
+                        intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
+                        intent.putExtra("position", position);
+                        int[] location = new int[2];
+                        commonHolder.imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
+                        intent.putExtra("locationX", location[0]);//必须
+                        intent.putExtra("locationY", location[1]);//必须
+                        intent.putExtra("width", commonHolder.imageView.getWidth());//必须
+                        intent.putExtra("height", commonHolder.imageView.getHeight());//必须
+                        context.startActivity(intent);
                     }
                 });
 
@@ -171,7 +170,7 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.wear_item_pic_iv);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.wear_item_pic_ll);
-           // linearLayout.setOnClickListener(this);
+            // linearLayout.setOnClickListener(this);
         }
 
 //        @Override

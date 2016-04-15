@@ -44,7 +44,6 @@
     <!-- 第三方登入分享的权限*********************************************-->
 
     <application
-
         android:name=".base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/mirror_icon"
@@ -101,8 +100,7 @@
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
             android:exported="false"
             android:screenOrientation="behind"
-            android:windowSoftInputMode="adjustResize|stateHidden" >
-        </activity>
+            android:windowSoftInputMode="adjustResize|stateHidden"></activity>
 
         <!-- alipay sdk end -->
 

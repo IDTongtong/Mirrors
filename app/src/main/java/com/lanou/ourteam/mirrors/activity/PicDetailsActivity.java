@@ -3,6 +3,7 @@ package com.lanou.ourteam.mirrors.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -13,17 +14,15 @@ import com.lanou.ourteam.mirrors.common.SmoothImageView;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 
-
 import java.util.List;
 
 /**
  * Created by zt on 16/4/9.
  */
 public class PicDetailsActivity extends BaseActivity {
-    List<String> mDatas;
-
-
+    private List<String> mDatas;
     private SmoothImageView imageView;
+    private boolean flag = false;
 
     @Override
     protected int setContent() {
@@ -35,9 +34,9 @@ public class PicDetailsActivity extends BaseActivity {
         Intent intent = getIntent();
 //        mDatas = (ArrayList<String>) getIntent().getSerializableExtra("images");
         mDatas = intent.getStringArrayListExtra("images");
-        int mPosition = intent.getIntExtra("position", 0) ;
-        Log.d("PicDetailsActivity", "适配器传过来的position:  "+ mPosition);
-        Log.d("PicDetailsActivity", "图片list 大小:::  "+ mDatas.size());
+        int mPosition = intent.getIntExtra("position", 0);
+//        Log.d("PicDetailsActivity", "适配器传过来的position:  " + mPosition);
+//        Log.d("PicDetailsActivity", "图片list 大小:::  " + mDatas.size());
         for (int i = 0; i < mDatas.size(); i++) {
 
             Log.d("PicDetailsActivity", "图片网址:" + mDatas.get(i));
@@ -64,7 +63,7 @@ public class PicDetailsActivity extends BaseActivity {
 
 //        netHelper.loadImageWithPicasso(imageView, mDatas.get(mPosition - 1));
 
-        netHelper.loadBigImageWithPicasso(imageView,mDatas.get(mPosition - 1));
+        netHelper.loadBigImageWithPicasso(imageView, mDatas.get(mPosition - 1));
 
         //universal
         //ImageLoader.getInstance().displayImage(mDatas.get(mPosition), imageView);
@@ -72,6 +71,21 @@ public class PicDetailsActivity extends BaseActivity {
 
     }
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                if (flag == true){
+                   flag = false;
+                }else {
+                    finish();
+                }
+
+
+        }
+        return super.onTouchEvent(event);
+    }
 
     @Override
     protected void initView() {
