@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/address_list_item_height"
-    android:orientation="horizontal">
+    android:layout_height="188px"
+    android:background="@color/text_white"
+
+    android:orientation="horizontal"
+    >
+    <!--android:layout_height="@dimen/address_list_item_height"-->
 
     <RelativeLayout
-
-
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/address_insert_bg"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -22,14 +26,16 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/address_receiver_margin_left">
+                android:layout_marginLeft="@dimen/address_receiver_margin_left"
+                >
+
 
                 <TextView
                     android:id="@+id/add_item_reciever_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/address_receiver_margin_top"
-                    android:text="收件人:Mr.H"
+
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/text_size_26px" />
 
@@ -38,7 +44,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/address_add_margin_top"
-                    android:text="地址:大连 software park"
+
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/text_size_24px" />
 
@@ -47,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/address_phone_num_margin_top"
-                    android:text="17077777777"
+
                     android:textColor="@color/text_black"
                     android:textSize="@dimen/text_size_24px" />
             </LinearLayout>

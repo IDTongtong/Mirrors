@@ -70,7 +70,6 @@ public class NetHelper {
      * @param params
      * @param netListener
      */
-
     public void volleyPostTogetNetData(String url_body, final Map<String, String> params, final VolleyNetListener netListener) {
 
         StringRequest stringRequest = new StringRequest(com.android.volley.Request.Method.POST, Content.URL_HEAD + url_body,

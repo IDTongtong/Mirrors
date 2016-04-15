@@ -68,11 +68,11 @@ public class GoodsListRvAdapter extends RecyclerView.Adapter<GoodsListRvAdapter.
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                holder.picIv,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading);
+        /*
+        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
+                holder.picIv,
+                R.mipmap.ic_launcher,
+                R.mipmap.loading);*/
         if (CommonUtils.isNetworkAvailable()) {
 
             final GoodsListAllBean.DataEntity.ListEntity listEntity = listEntityList.get(position);

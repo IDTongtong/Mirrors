@@ -167,7 +167,8 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
         Map<String, String> params = new HashMap();
 
-        params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+        String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+        params.put("token", token);
         params.put("device_type", "3");
 
         netHelper.volleyPostTogetNetData(Content.ADDRESS_LIST, params, new VolleyNetListener() {
@@ -201,7 +202,8 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         Log.d("PurchaseActivity", "FFFF" + goods_id);
         Map<String, String> params = new HashMap();
 
-        params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+        String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+        params.put("token", token);
         params.put("goods_id", goods_id);
 //        params.put("goods_id", "96Psa1455524521");
 
