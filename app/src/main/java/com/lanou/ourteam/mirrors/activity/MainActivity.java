@@ -95,6 +95,9 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    /**
+     * 显示购物车
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -111,21 +114,13 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void initData() {
 
-
         info_dataList.add(MRTJ);
         info_dataList.add("269");//浏览平光镜
         info_dataList.add("268");//浏览太阳镜
         info_dataList.add(STORY_LIST);
         info_dataList.add(SHOPPING_CAR);
-
-
         Map<String, String> params = new HashMap();
-
         params.put("token", "");
-
-
-        Log.d("MainActivity", "YYYYY");
-
 
         NetHelper.getInstance().volleyPostTogetNetData(Content.MENU_LIST, params, new VolleyNetListener() {
             @Override
@@ -133,7 +128,6 @@ public class MainActivity extends BaseActivity {
                 Gson gson = new Gson();
                 Log.d("MainActivity", string);
                 try {
-
                     JSONObject jsonObject = new JSONObject(string);
                     menuBean = gson.fromJson(jsonObject.toString(), MenuBean.class);
 
@@ -203,6 +197,7 @@ public class MainActivity extends BaseActivity {
             // daoEntityHelper.deleteMenuAll();
 
             Log.d("MainActivity", "MainActivity里 数据控清空执行");
+
         }
 
 

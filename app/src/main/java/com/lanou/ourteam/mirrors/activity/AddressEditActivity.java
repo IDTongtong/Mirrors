@@ -5,7 +5,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.ImageView;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
@@ -16,12 +18,17 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.HashMap;
 import java.util.Map;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by ZHDelete on 16/4/12.
  */
 public class AddressEditActivity extends BaseActivity {
 
+    @InjectView(R.id.activity_address_edit_close_iv)
+    ImageView activityAddressEditCloseIv;
     /**
      * private String username;
      * private String cellphone;
@@ -99,4 +106,15 @@ public class AddressEditActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_address_edit_close_iv)
+    public void onClick() {
+    finish();
+    }
 }

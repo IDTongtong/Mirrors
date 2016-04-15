@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,12 +34,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
+
 /**
  * Created by ZHDelete on 16/4/11.
  */
-public class AddressListActivity extends BaseActivity {
+public class AddressListActivity extends BaseActivity{
     private static final int LOGINCODE = 20;
     private static final int REGISTER = 10;
+    @InjectView(R.id.activity_address_list_close_iv)
+    ImageView closeIv;
     private NetHelper netHelper;
     private AddressListBean addressListBean;
     private SwipeListView mSwipeListView;
@@ -102,6 +110,17 @@ public class AddressListActivity extends BaseActivity {
         }
 
     }
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_address_list_close_iv)
+    public void onClick() {
+        finish();
+    }
 
     @Override
     protected void initData() {
@@ -117,6 +136,7 @@ public class AddressListActivity extends BaseActivity {
 
                 addressListBean = analyzeJson.analyzeAddressList(string);
 
+                Log.d("AddressListActivity", "第一条地址:  " + addressListBean.getData().getList().get(0).getAddr_info());
                 mListAdapter = new AddListAdapter(AddressListActivity.this, addressListBean.getData().getList(), mSwipeListView);
                 mSwipeListView.setAdapter(mListAdapter);
 
@@ -315,6 +335,8 @@ public class AddressListActivity extends BaseActivity {
         }
 
     }
+
+
 
 
 }

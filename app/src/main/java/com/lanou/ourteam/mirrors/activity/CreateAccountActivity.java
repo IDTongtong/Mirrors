@@ -15,6 +15,7 @@ import com.lanou.ourteam.mirrors.bean.UserBean;
 import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+import com.lanou.ourteam.mirrors.utils.Toastor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -91,7 +92,6 @@ public class CreateAccountActivity extends BaseActivity implements Url {
         netHelper.volleyPostTogetNetData(USER_REG, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
-                Toast.makeText(CreateAccountActivity.this, "成功"+ string, Toast.LENGTH_SHORT).show();
                 Log.d("CreateAccountActivity", string);
 
                 try {
@@ -101,13 +101,13 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                         switch (result) {
                             case "":
                                 String msg = jsonObject.getString("msg");
-                                Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
+//                                Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                Toastor.showToast(CreateAccountActivity.this,msg);
                                 break;
                             case "1":
 //                                AnalyzeJson gson = new AnalyzeJson();
                                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                                 data = analyzeJson.analyzeUser(string);
-                                //TODO 对data 做后续操作
                                 Bundle bundle = new Bundle();
                                 bundle.putString("phoneNum", createPhoneEt.getText().toString());
                                 jumpToActivity(CreateAccountActivity.this, LoginActivity.class, bundle);

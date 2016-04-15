@@ -2,11 +2,12 @@ package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.ImageView;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.WearPhoRvAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
@@ -19,12 +20,16 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 import java.util.HashMap;
 import java.util.Map;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by ZHDelete on 16/4/8.
  */
 public class WearPhotoActivity extends BaseActivity {
+    @InjectView(R.id.activity_wear_back_btn)
+    ImageView activityWearBackBtn;
     private RecyclerView mRecyclerView;
 
     private String goods_id;
@@ -93,5 +98,17 @@ public class WearPhotoActivity extends BaseActivity {
     protected void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.activity_wear_recyclerview);
 
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.inject(this);
+    }
+
+    @OnClick(R.id.activity_wear_back_btn)
+    public void onClick() {
+        finish();
     }
 }
