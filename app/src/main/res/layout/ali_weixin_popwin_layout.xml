@@ -8,7 +8,7 @@
     <android.support.v7.widget.CardView
 
         android:layout_width="@dimen/ali_weixin_popwin_width"
-        android:layout_height="@dimen/ali_weixin_popwin_height"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="@dimen/ali_wixin_popwin_radius">
 
         <LinearLayout
@@ -82,7 +82,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/weixinapy_icon" />
+                        android:src="@drawable/alipay_icon" />
 
                     <TextView
                         android:layout_width="match_parent"
