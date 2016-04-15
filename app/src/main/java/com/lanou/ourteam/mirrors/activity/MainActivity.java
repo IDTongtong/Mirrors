@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.adpter.VerticalPagerAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.MenuBean;
 
 import com.lanou.ourteam.mirrors.common.VerticalViewPager;
@@ -32,6 +33,7 @@ import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.CommonUtils;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import org.json.JSONException;
@@ -96,8 +98,7 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-        boolean isLogin = sharedPreferences.getBoolean("isLogin", false);
+       Boolean isLogin = (Boolean) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "isLogin", false);
         if (isLogin) {
             mainLoginIv.setVisibility(View.GONE);
             mainShoppingIv.setVisibility(View.VISIBLE);
@@ -343,7 +344,6 @@ public class MainActivity extends BaseActivity {
 
     public void showMenu(String title) {
         MenuFragment menuFragment = new MenuFragment();
-
 
         Bundle bundle = new Bundle();
         bundle.putString("menutitle", title);

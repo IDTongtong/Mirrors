@@ -16,11 +16,13 @@ import android.widget.Toast;
 import com.lanou.ourteam.mirrors.R;
 
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.AddressListBean;
 import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.common.SwipeListView;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import org.json.JSONException;
@@ -69,12 +71,12 @@ public class AddressListActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d("ggdddAddressListActivity", "resultCode:" + resultCode);
 
         if (resultCode == REGISTER || resultCode == 20) {
             Log.d("sssAddressListActivity", "jinlaile");
             Map<String, String> params = new HashMap();
-            params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+            String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+            params.put("token", token);
             params.put("device_type", "3");
 
             netHelper.volleyPostTogetNetData(Content.ADDRESS_LIST, params, new VolleyNetListener() {
@@ -104,7 +106,8 @@ public class AddressListActivity extends BaseActivity {
     @Override
     protected void initData() {
         Map<String, String> params = new HashMap();
-        params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+        String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+        params.put("token", token);
         params.put("device_type", "3");
         final AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
 
@@ -130,7 +133,8 @@ public class AddressListActivity extends BaseActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
                 Map<String, String> params = new HashMap();
-                params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+                String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+                params.put("token", token);
                 params.put("device_type", "3");
 
                 params.put("addr_id", addressListBean.getData().getList().get(position).getAddr_id());
@@ -198,7 +202,8 @@ public class AddressListActivity extends BaseActivity {
 
         public void deleteAddOverService(String addr_id) {
             Map<String, String> params = new HashMap();
-            params.put("token", "0065d70d336ea6d38a5c11412d7b19a4");
+            String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+            params.put("token", token);
             params.put("addr_id", addr_id);
             netHelper.volleyPostTogetNetData(Content.DEL_ADDRESS, params, new VolleyNetListener() {
                 @Override
@@ -269,10 +274,20 @@ public class AddressListActivity extends BaseActivity {
                     mListView.turnToNormal();
               //删除时候 还需要传个默认地址
                     Intent intent = new Intent();
-                    intent.putExtra("phone", addressListBean.getData().getList().get(addressListBean.getData().getList().size()-1).getCellphone());
-                    intent.putExtra("address", addressListBean.getData().getList().get(addressListBean.getData().getList().size()-1).getAddr_info());
-                    intent.putExtra("username", addressListBean.getData().getList().get(addressListBean.getData().getList().size()-1).getUsername());
-                    setResult(100, intent);
+                  if (addressListBean!= null&& addressListBean.getData()!=null&&addressListBean.getData().getList().size()>0) {
+                      intent.putExtra("phone", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getCellphone());
+                      intent.putExtra("address", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getAddr_info());
+                      intent.putExtra("username", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getUsername());
+                      setResult(100, intent);
+                  }
+                    else {
+                      intent.putExtra("phone", "");
+                      intent.putExtra("address", "");
+                      intent.putExtra("username", "");
+                      setResult(200, intent);
+                  }
+
+
                 }
             });
             viewHolder.editIv.setOnClickListener(new View.OnClickListener() {

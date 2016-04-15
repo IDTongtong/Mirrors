@@ -12,11 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
+import com.lanou.ourteam.mirrors.base.BaseApplication;
 import com.lanou.ourteam.mirrors.bean.UserBean;
 import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import org.json.JSONException;
@@ -246,10 +249,12 @@ public class LoginActivity extends BaseActivity implements Url {
                                 break;
                             case "1":
                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                editor.putBoolean("isLogin", true);
-                                editor.commit();
+                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "isLogin", true);
+                                Gson gson = new Gson();
+                                UserBean bean = gson.fromJson(jsonObject.toString(),UserBean.class);
+                                String token = bean.getData().getToken();
+                                //储存token
+                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(),"token",token);
                                 finish();
                                 break;
                         }
