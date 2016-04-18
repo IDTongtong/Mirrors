@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
@@ -18,6 +19,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Scroller;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
@@ -74,6 +76,10 @@ public class MainActivity extends BaseActivity {
     List<MenuBean.DataEntity.ListEntity> listEntityList;
     List<MenuItemEntity> menuItemEntityList;
     FragmentManager fm = getSupportFragmentManager();
+
+    //两次 返回键退出
+    private long mExiTime;
+
 
     @Override
     protected int setContent() {
@@ -356,6 +362,28 @@ public class MainActivity extends BaseActivity {
         fm.isDestroyed();
         menuFrameLayout.setVisibility(View.GONE);
         Log.d("dddMainActivity", "hhh");
+    }
+
+
+    /**
+     * 连续点击 两次 返回键 退出
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        switch (keyCode) {
+            case KeyEvent.KEYCODE_BACK:
+                if ((System.currentTimeMillis() - mExiTime) > 2000) {
+                    Toast.makeText(this, "再按一次返回键离开", Toast.LENGTH_SHORT).show();
+                    mExiTime = System.currentTimeMillis();
+                } else {
+                    finish();
+                }
+                return true;
+        }
+        return super.onKeyUp(keyCode, event);
     }
 }
 
