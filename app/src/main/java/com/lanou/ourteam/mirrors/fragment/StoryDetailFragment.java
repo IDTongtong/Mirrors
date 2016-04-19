@@ -2,6 +2,7 @@ package com.lanou.ourteam.mirrors.fragment;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -11,6 +12,7 @@ import com.lanou.ourteam.mirrors.bean.StoryBean;
 import com.lanou.ourteam.mirrors.bean.StoryDetailText;
 import com.lanou.ourteam.mirrors.bean.StoryItemBean;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+import com.lanou.ourteam.mirrors.utils.ShareUtils;
 
 import java.util.List;
 
@@ -22,7 +24,8 @@ public class StoryDetailFragment extends BaseFragment{
 
     List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array;
     private TextView smallTitleTv, titleTv, subTitleTv;
-    String smallTitle, title, subTitle;
+    String smallTitle, title, subTitle,shareUrl;
+    private ImageView shareIv;
 
 
     public static StoryDetailFragment setDataGetInstance() {
@@ -37,6 +40,8 @@ public class StoryDetailFragment extends BaseFragment{
         smallTitle = text_array.get(position).getSmallTitle();
         title = text_array.get(position).getTitle();
         subTitle = text_array.get(position).getSubTitle();
+
+        shareUrl = text_array.get(position).getGood_info().getGoods_share();
     }
 
     @Override
@@ -47,10 +52,17 @@ public class StoryDetailFragment extends BaseFragment{
         smallTitleTv = bindViewById(view, R.id.fragment_story_detail_smallTitle);
         titleTv = bindViewById(view, R.id.fragment_story_detail_title);
         subTitleTv = bindViewById(view, R.id.fragment_story_detail_subTitle);
+        shareIv = bindViewById(view,R.id.fragment_story_detail_shared_iv);
 
         smallTitleTv.setText(smallTitle);
         titleTv.setText(title);
         subTitleTv.setText(subTitle);
+        shareIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ShareUtils.showShare(shareUrl);
+            }
+        });
 
 
     }

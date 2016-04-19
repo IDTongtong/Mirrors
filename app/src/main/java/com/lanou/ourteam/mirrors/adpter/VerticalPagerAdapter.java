@@ -27,7 +27,7 @@ public class VerticalPagerAdapter extends FragmentPagerAdapter {
     private MenuBean menuBean;
     private List<MenuItemEntity> menuItemEntityList;
 
-    public VerticalPagerAdapter(FragmentManager fm, Context context,List<MenuItemEntity> menuItemEntityList) {
+    public VerticalPagerAdapter(FragmentManager fm, Context context, List<MenuItemEntity> menuItemEntityList) {
         super(fm);
         Log.d("VerticalPagerAdapter", "构造构造构造");
         this.context = context;
@@ -38,30 +38,37 @@ public class VerticalPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (menuItemEntityList.get(position).getType()) {
-            case "6":
-                Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuItemEntityList.get(position).getTitle());
-
-            case "3":
-                Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, menuItemEntityList.get(position).getInfo_data(),  menuItemEntityList.get(position).getTitle());
+        if (position < menuItemEntityList.size()) {
 
 
-            case "4":
-                //!!!!等待进一步解析：
-                //接口里 又改为了 购物车
-                return ShopCarFragment.setUrlBodyGetInstance( menuItemEntityList.get(position).getTitle());
-            case "2":
-                Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST,  menuItemEntityList.get(position).getTitle());
+            switch (menuItemEntityList.get(position).getType()) {
+                case "6":
+                    Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
+                    return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuItemEntityList.get(position).getTitle());
+
+                case "3":
+                    Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
+                    return GoodsListFragment.setUrlBodyGetInstance(Content.GOODS_LIST, menuItemEntityList.get(position).getInfo_data(), menuItemEntityList.get(position).getTitle());
+
+
+                case "4":
+                    //!!!!等待进一步解析：
+                    //接口里 又改为了 购物车
+                    return ShopCarFragment.setUrlBodyGetInstance(menuItemEntityList.get(position).getTitle());
+                case "2":
+                    Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
+                    return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST, menuItemEntityList.get(position).getTitle());
 //            case 5:
 //
 ////                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ, menuBean.getData().getList().get(position).getTitle());
 //                return MrtjFragment.setUrlBodyGetInstance(Content.MRTJ,  menuItemEntityList.get(position).getTitle());
-            default:
-                Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
-                return null;
+                default:
+                    Log.d("VerticalPagerIIAdapter", "viewpager位置:" + position);
+                    return null;
+
+            }
+        } else {
+            return StoryFragment.setUrlBodyGetInstance(Content.STORY_LIST, "专题分享");
 
         }
 
@@ -70,7 +77,7 @@ public class VerticalPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return  menuItemEntityList.size();
-
+//        return  menuItemEntityList.size();
+        return 5;
     }
 }
