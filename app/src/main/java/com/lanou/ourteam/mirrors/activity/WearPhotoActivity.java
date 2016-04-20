@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import com.lanou.ourteam.mirrors.R;
@@ -15,6 +16,7 @@ import com.lanou.ourteam.mirrors.bean.AnalyzeJson;
 import com.lanou.ourteam.mirrors.bean.GoodsItemBean;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.HashMap;
@@ -29,10 +31,11 @@ import butterknife.OnClick;
  */
 public class WearPhotoActivity extends BaseActivity {
     @InjectView(R.id.activity_wear_back_btn)
-    ImageView activityWearBackBtn;
+    ImageView activityWearBackBtn,purchaseIv;
     private RecyclerView mRecyclerView;
 
     private String goods_id;
+    private String goods_pic,goods_name,info_des,goods_price;
 
     private NetHelper netHelper;
 
@@ -84,6 +87,11 @@ public class WearPhotoActivity extends BaseActivity {
                 mRecyclerView.setLayoutManager(lm);
                 mRecyclerView.setAdapter(mAdapter);
 
+
+                goods_pic = goodsItemBean.getData().getGoods_pic();
+                goods_name = goodsItemBean.getData().getGoods_name();
+                goods_price = goodsItemBean.getData().getGoods_price();
+
             }
 
             @Override
@@ -97,6 +105,28 @@ public class WearPhotoActivity extends BaseActivity {
     @Override
     protected void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.activity_wear_recyclerview);
+        purchaseIv = (ImageView) findViewById(R.id.activity_wear_purchase);
+
+        purchaseIv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Boolean hasLogin = (Boolean) MySharedPreferencesUtils.getData(WearPhotoActivity.this, "hasLogin", false);
+                //如果首页登陆过,在此处 会得到 true
+                if (hasLogin) {
+
+                    PurchaseActivity.startPurchaseActivity(WearPhotoActivity.this,
+                            goods_id,
+                            goods_pic,
+                            goods_name,
+                            info_des,
+                            goods_price);
+                } else {
+                    Log.d("GoodShopSecondActivity", "购买页面没登录时,跳到了LoginActivity");
+                    jumpToActivity(WearPhotoActivity.this, LoginActivity.class, null);
+                }
+
+            }
+        });
 
     }
 

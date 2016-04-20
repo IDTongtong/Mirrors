@@ -78,8 +78,9 @@ public class LoginActivity extends BaseActivity implements Url {
 
     @Override
     protected void initView() {
-        //    监听电话号码的EditText
 
+
+        //    监听电话号码的EditText
         loginPhoneEt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -89,11 +90,11 @@ public class LoginActivity extends BaseActivity implements Url {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (loginPhoneEt.length() != 0 && loginPasswordEt.length() != 0) {
-//    当手机号和密码输入时 loginLand可点击状态
+                    // 当手机号和密码输入时 loginLand可点击状态
                     loginLand.setBackgroundResource(R.drawable.selector_create_account);
 
                 } else {
-//                    否则  不可点击
+                    // 否则  不可点击
                     loginLand.setBackgroundResource(R.mipmap.button_use_false);
                 }
             }
@@ -172,8 +173,8 @@ public class LoginActivity extends BaseActivity implements Url {
                         Map<String, String> params = new HashMap<>();
                         params.put("wb_name", name);
                         params.put("wb_ima", image);
-                      params.put("wb_id", id);
-                        params.put("iswb_orwx","1");
+                        params.put("wb_id", id);
+                        params.put("iswb_orwx", "1");
                         NetHelper.getInstance().volleyPostTogetNetData("index.php/user/bundling", params, new VolleyNetListener() {
                             @Override
                             public void onSuccess(String string) {
@@ -225,7 +226,7 @@ public class LoginActivity extends BaseActivity implements Url {
 
                 break;
             case R.id.whechat_login:
-
+                break;
         }
     }
 
@@ -251,10 +252,12 @@ public class LoginActivity extends BaseActivity implements Url {
                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                                 MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "isLogin", true);
                                 Gson gson = new Gson();
-                                UserBean bean = gson.fromJson(jsonObject.toString(),UserBean.class);
+                                UserBean bean = gson.fromJson(jsonObject.toString(), UserBean.class);
                                 String token = bean.getData().getToken();
                                 //储存token
-                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(),"token",token);
+                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "token", token);
+                                //flag 标记是否已经登录
+                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "hasLogin", true);
                                 finish();
                                 break;
                         }
