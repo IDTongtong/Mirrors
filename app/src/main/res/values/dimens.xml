@@ -35,14 +35,14 @@
     <dimen name="goods_list_item_pic_height">700px</dimen>
     <dimen name="goods_list_item_goodsname_text_sizw">45px</dimen>
     <dimen name="goods_list_item_productarea_text_size">24px</dimen>
-    <dimen name="goods_list_item_goodsname_margintop">50px</dimen>
+    <dimen name="goods_list_item_goodsname_margintop">40px</dimen>
     <dimen name="goods_list_item_productarea_margintop">16px</dimen>
     <dimen name="goods_list_item_doubleb_lackline_margintop">30px</dimen>
     <dimen name="goods_list_item_brand_margintop">16px</dimen>
     <dimen name="goods_list_item_description_marginleft">32px</dimen>
 
     <dimen name="story_list_item_pic_height">700px</dimen>
-    <dimen name="story_item_pic_height">900px</dimen>
+    <dimen name="story_item_pic_height">1000px</dimen>
 
     <!--故事行布局 dimens-->
 

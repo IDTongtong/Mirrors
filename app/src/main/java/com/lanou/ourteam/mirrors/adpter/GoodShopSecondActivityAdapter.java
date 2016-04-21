@@ -122,7 +122,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
 
-                    ShareUtils.showShare(datas.getData().getGoods_share());
+                    ShareUtils.showShare(datas.getData().getGoods_share()+datas.getData().getGoods_id());
                 }
             });
 
