@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_marginTop="50px"
-    android:layout_height="wrap_content"
+    android:id="@+id/goods_list_item_relativilayouty"
     android:layout_width="750px"
-    android:background="#ffffff"
-    android:orientation="vertical"
-    android:id="@+id/goods_list_item_relativilayouty">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="50px"
+    android:background="@color/bg_white"
+    android:orientation="vertical">
 
     <ImageView
         android:id="@+id/goods_list_item_pic"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/goids_list_item_pic_height"
+        android:layout_height="@dimen/goods_list_item_pic_height"
 
         android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
@@ -19,9 +19,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-       android:layout_marginTop="660px"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/goods_list_item_description_marginleft"
+        android:layout_marginTop="660px"
         android:orientation="vertical">
 
         <TextView
@@ -30,17 +30,17 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/goods_list_item_goodsname_margintop"
             android:text="SEE CONCEPT"
-            android:textStyle="bold"
-
             android:textColor="@color/text_black"
-            android:textSize="@dimen/goods_list_item_goodsname_text_sizw" />
+
+            android:textSize="@dimen/goods_list_item_goodsname_text_sizw"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/goods_list_item_goods_price_tv"
-            android:text="¥1500"
-            android:textColor="@color/text_black"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="¥1500"
+            android:textColor="@color/text_black" />
 
         <TextView
             android:id="@+id/goods_list_item_produce_area_tv"

@@ -7,11 +7,13 @@
     android:orientation="vertical"
     android:paddingLeft="@dimen/activity_margin_left"
     tools:context=".MainActivity">
+
     <com.zhy.autolayout.AutoLinearLayout
         android:id="@+id/common_lay_yoplayout"
-  android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <com.zhy.autolayout.AutoLinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -21,13 +23,12 @@
 
             <TextView
                 android:id="@+id/common_lay_toptv"
-                android:layout_marginLeft="@dimen/text_size_30px"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/text_size_30px"
                 android:text="浏览平光眼镜"
                 android:textColor="@color/text_white"
-                android:textSize="@dimen/text_size_30px"
-                />
+                android:textSize="@dimen/text_size_30px" />
 
 
             <ImageView
@@ -38,25 +39,24 @@
         </com.zhy.autolayout.AutoLinearLayout>
 
         <ImageView
-            android:layout_marginLeft="@dimen/text_size_30px"
-
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_size_30px"
             android:layout_marginTop="@dimen/margin_14px"
             android:src="@drawable/double_line_white" />
-        <TextView
-            android:layout_marginLeft="@dimen/text_size_30px"
 
+        <TextView
             android:layout_width="wrap_content"
+
             android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/text_size_30px"
             android:layout_marginTop="@dimen/margin_26px"
             android:text="显示排序为最新推荐"
             android:textColor="@color/text_white"
             android:textSize="@dimen/text_size_24px" />
 
     </com.zhy.autolayout.AutoLinearLayout>
-
-
 
 
     <android.support.v7.widget.RecyclerView

@@ -1,40 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="650px"
+    android:layout_width="750px"
     android:layout_height="wrap_content"
     android:layout_margin="30px"
     android:layout_marginTop="50px"
-    android:background="#ffffff"
+    android:background="@color/bg_white"
     android:orientation="vertical">
 
     <ImageView
-        android:layout_centerHorizontal="true"
         android:id="@+id/story_item_pic"
         android:layout_width="match_parent"
         android:layout_height="@dimen/story_item_pic_height"
+        android:layout_centerHorizontal="true"
         android:scaleType="fitXY"
         android:src="@mipmap/loading" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/story_item_bottom_linear_height"
         android:layout_below="@+id/story_item_pic"
-        android:layout_centerHorizontal="true"
+
         android:orientation="vertical">
 
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/story_item_doubleb_lackline_margintop"
-            android:src="@drawable/double_line_black" />
+            android:layout_marginTop="@dimen/story_item_doubleb_blackline_margintop"
+            android:layout_marginLeft="@dimen/story_item_double_blackLine_margingleft"
+            android:src="@drawable/creat_count_doubleline_black" />
 
         <TextView
             android:id="@+id/story_item_story_title_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/story_item_brand_margintop"
-            android:text="mirror 穿搭 | 冷美人的慵懒随性风"
+            android:layout_marginLeft="@dimen/story_item_double_blackLine_margingleft"
             android:textColor="@color/text_black"
             android:textSize="@dimen/text_size_30px" />
     </LinearLayout>

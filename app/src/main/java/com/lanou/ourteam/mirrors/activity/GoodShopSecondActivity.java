@@ -26,6 +26,7 @@ import com.lanou.ourteam.mirrors.bean.GoodsDetailsBean;
 import com.lanou.ourteam.mirrors.listenerinterface.PoisitionListener;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
+import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import org.json.JSONException;
@@ -148,15 +149,26 @@ public class GoodShopSecondActivity extends BaseActivity {
 
         //跳转到 购买 activity 相关 from here
         purchaseIv = (ImageView) findViewById(R.id.secondshop_shop);
+
         purchaseIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PurchaseActivity.startPurchaseActivity(GoodShopSecondActivity.this,
-                        goodsid,
-                        goods_pic,
-                        goods_name,
-                        info_des,
-                        goods_price);
+                Boolean hasLogin = (Boolean) MySharedPreferencesUtils.getData(GoodShopSecondActivity.this, "hasLogin", false);
+                //如果首页登陆过,在此处 会得到 true
+                if (hasLogin) {
+
+                    PurchaseActivity.startPurchaseActivity(GoodShopSecondActivity.this,
+                            goodsid,
+                            goods_pic,
+                            goods_name,
+                            info_des,
+                            goods_price);
+                } else {
+                    Log.d("GoodShopSecondActivity", "购买页面没登录时,跳到了LoginActivity");
+                    jumpToActivity(GoodShopSecondActivity.this, LoginActivity.class, null);
+                }
+
+
             }
         });
         //跳转到 购买 activity 相关 up here

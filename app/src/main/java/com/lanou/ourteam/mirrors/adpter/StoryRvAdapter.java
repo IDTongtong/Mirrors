@@ -50,7 +50,7 @@ public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.Lis
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        listEntity = list.get(position);
+//        listEntity = list.get(position);
 
 //        //第一条数据有问题
 //        if (position != 0) {
@@ -107,13 +107,6 @@ public class StoryRvAdapter extends BaseRecyclerAdapter<StoryBean.DataEntity.Lis
 //        });
         StoryViewHolder storyViewHolder = (StoryViewHolder) holder;
 
-
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                storyViewHolder.picIv,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
         if (CommonUtils.isNetworkAvailable()) {
 
             listEntity = list.get(position);
