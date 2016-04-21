@@ -106,7 +106,7 @@
         />
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
+        android:layout_height="50dp"
         android:layout_below="@+id/item_goodsfragment_content_head_scroll_down"/>
 
 </RelativeLayout>
