@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -180,7 +181,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             // goodsDetailsViewHolder.goodsDetailsImg.setImageURI(imageUri);
 
             netHelper.loadImageWithVolley(goodsDetailsViewHolder.goodsDetailsImg, datas.getData().getDesign_des().get(position - 2).getImg());
-
+         goodsDetailsViewHolder.progressBar.setVisibility(View.GONE);
         }
 
 
@@ -266,7 +267,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         private TextView goodsDetailsDetailsName, goodsDetailsIntroContent;
         private ImageView goodsDetailsImg;
         private RelativeLayout goodsDetailsRelativeLayout, detailsRelativeLayoutAll;
-
+    private ProgressBar progressBar;
         public GoodsDetailsViewHolder(View itemView) {
             super(itemView);
             goodsDetailsDetailsName = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_name);
@@ -274,7 +275,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             goodsDetailsImg = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_img);
             goodsDetailsRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_relativelayout);
             detailsRelativeLayoutAll = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_relativelayout_all);
-
+           progressBar = (ProgressBar) itemView.findViewById(R.id.item_goodsfragment_content_goods_progressbar);
         }
     }
 
