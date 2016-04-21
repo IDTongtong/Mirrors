@@ -290,7 +290,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
 
     public void showPopupWindow(View v) {
         PopupWindow popupWindow = new PopupWindow(this);
-        popupWindow.setBackgroundDrawable(null);
+        //popupWindow.setBackgroundDrawable(null);
         View view = getLayoutInflater().inflate(R.layout.ali_weixin_popwin_layout, null);
 
         popupWindow.setContentView(view);
@@ -300,6 +300,8 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         //点击 外面 取消
         popupWindow.setOutsideTouchable(true);
         popupWindow.setTouchable(true);
+        popupWindow.setFocusable(true);
+
 
         RelativeLayout weixinLl = (RelativeLayout) view.findViewById(R.id.ali_weixin_weixinpay_relativel);
         RelativeLayout aliLl = (RelativeLayout) view.findViewById(R.id.ali_weixin_alipay_relativel);
@@ -327,6 +329,11 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
         popupWindow.showAtLocation(v, Gravity.CENTER,
                 0,
                 0);//0,0 距原点坐标
+
+
+
+
+
 
     }
 

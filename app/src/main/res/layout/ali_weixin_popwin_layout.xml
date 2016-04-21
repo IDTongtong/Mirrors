@@ -9,6 +9,7 @@
 
         android:layout_width="@dimen/ali_weixin_popwin_width"
         android:layout_height="wrap_content"
+        android:background="@color/text_white"
         app:cardCornerRadius="@dimen/ali_wixin_popwin_radius">
 
         <LinearLayout
