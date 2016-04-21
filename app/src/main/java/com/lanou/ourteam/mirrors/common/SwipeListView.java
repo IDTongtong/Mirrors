@@ -38,7 +38,7 @@ public class SwipeListView extends ListView {
         WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
         DisplayMetrics dm = new DisplayMetrics();
         wm.getDefaultDisplay().getMetrics(dm);
-        mScreenWidth = dm.widthPixels;
+        mScreenWidth = dm.widthPixels - 60;
     }
 
     @Override
@@ -53,7 +53,7 @@ public class SwipeListView extends ListView {
                 performActionUp();
                 break;
         }
-      //拦截他的点击事件的
+        //拦截他的点击事件的
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
@@ -85,16 +85,17 @@ public class SwipeListView extends ListView {
         mPointChild = (ViewGroup) getChildAt(pointToPosition(mDownX, mDownY)
                 - getFirstVisiblePosition());
         // 获取删除按钮的宽度
-        if (mPointChild!=null){
-        mDeleteBtnWidth = mPointChild.getChildAt(1).getLayoutParams().width;
-        mLayoutParams = (LinearLayout.LayoutParams) mPointChild.getChildAt(0)
-                .getLayoutParams();
-        // 为什么要重新设置layout_width 等于屏幕宽度
-        // 因为match_parent时，不管你怎么滑，都不会显示删除按钮
-        // why？ 因为match_parent时，ViewGroup就不去布局剩下的view
-        mLayoutParams.width = mScreenWidth;
+        if (mPointChild != null) {
+            mDeleteBtnWidth = mPointChild.getChildAt(1).getLayoutParams().width;
+            mLayoutParams = (LinearLayout.LayoutParams) mPointChild.getChildAt(0)
+                    .getLayoutParams();
+            // 为什么要重新设置layout_width 等于屏幕宽度
+            // 因为match_parent时，不管你怎么滑，都不会显示删除按钮
+            // why？ 因为match_parent时，ViewGroup就不去布局剩下的view
+            mLayoutParams.width = mScreenWidth;
             //TODO 减去padding值，但是不想写
-        mPointChild.getChildAt(0).setLayoutParams(mLayoutParams);}
+            mPointChild.getChildAt(0).setLayoutParams(mLayoutParams);
+        }
     }
 
     // 处理action_move事件

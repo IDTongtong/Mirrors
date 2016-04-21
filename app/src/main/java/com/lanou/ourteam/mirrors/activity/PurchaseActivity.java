@@ -272,7 +272,7 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
                 };
 
                 // 必须异步调用
-                Thread payThread = new Thread(payRunnable);
+                               Thread payThread = new Thread(payRunnable);
                 payThread.start();
 
             }

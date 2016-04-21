@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="188px"
-    android:background="@color/text_white"
 
+    android:background="@drawable/address_insert_bg"
     android:orientation="horizontal"
     >
     <!--android:layout_height="@dimen/address_list_item_height"-->

@@ -11,8 +11,8 @@
 
         android:id="@+id/item_goodsfragment_content_goods_details_img"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
-
+        android:layout_height="400dp"
+  android:scaleType="fitXY"
        android:layout_centerHorizontal="true"
         ></ImageView>
 

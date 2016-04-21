@@ -26,6 +26,9 @@ import java.util.Map;
  */
 public class StoryFragment extends BaseFragment {
 
+
+
+
     TextView textViewToptv;
     String title;
     private RecyclerView mRecyclerView;
@@ -74,6 +77,7 @@ public class StoryFragment extends BaseFragment {
         Bundle bundle = getArguments();
         url_body = bundle.getString("url_body");
         title = bundle.getString("stroytitle");
+
         Log.d("MrtjFragment", "***   " + url_body);
         textViewToptv.setText(title);
 

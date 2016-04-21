@@ -42,7 +42,10 @@
             android:src="@mipmap/create_account_unline" />
 
         <TextView
+
             android:id="@+id/activity_addresslist_addadresstv"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
             android:layout_width="match_parent"
             android:layout_height="@dimen/activity_addlist_new_add_tv_height"
             android:layout_marginTop="@dimen/login_50px"
@@ -54,7 +57,11 @@
             android:id="@+id/activity_addresslist_swipelistview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="30px"
+            android:layout_marginRight="30px"
              />
 
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
     </LinearLayout>
 </com.zhy.autolayout.AutoLinearLayout>

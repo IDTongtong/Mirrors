@@ -96,15 +96,6 @@ public class WelcomeActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-//        imageView = (ImageView) findViewById(R.id.welcome_iv);
-//        ImageLoader imageLoader = netHelper.getImageLoader();
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                imageView,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
-//        imageLoader.get(welcomIvUrl, imageListener);
-//
+
     }
 }

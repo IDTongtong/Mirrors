@@ -126,8 +126,13 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             });
 
             //设置透明度的变化
-            headViewHolder.relativeLayoutHead.getBackground().setAlpha(255);
+          int  disBottom = ((HeadViewHolder) holder).relativeLayoutHead.getBottom();
+            if(disBottom==0){
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
+            }else{
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (disBottom / 6.7));
 
+            }
             Log.d("GoodShopSecondActivityA", "valueDy:" + valueDy);
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
