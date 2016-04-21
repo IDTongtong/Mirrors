@@ -16,22 +16,15 @@ import butterknife.ButterKnife;
  * Created by zt on 16/3/29.
  */
 public abstract class BaseActivity extends AppCompatActivity {
-    /**
-     * setContent()绑定布局
-     * initData()加入数据
-     * initView()创建视图
-     * bindView()绑定视图
-     */
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //  实现无标题栏（但有系统自带的任务栏）：
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,  WindowManager.LayoutParams.FLAG_FULLSCREEN);
-      //  实现无标题栏（但有系统自带的任务栏）：
         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 加上activity
         BaseApplication.addActivity(this);
-
         //Fresco初始化:相关
         Fresco.initialize(this);
         setContentView(setContent());
@@ -46,19 +39,32 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected abstract int setContent();
 
-    // 加入数据
+    /**
+     * 加入数据
+     */
     protected abstract void initData();
 
-    // 创建视图
+    /**
+     * 创建视图
+     */
     protected abstract void initView();
 
-    // 绑定视图
+    /**
+     * 绑定视图
+     * @param id
+     * @param <T>
+     * @return
+     */
     protected <T extends View> T bindView(int id) {
         return (T) findViewById(id);
     }
 
-
-    //页面跳转
+    /**
+     * 页面跳转
+     * @param context
+     * @param targetActivity
+     * @param bundle
+     */
     public void jumpToActivity(Context context, Class<?> targetActivity, Bundle bundle) {
         Intent intent = new Intent(context, targetActivity);
         if (null != bundle) {
@@ -67,7 +73,14 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    //带有返回值的页面跳转
+
+    /**
+     * 带有返回值的页面跳转
+     * @param context
+     * @param targetActivity 目标activity
+     * @param requestCode 请求码
+     * @param bundle
+     */
     public void jumpToActivityForResult(Context context, Class<?> targetActivity, int requestCode, Bundle bundle) {
         Intent intent = new Intent(context, targetActivity);
         if (null != bundle) {
@@ -76,6 +89,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
     }
 
+    /**
+     * 移除所有activity
+     */
     @Override
     protected void onDestroy() {
         BaseApplication.removeActivity(this);

@@ -41,7 +41,7 @@ import butterknife.OnClick;
 /**
  * Created by ZHDelete on 16/4/11.
  */
-public class AddressListActivity extends BaseActivity{
+public class AddressListActivity extends BaseActivity {
     private static final int LOGINCODE = 20;
     private static final int REGISTER = 10;
     @InjectView(R.id.activity_address_list_close_iv)
@@ -68,17 +68,13 @@ public class AddressListActivity extends BaseActivity{
             }
         });
         mSwipeListView = (SwipeListView) findViewById(R.id.activity_addresslist_swipelistview);
-
         netHelper = NetHelper.getInstance();
-
-
     }
 
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (resultCode == REGISTER || resultCode == 20) {
             Log.d("sssAddressListActivity", "jinlaile");
             Map<String, String> params = new HashMap();
@@ -89,18 +85,12 @@ public class AddressListActivity extends BaseActivity{
             netHelper.volleyPostTogetNetData(Content.ADDRESS_LIST, params, new VolleyNetListener() {
                 @Override
                 public void onSuccess(String string) {
-
                     AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                     addressListBean = analyzeJson.analyzeAddressList(string);
-
                     Log.d("AddressListActivity", "第一条地址:  " + addressListBean.getData().getList().get(0).getAddr_info());
                     mListAdapter = new AddListAdapter(AddressListActivity.this, addressListBean.getData().getList(), mSwipeListView);
                     mSwipeListView.setAdapter(mListAdapter);
-
-                    //mListAdapter.addData(addressListBean.getData().getList());
-
                 }
-
                 @Override
                 public void onFail(String failStr) {
                     Log.d("PurchaseActivity", "   " + failStr);
@@ -109,9 +99,6 @@ public class AddressListActivity extends BaseActivity{
         }
 
     }
-
-
-
 
     @Override
     protected void initData() {
@@ -126,10 +113,8 @@ public class AddressListActivity extends BaseActivity{
             public void onSuccess(String string) {
 
                 addressListBean = analyzeJson.analyzeAddressList(string);
-
                 mListAdapter = new AddListAdapter(AddressListActivity.this, addressListBean.getData().getList(), mSwipeListView);
                 mSwipeListView.setAdapter(mListAdapter);
-
 
             }
 
@@ -138,15 +123,16 @@ public class AddressListActivity extends BaseActivity{
                 Log.d("PurchaseActivity", "   " + failStr);
             }
         });
-//编辑默认地址
+        //编辑默认地址
         mSwipeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+            public void onItemClick(AdapterView<?> parent
+                    , View view, final int position, long id) {
                 Map<String, String> params = new HashMap();
-                String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+                String token = (String) MySharedPreferencesUtils
+                        .getData(BaseApplication.getContext(), "token", "");
                 params.put("token", token);
                 params.put("device_type", "3");
-
                 params.put("addr_id", addressListBean.getData().getList().get(position).getAddr_id());
                 NetHelper.getInstance().volleyPostTogetNetData("index.php/user/mr_address", params, new VolleyNetListener() {
                     @Override
@@ -168,17 +154,15 @@ public class AddressListActivity extends BaseActivity{
         });
     }
 
-
-//*******内部适配器
-
+    /**
+     * 内部适配器
+     */
     public class AddListAdapter extends BaseAdapter {
         private Context context;
         private LayoutInflater inflater;
         private List<AddressListBean.DataEntity.ListEntity> listEntityList;
         private SwipeListView mListView;
         private NetHelper netHelper;
-
-
         public AddListAdapter(Context context,
                               List<AddressListBean.DataEntity.ListEntity> listEntityList,
                               SwipeListView mListView) {
@@ -212,14 +196,15 @@ public class AddressListActivity extends BaseActivity{
 
         public void deleteAddOverService(String addr_id) {
             Map<String, String> params = new HashMap();
-            String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
+            String token = (String) MySharedPreferencesUtils
+                    .getData(BaseApplication.getContext(), "token", "");
             params.put("token", token);
             params.put("addr_id", addr_id);
-            netHelper.volleyPostTogetNetData(Content.DEL_ADDRESS, params, new VolleyNetListener() {
+            netHelper.volleyPostTogetNetData(Content.DEL_ADDRESS
+                    , params, new VolleyNetListener() {
                 @Override
                 public void onSuccess(String string) {
                     Log.d("AddressListActivity", "删除地址返回数据:***" + string);
-
                     JSONObject jsonObject = null;
                     try {
                         jsonObject = new JSONObject(string);
@@ -282,20 +267,19 @@ public class AddressListActivity extends BaseActivity{
                     notifyDataSetChanged();
                     deleteAddOverService(addr_id);
                     mListView.turnToNormal();
-              //删除时候 还需要传个默认地址
+                    //删除时候 还需要传个默认地址
                     Intent intent = new Intent();
-                  if (addressListBean!= null&& addressListBean.getData()!=null&&addressListBean.getData().getList().size()>0) {
-                      intent.putExtra("phone", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getCellphone());
-                      intent.putExtra("address", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getAddr_info());
-                      intent.putExtra("username", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getUsername());
-                      setResult(100, intent);
-                  }
-                    else {
-                      intent.putExtra("phone", "");
-                      intent.putExtra("address", "");
-                      intent.putExtra("username", "");
-                      setResult(200, intent);
-                  }
+                    if (addressListBean != null && addressListBean.getData() != null && addressListBean.getData().getList().size() > 0) {
+                        intent.putExtra("phone", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getCellphone());
+                        intent.putExtra("address", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getAddr_info());
+                        intent.putExtra("username", addressListBean.getData().getList().get(addressListBean.getData().getList().size() - 1).getUsername());
+                        setResult(100, intent);
+                    } else {
+                        intent.putExtra("phone", "");
+                        intent.putExtra("address", "");
+                        intent.putExtra("username", "");
+                        setResult(200, intent);
+                    }
 
 
                 }
@@ -327,8 +311,6 @@ public class AddressListActivity extends BaseActivity{
     }
 
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -340,7 +322,6 @@ public class AddressListActivity extends BaseActivity{
     public void onClick() {
         finish();
     }
-
 
 
 }

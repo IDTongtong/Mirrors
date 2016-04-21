@@ -25,29 +25,23 @@ import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
- * Created by ZHDelete on 16/4/8.
+ * Created by zt on 16/4/8.
  */
 public class WearPhotoActivity extends BaseActivity {
     @InjectView(R.id.activity_wear_back_btn)
     ImageView activityWearBackBtn;
     private RecyclerView mRecyclerView;
-
     private String goods_id;
-
     private NetHelper netHelper;
-
     private WearPhoRvAdapter mAdapter;
-
 
     public static void startWearPhotoActivity(Context context, String goods_id) {
         Intent intent = new Intent(context, WearPhotoActivity.class);
         intent.putExtra("goods_id", goods_id);
         context.startActivity(intent);
-
     }
 
     @Override
-
     protected int setContent() {
         return R.layout.activity_wear_lay;
     }
@@ -55,40 +49,28 @@ public class WearPhotoActivity extends BaseActivity {
     @Override
     protected void initData() {
         netHelper = NetHelper.getInstance();
-
         Intent intent = getIntent();
         goods_id = intent.getStringExtra("goods_id");
-
         final LinearLayoutManager lm = new LinearLayoutManager(this);
         lm.setOrientation(LinearLayoutManager.VERTICAL);
-
         Map<String, String> params = new HashMap();
-
         params.put("token", "");
         params.put("goods_id", goods_id);
         params.put("device_type", "3");
         params.put("version", "1.0.1");
-
         netHelper.volleyPostTogetNetData(Content.GOODS_INFO, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
-
                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                 GoodsItemBean goodsItemBean = analyzeJson.analyzeGoodsItem(string);
-
                 Log.d("WearPhotoActivity", "&&&&&" + goodsItemBean.getData().getWear_video().get(0).getData());
-
                 mAdapter = new WearPhoRvAdapter(WearPhotoActivity.this);
                 mAdapter.addData(goodsItemBean.getData().getWear_video());
-
                 mRecyclerView.setLayoutManager(lm);
                 mRecyclerView.setAdapter(mAdapter);
-
             }
-
             @Override
             public void onFail(String failStr) {
-
             }
         });
 
@@ -97,7 +79,6 @@ public class WearPhotoActivity extends BaseActivity {
     @Override
     protected void initView() {
         mRecyclerView = (RecyclerView) findViewById(R.id.activity_wear_recyclerview);
-
     }
 
     @Override

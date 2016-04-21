@@ -19,6 +19,7 @@ import java.net.URL;
  * Created by dllo on 16/4/11.
  */
 public class MyAsync extends AsyncTask<String, Integer, Bitmap> {
+
     private ProgressDialog dialog;
     private Context context;
     private ImageView iv;

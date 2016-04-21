@@ -24,15 +24,11 @@ import java.util.TimerTask;
  */
 public class WelcomeActivity extends BaseActivity {
     private ImageView spashIv;
-
     private String welcomIvUrl;
     NetHelper netHelper = NetHelper.getInstance();
-  
     ImageView imageView;
-
     //安卓os的handler
     Handler handler;
-
 
     @Override
     protected int setContent() {
@@ -43,33 +39,28 @@ public class WelcomeActivity extends BaseActivity {
     protected void initData() {
         String url = "index.php/index/started_img";
         Map<String, String> params = new HashMap();
-
         params.put("last_time", "");
         params.put("page", "");
         params.put("token", "");
         params.put("device_type", "3");
         params.put("version", "1.0.0");
 
-        netHelper.volleyPostTogetNetData(url, params, new VolleyNetListener() {
+        netHelper.volleyPostTogetNetData(url
+                , params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
                 Log.d("WelcomeActivity", "****" + string);
                 try {
-
                     JSONObject jsonObject = new JSONObject(string);
                     if (jsonObject.has("img")) {
                         welcomIvUrl = jsonObject.getString("img");
                         Log.d("WelcomeActivity", "欢迎页图片：" + welcomIvUrl);
-
-
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 imageView = (ImageView) findViewById(R.id.welcome_iv);
-
-                netHelper.loadImageWithVolley(imageView,welcomIvUrl);
+                netHelper.loadImageWithVolley(imageView, welcomIvUrl);
             }
 
             @Override
@@ -77,34 +68,20 @@ public class WelcomeActivity extends BaseActivity {
 
             }
         });
-
-
-            //new 一个计时器
-            Timer timer = new Timer();
-            //tast是计时器的任务
-            TimerTask tast = new TimerTask() {
-                @Override
-                public void run() {
-
-                    finish();
-                }
-            };
-            // 设定计时器的任务以及时间
-            timer.schedule(tast, 2000);
-
+        //new 一个计时器
+        Timer timer = new Timer();
+        //tast是计时器的任务
+        TimerTask tast = new TimerTask() {
+            @Override
+            public void run() {
+                finish();
+            }
+        };
+        // 设定计时器的任务以及时间
+        timer.schedule(tast, 2000);
     }
 
     @Override
     protected void initView() {
-//        imageView = (ImageView) findViewById(R.id.welcome_iv);
-//        ImageLoader imageLoader = netHelper.getImageLoader();
-//        ImageLoader.ImageListener imageListener = ImageLoader.getImageListener(
-//                imageView,
-//                R.mipmap.ic_launcher,
-//                R.mipmap.loading
-//
-//        );
-//        imageLoader.get(welcomIvUrl, imageListener);
-//
     }
 }

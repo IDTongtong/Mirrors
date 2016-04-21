@@ -222,12 +222,12 @@ public class NetHelper {
 
     public void loadImageWithFresco(SimpleDraweeView simpleDraweeView, String image_url) {
         /**
-         *  //创建SimpleDraweeView对象
-         simpleDraweeView = (SimpleDraweeView) findViewById(R.id.main_sdv);
-         //创建将要下载的图片的URI
-         Uri imageUri = Uri.parse("http://my.csdn.net/uploads/avatar/4/E/8/1_y1scp.jpg");
-         //开始下载
-         simpleDraweeView.setImageURI(imageUri);
+         * 创建SimpleDraweeView对象
+         *simpleDraweeView = (SimpleDraweeView) findViewById(R.id.main_sdv);
+         *创建将要下载的图片的URI
+         *Uri imageUri = Uri.parse("http://my.csdn.net/uploads/avatar/4/E/8/1_y1scp.jpg");
+         *开始下载
+         *simpleDraweeView.setImageURI(imageUri);
          */
 
         Uri image_uri = Uri.parse(image_url);
@@ -272,11 +272,12 @@ public class NetHelper {
 
         @Override
         public Bitmap getBitmap(String url) {
-//            //获取url中的图片名称
-//            String fileName = url.substring(
-//                    url.lastIndexOf("/") + 1,
-//                    url.length()
-//            );
+           /* 获取url中的图片名称
+              String fileName = url.substring(
+                    url.lastIndexOf("/") + 1,
+                    url.length()
+            );
+            */
             //MD5 加密网址整体作为文件名:
             String fileName = CommonUtils.stringToMD5(url);
             Log.d("NetHelper", "get___MD5的文件名:" + fileName);
@@ -284,10 +285,8 @@ public class NetHelper {
             //用文件名拼接出实际文件存储路径
             String filePath = diskPath + "/" + fileName;
 
-            //
             BitmapFactory.Options options = new BitmapFactory.Options();
             options.inJustDecodeBounds = true;
-
             BitmapFactory.decodeFile(filePath, options);
 
             //想要得到缩放的值
@@ -320,6 +319,7 @@ public class NetHelper {
 
         /**
          * 将Bitmap写入文件
+         *
          * @param url
          * @param bitmap
          */
@@ -368,6 +368,7 @@ public class NetHelper {
 
         /**
          * 读取Bitmap
+         *
          * @param url
          * @return
          */

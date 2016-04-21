@@ -31,34 +31,27 @@ public class StoryDetailActivity extends BaseActivity {
     private VerticalViewPager mVerticalPager;
     private StoryVerticalPagerAdapter mAdapter;
     private Context context;
-
     private ImageView backIv;
     private NetHelper netHelper;
-//    private ImageLoader imageLoader;
     private String backIv_url;
-
     List<String> img_array;
     List<StoryItemBean.DataEntity.StoryDataEntity.TextArrayEntity> text_array;
-
     ImageLoader.ImageListener imageListener;
     private String story_id;
     StoryItemBean storyItemBean;
 
-
-
-
-
-    public static void startStoryDetailActivity(Context context,List<StoryDetailText> textList) {
+    public static void startStoryDetailActivity(Context context
+            , List<StoryDetailText> textList) {
 
         Intent intent = new Intent(context, StoryDetailActivity.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("textList", (Serializable) textList);
         intent.putExtras(bundle);
         context.startActivity(intent);
-
     }
 
-    public static void startStoryDetailActivity(Context context, String story_id) {
+    public static void startStoryDetailActivity(Context context
+            , String story_id) {
 
         Intent intent = new Intent(context, StoryDetailActivity.class);
         intent.putExtra("story_id", story_id);
@@ -71,68 +64,43 @@ public class StoryDetailActivity extends BaseActivity {
         context = this;
         mVerticalPager = (VerticalViewPager) findViewById(R.id.activity_story_detail_vertical_viewpger);
         netHelper = NetHelper.getInstance();
-
         backIv = (ImageView) findViewById(R.id.activity_story_detail_back_iv);
-
         imageListener = ImageLoader.getImageListener(
                 backIv,
                 R.mipmap.loading,
                 R.mipmap.ic_launcher
-
         );
-
-//        imageLoader = netHelper.getImageLoader();
-
-//        Bundle bundle = getIntent().getExtras();
-//        textList = (List<StoryDetailText>) bundle.getSerializable("textList");
-//        Log.d("StoryDetailActivity", "是否传过来serilizable+大小:" + textList.size());
-
         story_id = getIntent().getStringExtra("story_id");
         Log.d("StoryDetailActivity", "456789   " + story_id);
-
-
         Map<String, String> params = new HashMap();
-
         params.put("token", "");
         params.put("device_type", "3");
         params.put("story_id", story_id);
         params.put("version", "1.0.1");
-
-        netHelper.volleyPostTogetNetData(Content.STORY_INFO, params, new VolleyNetListener() {
+        netHelper.volleyPostTogetNetData(Content.STORY_INFO
+                , params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
                 Log.d("StoryDetailActivity", "String 故事详情:" + string);
-
                 AnalyzeJson ananlyzeJson = AnalyzeJson.getInstance();
                 storyItemBean = ananlyzeJson.analyzeStoryItem(string);
-
-
                 img_array = storyItemBean.getData().getStory_data().getImg_array();
                 text_array = storyItemBean.getData().getStory_data().getText_array();
                 Log.d("StoryDetailActivity", "TTTT  " + text_array.size());
-
                 mAdapter = new StoryVerticalPagerAdapter(getSupportFragmentManager(), context, text_array);
                 backIv_url = img_array.get(0);//默认第一次加载一张图
                 Log.d("StoryDetailActivity", "第一张图:" + backIv_url);
                 mVerticalPager.setAdapter(mAdapter);
-
                 //有网时 通过网络拉取图片,没网时 进不来 保证 进来 就有图,而不是 viewpager滑一次 才有图
 //                imageLoader.get(backIv_url, imageListener, 768, 1280);
-                netHelper.loadImageWithVolley(backIv,backIv_url);
-
+                netHelper.loadImageWithVolley(backIv, backIv_url);
             }
 
             @Override
             public void onFail(String failStr) {
-
             }
         });
-
-
-
         Log.d("StoryDetailActivity", "---" + backIv_url);
-
-
     }
 
     @Override
@@ -142,27 +110,20 @@ public class StoryDetailActivity extends BaseActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 //Log.d("StoryDetailActivity", "1");
             }
-
             @Override
             public void onPageSelected(int position) {
                 Log.d("StoryDetailActivity", "2");
-
                 backIv_url = img_array.get(position);
 //                imageLoader.get(backIv_url, imageListener);
-                netHelper.loadImageWithVolley(backIv,backIv_url);
-
-
+                netHelper.loadImageWithVolley(backIv, backIv_url);
             }
 
             @Override
             public void onPageScrollStateChanged(int state) {
                 //Log.d("StoryDetailActivity", "3");
-
             }
         });
-
     }
-
     @Override
     protected int setContent() {
         return R.layout.activity_story_detail_lay;

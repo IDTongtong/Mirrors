@@ -31,7 +31,6 @@ import butterknife.OnClick;
  */
 public class CreateAccountActivity extends BaseActivity implements Url {
 
-
     @InjectView(R.id.create_close_iv)
     ImageView createCloseIv;
     @InjectView(R.id.create_bar_iv)
@@ -49,7 +48,6 @@ public class CreateAccountActivity extends BaseActivity implements Url {
     @InjectView(R.id.create_btn_success)
     TextView createBtnSuccess;
     private UserBean data;
-
 
     @Override
     protected int setContent() {
@@ -81,8 +79,9 @@ public class CreateAccountActivity extends BaseActivity implements Url {
         }
     }
 
-
-    //     创建账号是否成功
+    /**
+     * 创建账号是否成功
+     */
     private void createAccountSuccess() {
         NetHelper netHelper = NetHelper.getInstance();
         Map<String, String> params = new HashMap<>();
@@ -93,7 +92,6 @@ public class CreateAccountActivity extends BaseActivity implements Url {
             @Override
             public void onSuccess(String string) {
                 Log.d("CreateAccountActivity", string);
-
                 try {
                     JSONObject jsonObject = new JSONObject(string);
                     if (jsonObject.has("result")) {
@@ -101,11 +99,9 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                         switch (result) {
                             case "":
                                 String msg = jsonObject.getString("msg");
-//                                Toast.makeText(CreateAccountActivity.this, msg, Toast.LENGTH_SHORT).show();
-                                Toastor.showToast(CreateAccountActivity.this,msg);
+                                Toastor.showToast(CreateAccountActivity.this, msg);
                                 break;
                             case "1":
-//                                AnalyzeJson gson = new AnalyzeJson();
                                 AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
                                 data = analyzeJson.analyzeUser(string);
                                 Bundle bundle = new Bundle();
@@ -117,16 +113,12 @@ public class CreateAccountActivity extends BaseActivity implements Url {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
-
             @Override
             public void onFail(String failStr) {
 
             }
         });
-
-
     }
 
     //         发送手机验证码

@@ -15,9 +15,7 @@ import butterknife.ButterKnife;
  */
 public abstract class BaseFragment extends Fragment {
 
-
     protected Context context;
-
 
     @Override
     public void onAttach(Context context) {
@@ -34,7 +32,13 @@ public abstract class BaseFragment extends Fragment {
 
     }
 
-
+    /**
+     * 绑定 ID
+     * @param view
+     * @param id
+     * @param <T>
+     * @return
+     */
     protected <T extends View> T bindViewById(View view, int id) {
         return (T) view.findViewById(id);
     }

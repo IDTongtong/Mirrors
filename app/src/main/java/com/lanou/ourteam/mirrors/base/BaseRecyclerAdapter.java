@@ -10,34 +10,43 @@ import com.lanou.ourteam.mirrors.utils.NetHelper;
 
 import java.util.List;
 
-/**
+/**@author 8500的兄弟
  * Created by ZHDelete on 16/4/1.
  */
 public abstract class BaseRecyclerAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    //来自 8500的兄弟
     protected LayoutInflater inflater;
     protected Context context;
     protected List<T> list;
-
     protected NetHelper netHelper;
     protected ImageLoader imageLoader;
 
+    /**
+     * 构造方法
+     * @param context
+     */
     public BaseRecyclerAdapter(Context context) {
         this.context = context;
         this.inflater = LayoutInflater.from(context);
         netHelper = NetHelper.getInstance();
         imageLoader = netHelper.getImageLoader();
     }
+
+    /**
+     * 每条list 添加数据
+     * @param list
+     */
     public void addData(List<T> list) {
         this.list = list;
         notifyDataSetChanged();
-
     }
-    protected boolean isLength() {
-        //判断集合是否为空,集合大小是否大于0
-        return list != null && list.size() > 0;
 
+    /**
+     * list 长度
+     * @return 判断集合是否为空,集合大小是否大于0
+     */
+    protected boolean isLength() {
+        return list != null && list.size() > 0;
     }
 
     @Override

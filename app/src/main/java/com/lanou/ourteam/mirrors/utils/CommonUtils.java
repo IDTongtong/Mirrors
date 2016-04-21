@@ -55,15 +55,12 @@ public class CommonUtils {
             if (info != null && info.isConnected()) {
                 // 当前网络是连接的
                 if (info.getState() == NetworkInfo.State.CONNECTED) {
-
                     // 当前所连接的网络可用
-//                    Toast.makeText(BaseApplication.getMyAppContext(), "网络可用", Toast.LENGTH_SHORT).show();
                     Log.d("CommonUtils", "网络可用");
                     return true;
                 }
             }
         }
-        //Toast.makeText(BaseApplication.getMyAppContext(), "网络不可用", Toast.LENGTH_SHORT).show();
         Log.d("CommonUtils", "网络不可用");
         return false;
     }

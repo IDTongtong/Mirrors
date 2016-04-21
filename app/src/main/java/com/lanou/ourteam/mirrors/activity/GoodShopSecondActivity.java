@@ -58,14 +58,12 @@ public class GoodShopSecondActivity extends BaseActivity {
     ImageView imageViewbackground;
     ////该步是第二种动画出现的步骤,暂未用上
 
-    private ImageView imageViewReturn,purchaseIv;
-
+    private ImageView imageViewReturn, purchaseIv;
     private String goodsid;
-
     private NetHelper netHelper;
 
     //购买相关 变量   暂不知道是 在确认下单 页 在此拉取,
-    private String goods_pic,goods_name,info_des,goods_price;
+    private String goods_pic, goods_name, info_des, goods_price;
 
 
     @Override
@@ -83,7 +81,7 @@ public class GoodShopSecondActivity extends BaseActivity {
 
 
         netHelper = NetHelper.getInstance();
-        netHelper.loadImageWithVolley(imageViewbackground,background);
+        netHelper.loadImageWithVolley(imageViewbackground, background);
 
         Map<String, String> params = new HashMap();
         params.put("version", "1.0.1");
@@ -216,7 +214,7 @@ public class GoodShopSecondActivity extends BaseActivity {
                 value -= dy;
                 Log.d("变化值", "layoutScrollValue:" + value);
 
-                adapter.setScrollValue(value,dy);
+                adapter.setScrollValue(value, dy);
 
 
                 //这是Recyclerview 的方法来获得当前的 value 值.
@@ -237,19 +235,11 @@ public class GoodShopSecondActivity extends BaseActivity {
 
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.inject(this);
-    }
-
     @OnClick(R.id.secondshop_wear_picyure)
     public void onClick() {
         WearPhotoActivity.startWearPhotoActivity(this, goodsid);
 
     }
-
 
 
 }

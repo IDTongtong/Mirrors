@@ -5,21 +5,34 @@ import android.os.Handler;
 import android.os.Looper;
 import android.widget.Toast;
 
-/**Toast工具类
+/**
+ * Toast工具类
  * Created by zt on 16/4/1.
  */
 public class Toastor {
-    private static Toast   mToast;
+    private static Toast mToast;
     private Context context;
 
+    /**
+     * 获得context 对象
+     *
+     * @param context
+     */
     public Toastor(Context context) {
         this.context = context.getApplicationContext();
     }
 
+    /**
+     * 获得 吐司的单例
+     *
+     * @param context
+     * @param resId
+     * @return
+     */
     public static Toast getSingletonToast(Context context, int resId) {
         if (mToast == null) {
             mToast = Toast.makeText(context, resId, Toast.LENGTH_SHORT);
-        }else{
+        } else {
             mToast.setText(resId);
         }
         return mToast;
@@ -28,7 +41,7 @@ public class Toastor {
     public static Toast getSingletonToast(Context context, String text) {
         if (mToast == null) {
             mToast = Toast.makeText(context, text, Toast.LENGTH_SHORT);
-        }else{
+        } else {
             mToast.setText(text);
         }
         return mToast;
@@ -37,7 +50,7 @@ public class Toastor {
     public static Toast getSingleLongToast(Context context, int resId) {
         if (mToast == null) {
             mToast = Toast.makeText(context, resId, Toast.LENGTH_LONG);
-        }else{
+        } else {
             mToast.setText(resId);
         }
         return mToast;
@@ -46,7 +59,7 @@ public class Toastor {
     public static Toast getSingleLongToast(Context context, String text) {
         if (mToast == null) {
             mToast = Toast.makeText(context, text, Toast.LENGTH_LONG);
-        }else{
+        } else {
             mToast.setText(text);
         }
         return mToast;

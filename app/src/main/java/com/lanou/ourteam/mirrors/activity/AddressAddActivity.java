@@ -68,28 +68,28 @@ public class AddressAddActivity extends BaseActivity {
             case R.id.activity_addaddress_edit_close_iv:
                 finish();
                 break;
-
             case R.id.activity_addaddress_edit_commit_btn:
-                if (activityAddaddressEditUserNameEt.getText()!=null&&activityAddaddressEditPhoneNumEt.getText()!=null&&activityAddaddressEditAddressEt.getText()!=null){
+                if (activityAddaddressEditUserNameEt.getText()
+                        != null && activityAddaddressEditPhoneNumEt.getText() != null
+                        && activityAddaddressEditAddressEt.getText() != null) {
 
                     Map<String, String> params = new HashMap();
                     String token = (String) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "token", "");
                     params.put("token", token);
                     params.put("device_type", "3");
-                    params.put("username",activityAddaddressEditUserNameEt.getText().toString());
-                    params.put("cellphone",activityAddaddressEditPhoneNumEt.getText().toString());
-                    params.put("addr_info",activityAddaddressEditAddressEt.getText().toString());
-                    NetHelper.getInstance().volleyPostTogetNetData(Content.ADD_ADDRESS, params, new VolleyNetListener() {
+                    params.put("username", activityAddaddressEditUserNameEt.getText().toString());
+                    params.put("cellphone", activityAddaddressEditPhoneNumEt.getText().toString());
+                    params.put("addr_info", activityAddaddressEditAddressEt.getText().toString());
+                    NetHelper.getInstance().volleyPostTogetNetData(Content.ADD_ADDRESS
+                            , params, new VolleyNetListener() {
                         @Override
                         public void onSuccess(String string) {
                             Intent intent = new Intent();
                             setResult(10, intent);
                             finish(); // 不打的话没有跳转
                         }
-
                         @Override
                         public void onFail(String failStr) {
-
                         }
                     });
 
