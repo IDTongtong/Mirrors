@@ -108,11 +108,8 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 VideoHolder videoHolder = (VideoHolder) holder;
 
                 Log.d("WearPhoRvAdapter", "视频list 大小:  " + videoList.size());
-//                videoHolder.jcVideoPlayer.setUp(videoList.get(0), "", false);
                 videoHolder.jcVideoPlayer.setUp(video_url, "", false);
                 ImageView ivThumb = videoHolder.jcVideoPlayer.ivThumb;
-
-//                netHelper.loadBigImageWithPicasso(ivThumb,video_cover_url);
                 netHelper.loadOriginImageWithVolley(ivThumb, video_cover_url);
 
 
@@ -122,7 +119,6 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
                 final CommonHolder commonHolder = (CommonHolder) holder;
                 Log.d("WearPhoRvAdapter", "图片list 大小:  " + imageList.size());
 
-             //   netHelper.loadImageWithVolley(commonHolder.imageView, imageList.get(position - 1));
                 netHelper.loadBigImageWithPicasso(commonHolder.imageView, imageList.get(position - 1));
                 commonHolder.imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -170,28 +166,9 @@ public class WearPhoRvAdapter extends BaseRecyclerAdapter<GoodsItemBean.DataEnti
             super(itemView);
             imageView = (ImageView) itemView.findViewById(R.id.wear_item_pic_iv);
             linearLayout = (LinearLayout) itemView.findViewById(R.id.wear_item_pic_ll);
-            // linearLayout.setOnClickListener(this);
         }
 
-//        @Override
-//        public void onClick(View v) {
-//
-//
-////            Intent intent = new Intent(context, PicDetailsActivity.class);
-////            //intent.putExtra("images", (Parcelable) image_url_list);//非必须
-////            intent.putStringArrayListExtra("images", (ArrayList<String>) imageList);
-////            intent.putExtra("position", position);
-////            int[] location = new int[2];
-////            imageView.getLocationOnScreen(location);//location 里 有iv 的横纵坐标
-////            intent.putExtra("locationX", location[0]);//必须
-////            intent.putExtra("locationY", location[1]);//必须
-////
-////            intent.putExtra("width", imageView.getWidth());//必须
-////            intent.putExtra("height", imageView.getHeight());//必须
-////            context.startActivity(intent);
-//
-//
-//        }
+
     }
 
 

@@ -47,7 +47,7 @@ public class CreateAccountActivity extends BaseActivity implements Url {
     EditText createPasswordEt;
     @InjectView(R.id.create_btn_success)
     TextView createBtnSuccess;
-    private UserBean data;
+
 
     @Override
     protected int setContent() {
@@ -91,19 +91,19 @@ public class CreateAccountActivity extends BaseActivity implements Url {
         netHelper.volleyPostTogetNetData(USER_REG, params, new VolleyNetListener() {
             @Override
             public void onSuccess(String string) {
-                Log.d("CreateAccountActivity", string);
                 try {
                     JSONObject jsonObject = new JSONObject(string);
+                    String msg = jsonObject.getString("msg");
                     if (jsonObject.has("result")) {
                         String result = jsonObject.getString("result");
                         switch (result) {
+                            case "0":
+                                Toastor.showSingletonToast(CreateAccountActivity.this,msg);
+                            break;
                             case "":
-                                String msg = jsonObject.getString("msg");
-                                Toastor.showToast(CreateAccountActivity.this, msg);
+                                Toastor.showSingletonToast(CreateAccountActivity.this, msg);
                                 break;
                             case "1":
-                                AnalyzeJson analyzeJson = AnalyzeJson.getInstance();
-                                data = analyzeJson.analyzeUser(string);
                                 Bundle bundle = new Bundle();
                                 bundle.putString("phoneNum", createPhoneEt.getText().toString());
                                 jumpToActivity(CreateAccountActivity.this, LoginActivity.class, bundle);
