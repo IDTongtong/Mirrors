@@ -22,6 +22,7 @@ import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+import com.lanou.ourteam.mirrors.utils.Toastor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -256,7 +257,7 @@ public class LoginActivity extends BaseActivity implements Url {
                         switch (result) {
                             case "":
                                 String msg = jsonObject.getString("msg");
-                                Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                Toastor.showSingletonToast(LoginActivity.this, msg);
                                 break;
                             case "1":
                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
