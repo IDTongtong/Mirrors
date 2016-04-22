@@ -1,7 +1,7 @@
 package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
+
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
+import com.lanou.ourteam.mirrors.bean.SinaBean;
 import com.lanou.ourteam.mirrors.bean.UserBean;
 import com.lanou.ourteam.mirrors.listenerinterface.Url;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
@@ -175,11 +176,14 @@ public class LoginActivity extends BaseActivity implements Url {
                         params.put("wb_ima", image);
                         params.put("wb_id", id);
                         params.put("iswb_orwx", "1");
+                        Log.d("LoginActivityid", id);
+                        Log.d("LoginActivityimage", image);
+                        Log.d("LoginActivityname", name);
                         NetHelper.getInstance().volleyPostTogetNetData("index.php/user/bundling", params, new VolleyNetListener() {
                             @Override
                             public void onSuccess(String string) {
                                 try {
-                                    Log.d("sssoginActivity", string);
+
                                     JSONObject jsonObject = new JSONObject(string);
                                     if (jsonObject.has("result")) {
                                         String result = jsonObject.getString("result");
@@ -189,10 +193,16 @@ public class LoginActivity extends BaseActivity implements Url {
                                                 Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
                                                 break;
                                             case "1":
-                                                SharedPreferences sharedPreferences = getSharedPreferences("login", MODE_PRIVATE);
-                                                SharedPreferences.Editor editor = sharedPreferences.edit();
-                                                editor.putBoolean("isLogin", true);
-                                                editor.commit();
+
+                                                Gson gson = new Gson();
+                                                SinaBean bean = gson.fromJson(jsonObject.toString(), SinaBean.class);
+                                                String token = bean.getData().getToken();
+
+                                                //储存token
+                                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "token", token);
+
+                                                //flag 标记是否已经登录
+                                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "hasLogin", true);
                                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
                                                 finish();
                                                 break;
@@ -250,7 +260,6 @@ public class LoginActivity extends BaseActivity implements Url {
                                 break;
                             case "1":
                                 Toast.makeText(LoginActivity.this, "登陆成功", Toast.LENGTH_SHORT).show();
-                                MySharedPreferencesUtils.saveData(BaseApplication.getContext(), "isLogin", true);
                                 Gson gson = new Gson();
                                 UserBean bean = gson.fromJson(jsonObject.toString(), UserBean.class);
                                 String token = bean.getData().getToken();

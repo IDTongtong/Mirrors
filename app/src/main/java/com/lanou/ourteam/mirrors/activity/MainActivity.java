@@ -32,6 +32,7 @@ import com.lanou.ourteam.mirrors.common.VerticalViewPager;
 import com.lanou.ourteam.mirrors.fragment.MenuFragment;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
+import com.lanou.ourteam.mirrors.listenerinterface.PoisitionListener;
 import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.CommonUtils;
 import com.lanou.ourteam.mirrors.utils.Content;
@@ -51,7 +52,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements PoisitionListener {
 
     boolean flag = true;
 
@@ -103,11 +104,15 @@ public class MainActivity extends BaseActivity {
 
     /**
      * 显示购物车
+     *
+     *
+     *
+     *
      */
     @Override
     protected void onResume() {
         super.onResume();
-       Boolean isLogin = (Boolean) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "isLogin", false);
+       Boolean isLogin = (Boolean) MySharedPreferencesUtils.getData(BaseApplication.getContext(), "hasLogin", false);
         if (isLogin) {
             mainLoginIv.setVisibility(View.GONE);
             mainShoppingIv.setVisibility(View.VISIBLE);
@@ -267,14 +272,9 @@ public class MainActivity extends BaseActivity {
 
     //暴露方法 得到position
     public void getDatafromFragment(int position) {
-        Log.d("MainActivity", "从fragment历来" + position);
 
-        //这个是设置viewPager切换过度时间的类
-        ViewPagerScroller scroller = new ViewPagerScroller(this);
-        scroller.setScrollDuration(100);
-        scroller.initViewPagerScroll(verticalViewPager);
-        //这个是设置切换过渡时间为0毫秒
-        verticalViewPager.setCurrentItem(position);
+
+
 
     }
 
@@ -296,6 +296,16 @@ public class MainActivity extends BaseActivity {
                 dissMenu();
                 break;
         }
+    }
+
+    @Override
+    public void getPoisition(int position) {
+        //这个是设置viewPager切换过度时间的类
+        ViewPagerScroller scroller = new ViewPagerScroller(this);
+        scroller.setScrollDuration(100);
+        scroller.initViewPagerScroll(verticalViewPager);
+        //这个是设置切换过渡时间为0毫秒
+        verticalViewPager.setCurrentItem(position);
     }
 
 
@@ -345,7 +355,7 @@ public class MainActivity extends BaseActivity {
 
     public void showMenu(String title) {
         MenuFragment menuFragment = new MenuFragment();
-
+   menuFragment.getPositionListenner(this);
         Bundle bundle = new Bundle();
         bundle.putString("menutitle", title);
 

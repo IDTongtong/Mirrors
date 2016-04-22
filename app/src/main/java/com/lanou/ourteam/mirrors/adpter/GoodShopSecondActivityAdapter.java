@@ -152,9 +152,11 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         }
         //position大于3时候
         else if (getItemViewType(position) == TYPE_GOODS_DETAILS) {
+
             int valueTitle = layoutScrollValue;//滑动总偏移量
 
             GoodsDetailsViewHolder goodsDetailsViewHolder = (GoodsDetailsViewHolder) holder;
+            goodsDetailsViewHolder.progressBar.setVisibility(View.VISIBLE);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsDetailsViewHolder.goodsDetailsRelativeLayout.getLayoutParams();
 
 

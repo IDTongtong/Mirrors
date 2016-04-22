@@ -52,6 +52,7 @@ public class CommonUtils {
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivityManager != null) {
             NetworkInfo info = connectivityManager.getActiveNetworkInfo();
+
             if (info != null && info.isConnected()) {
                 // 当前网络是连接的
                 if (info.getState() == NetworkInfo.State.CONNECTED) {

@@ -18,6 +18,7 @@ import com.lanou.ourteam.mirrors.adpter.MainActivityPupwindowListviewAdapter;
 import com.lanou.ourteam.mirrors.base.BaseFragment;
 import com.lanou.ourteam.mirrors.imagedao.DaoEntityHelper;
 import com.lanou.ourteam.mirrors.imagedao.MenuItemEntity;
+import com.lanou.ourteam.mirrors.listenerinterface.PoisitionListener;
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class MenuFragment extends BaseFragment {
     TextView exitTv;
     String title;
     ListView menulistView;
-
+    PoisitionListener poisitionListener;
 //*********
     //数据库
 
@@ -72,8 +73,8 @@ public class MenuFragment extends BaseFragment {
         menulistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                mainActivity.getDatafromFragment(position);
+                poisitionListener.getPoisition(position);
+                //mainActivity.getDatafromFragment(position);
                 mainActivity.dissMenu();
                 // imageViewItemiv.setVisibility(View.VISIBLE);
 
@@ -91,15 +92,19 @@ public class MenuFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 mainActivity.dissMenu();
-                mainActivity.getDatafromFragment(menuItemEntityList.size() - 1);
+                poisitionListener.getPoisition(menuItemEntityList.size() - 1);
             }
         });
         exitTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mainActivity.dissMenu();
-                mainActivity.getDatafromFragment(0);
+                poisitionListener.getPoisition(0);
             }
         });
+    }
+
+    public void getPositionListenner(PoisitionListener poisitionListener) {
+        this.poisitionListener = poisitionListener;
     }
 }

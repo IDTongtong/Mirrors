@@ -153,6 +153,7 @@ public class GoodShopSecondActivity extends BaseActivity {
         purchaseIv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Boolean hasLogin = (Boolean) MySharedPreferencesUtils.getData(GoodShopSecondActivity.this, "hasLogin", false);
                 //如果首页登陆过,在此处 会得到 true
                 if (hasLogin) {
