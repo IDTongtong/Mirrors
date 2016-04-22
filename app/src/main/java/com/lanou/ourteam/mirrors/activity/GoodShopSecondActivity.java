@@ -1,24 +1,19 @@
 package com.lanou.ourteam.mirrors.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
-import com.android.volley.toolbox.ImageLoader;
 import com.google.gson.Gson;
 import com.lanou.ourteam.mirrors.R;
-import com.lanou.ourteam.mirrors.activity.WearPhotoActivity;
 import com.lanou.ourteam.mirrors.adpter.GoodShopSecondActivityAdapter;
 import com.lanou.ourteam.mirrors.base.BaseActivity;
 import com.lanou.ourteam.mirrors.base.BaseApplication;
@@ -36,7 +31,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 

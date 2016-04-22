@@ -27,8 +27,8 @@
     <ImageView
         android:id="@+id/item_goodsfragment_content_goods_title_img"
         android:layout_width="match_parent"
-        android:scaleType="fitXY"
         android:layout_height="400dp"
+        android:scaleType="fitXY"
         android:layout_below="@id/item_goodsfragment_content_goods_title_line"
         android:src="@mipmap/ic_launcher" />
 

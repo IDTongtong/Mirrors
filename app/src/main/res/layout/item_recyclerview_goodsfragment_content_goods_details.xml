@@ -10,34 +10,12 @@
     <ImageView
 
         android:id="@+id/item_goodsfragment_content_goods_details_img"
-        android:scaleType="fitXY"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        android:layout_centerHorizontal="true"
-        />
-    <ProgressBar
-        android:id="@+id/item_goodsfragment_content_goods_progressbar"
-       android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+  android:scaleType="fitXY"
+       android:layout_centerHorizontal="true"
+        ></ImageView>
 
-
-    <!--
-    android:id="@+id/item_goodsfragment_content_goods_details_img"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
-        android:layout_centerHorizontal="true"
-    -->
-    <!--
-        android:id="@+id/item_goodsfragment_content_goods_details_relativelayout"
-        android:layout_width="@dimen/item_goodsfragment_content_details_move_frame_width"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/item_goodsfragment_content_details_move_frame_margin_top"
-        android:layout_below="@id/item_goodsfragment_content_goods_details_img"
-        andr oid:background="#000000"
-        -->
 
     <RelativeLayout
         android:id="@+id/item_goodsfragment_content_goods_details_relativelayout"

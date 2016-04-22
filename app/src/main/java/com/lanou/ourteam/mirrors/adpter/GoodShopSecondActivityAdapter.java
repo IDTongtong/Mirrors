@@ -10,7 +10,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -127,8 +126,15 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             });
 
             //设置透明度的变化
-            headViewHolder.relativeLayoutHead.getBackground().setAlpha(255);
+          int  disBottom = ((HeadViewHolder) holder).relativeLayoutHead.getBottom();
+            Log.d("dffGoodShopSecondActivityA", "disBottom:" + disBottom);
+            Log.d("dffGoodShopSecondActivityA", "disBottom / 6.7:" + (disBottom / 6.7));
+            if(disBottom==0){
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
+            }else{
+                ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha((int) (disBottom / 7.1));
 
+            }
             Log.d("GoodShopSecondActivityA", "valueDy:" + valueDy);
         } else if (getItemViewType(position) == TYPE_TRANSPARENT) {
         } else if (getItemViewType(position) == TYPE_GOODS_TITLE) {
@@ -152,11 +158,9 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         }
         //position大于3时候
         else if (getItemViewType(position) == TYPE_GOODS_DETAILS) {
-
             int valueTitle = layoutScrollValue;//滑动总偏移量
 
             GoodsDetailsViewHolder goodsDetailsViewHolder = (GoodsDetailsViewHolder) holder;
-            goodsDetailsViewHolder.progressBar.setVisibility(View.VISIBLE);
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) goodsDetailsViewHolder.goodsDetailsRelativeLayout.getLayoutParams();
 
 
@@ -183,7 +187,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             // goodsDetailsViewHolder.goodsDetailsImg.setImageURI(imageUri);
 
             netHelper.loadImageWithVolley(goodsDetailsViewHolder.goodsDetailsImg, datas.getData().getDesign_des().get(position - 2).getImg());
-         goodsDetailsViewHolder.progressBar.setVisibility(View.GONE);
+
         }
 
 
@@ -269,7 +273,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
         private TextView goodsDetailsDetailsName, goodsDetailsIntroContent;
         private ImageView goodsDetailsImg;
         private RelativeLayout goodsDetailsRelativeLayout, detailsRelativeLayoutAll;
-    private ProgressBar progressBar;
+
         public GoodsDetailsViewHolder(View itemView) {
             super(itemView);
             goodsDetailsDetailsName = (TextView) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_name);
@@ -277,7 +281,7 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
             goodsDetailsImg = (ImageView) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_img);
             goodsDetailsRelativeLayout = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_relativelayout);
             detailsRelativeLayoutAll = (RelativeLayout) itemView.findViewById(R.id.item_goodsfragment_content_goods_details_relativelayout_all);
-           progressBar = (ProgressBar) itemView.findViewById(R.id.item_goodsfragment_content_goods_progressbar);
+
         }
     }
 
