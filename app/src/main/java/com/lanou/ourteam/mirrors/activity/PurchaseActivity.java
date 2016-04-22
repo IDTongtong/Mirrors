@@ -36,6 +36,7 @@ import com.lanou.ourteam.mirrors.listenerinterface.VolleyNetListener;
 import com.lanou.ourteam.mirrors.utils.Content;
 import com.lanou.ourteam.mirrors.utils.MySharedPreferencesUtils;
 import com.lanou.ourteam.mirrors.utils.NetHelper;
+import com.lanou.ourteam.mirrors.utils.Toastor;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -346,7 +347,12 @@ public class PurchaseActivity extends BaseActivity implements View.OnClickListen
                 startActivityForResult(intent, 10);
                 break;
             case R.id.activity_purchase_sub_order_btn:
-                showPopupWindow(v);
+                if (activityPurchaseAddressRecieverTv.getText().length()!=0&&
+                        activityPurchaseAddressAddTv.getText().length()!=0){
+                showPopupWindow(v);}
+                else {
+                    Toastor.showSingletonToast(this,"请输入地址或电话号");
+                }
                 break;
         }
     }

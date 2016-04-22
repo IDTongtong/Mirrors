@@ -127,8 +127,6 @@ public class GoodShopSecondActivityAdapter extends RecyclerView.Adapter {
 
             //设置透明度的变化
           int  disBottom = ((HeadViewHolder) holder).relativeLayoutHead.getBottom();
-            Log.d("dffGoodShopSecondActivityA", "disBottom:" + disBottom);
-            Log.d("dffGoodShopSecondActivityA", "disBottom / 6.7:" + (disBottom / 6.7));
             if(disBottom==0){
                 ((HeadViewHolder) holder).relativeLayoutHead.getBackground().setAlpha(255);
             }else{
